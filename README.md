@@ -1,9 +1,13 @@
-## 目录
+# Introduction
+对于web方面漏洞的学习和记录
+有一些还没有记载，尽自己能力和心情做到详细吧
+
+目录大致如下：
 <pre>
 ├─语言
 │  ├─PHP
 │  │  ├─内核错误
-│  │  │  └─[PHP7的2个core dumped错误](./PHP/PHP7的2个core dumped错误.md)
+│  │  │  └─PHP7的2个core dumped错误
 │  │  ├─语法特性
 │  │  │  ├─弱比较
 │  │  │  ├─PHP7和PHP5的区别
@@ -47,12 +51,12 @@
 │  │  │  ├─包含临时文件
 │  │  │  └─包含session文件
 │  │  ├─Bypass disable function
-│  │  │  ├─攻击后端组;如，ImageMagick 的魔图漏洞、bash的破壳漏洞(fpm)
+│  │  │  ├─攻击后端组
 │  │  │  │  ├─opcache命令执行
 │  │  │  │  ├─gd库漏洞
 │  │  │  │  ├─魔图漏洞
 │  │  │  │  └─破壳漏洞
-│  │  │  ├─mod_cgi模式，尝试修改 .htaccess，调整请求访问路由，绕过 php.ini 中的任何限制；
+│  │  │  ├─mod_cgi模式
 │  │  │  ├─寻找未禁用的漏网函数。
 │  │  │  └─LD_PRELOAD劫持系统函数
 │  │  └─PHP框架
