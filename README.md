@@ -3,7 +3,7 @@
 ├─语言
 │  ├─PHP
 │  │  ├─内核错误
-│  │  │  └─PHP7的2个core dumped错误
+│  │  │  └─[PHP7的2个core dumped错误](./PHP/PHP7的2个core dumped错误.md)
 │  │  ├─语法特性
 │  │  │  ├─弱比较
 │  │  │  ├─PHP7和PHP5的区别
