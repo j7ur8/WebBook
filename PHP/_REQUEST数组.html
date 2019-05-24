@@ -2630,6 +2630,90 @@
     
 
     
+        
+        <li class="header">漏洞类型</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <span>
+            
+                    
+                    XXE
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" >
+            
+                <span>
+            
+                    
+                    前置知识
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1.1" data-path="../VUL/DTD.html">
+            
+                <a href="../VUL/DTD.html">
+            
+                    
+                    DTD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.1.2" data-path="../VUL/XML.html">
+            
+                <a href="../VUL/XML.html">
+            
+                    
+                    XML
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../VUL/报错XXE.html">
+            
+                <a href="../VUL/报错XXE.html">
+            
+                    
+                    报错XXE
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
 
     <li class="divider"></li>
 
@@ -2675,6 +2759,10 @@
                                 
                                 <h2 id="&#x6DF1;&#x5165;&#x7406;&#x89E3;request&#x6570;&#x7EC4;">&#x6DF1;&#x5165;&#x7406;&#x89E3;_REQUEST&#x6570;&#x7EC4;</h2>
 <p>(PHP 4 &gt;= 4.1.0, PHP 5, PHP 7)</p>
+<p>&#x5229;&#x7528;&#x6761;&#x4EF6;&#xFF1A;</p>
+<ul>
+<li>waf&#x5904;&#x7406;&#x7684;&#x662F;REQUEST&#x6570;&#x7EC4;&#xFF0C;&#x7136;&#x800C;&#x6570;&#x636E;&#x5904;&#x7406;&#x7684;&#x5374;&#x662F;GET&#x3002;</li>
+</ul>
 <p>&#x624B;&#x518C;&#x6CE8;&#x91CA;&#xFF1A;
 <img src="../images/19-1-19_2018&#x603B;&#x7ED3;-PHP&#x7BC7;_&#x6DF1;&#x5165;&#x7406;&#x89E3;$_REQUEST&#x6570;&#x7EC4;1.jpg" alt=""></p>
 <p>variables_order:</p>
@@ -2682,11 +2770,36 @@
 &#x5982;&#x753B;&#x7EA2;&#x7EBF;&#x5904;&#xFF0C;&#x540C;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x540D;&#x5B57;&#xFF0C;&#x5982;&#x679C;<code>variables_order</code>&#x7684;&#x987A;&#x5E8F;P&#x5728;G&#x540E;&#x9762;&#xFF0C;&#x90A3;&#x4E48;<code>$_POST[&apos;x&apos;]</code>&#x4F1A;&#x8986;&#x76D6;<code>$_GET[&apos;x&apos;]</code>&#x7684;&#x3002;</p>
 <p><code>variables_order</code>&#x9ED8;&#x8BA4;&#x53D8;&#x91CF;&#x503C;&#x4E3A;:
 <img src="../images/19-1-19_2018&#x603B;&#x7ED3;-PHP&#x7BC7;_&#x6DF1;&#x5165;&#x7406;&#x89E3;$_REQUEST&#x6570;&#x7EC4;3.jpg" alt=""></p>
-<p>&#x5229;&#x7528;&#x6761;&#x4EF6;&#xFF1A;</p>
-<ul>
-<li>waf&#x5904;&#x7406;&#x7684;&#x662F;REQUEST&#x6570;&#x7EC4;&#xFF0C;&#x7136;&#x800C;&#x6570;&#x636E;&#x5904;&#x7406;&#x7684;&#x5374;&#x662F;GET&#x3002;</li>
-</ul>
+<p>demo.php</p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+print_r($_REQUEST[<span class="hljs-string">&apos;a&apos;</span>]);
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+<p>burpsuite.http</p>
+<pre><code class="lang-http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/?a=get</span> HTTP/1.1
+<span class="hljs-attribute">Host</span>: 127.0.0.1
+<span class="hljs-attribute">Content-Length</span>: 6
+<span class="hljs-attribute">Content-Type</span>: application/x-www-form-urlencoded;charset=utf-8
 
+<span class="livecodeserver"><span class="hljs-keyword">a</span>=<span class="hljs-built_in">post</span>
+<span class="hljs-comment">
+//</span>
+Array
+(
+    [<span class="hljs-keyword">a</span>] =&gt; <span class="hljs-built_in">post</span>
+)
+</span></code></pre>
+<pre><code>POST /?a=get HTTP/1.1
+Host: 127.0.0.1
+Content-Length: 0
+Content-Type: application/x-www-form-urlencoded;charset=utf-8
+
+//
+Array
+(
+    [a] =&gt; get
+)
+</code></pre>
                                 
                                 </section>
                             
@@ -2725,7 +2838,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"深入理解_REQUEST数组","level":"2.1.2.4","depth":3,"next":{"title":"内置函数、类的利用","level":"2.1.3","depth":2,"ref":"","articles":[{"title":"内置函数和类","level":"2.1.3.1","depth":3,"path":"PHP/内置函数和类.md","ref":"./PHP/内置函数和类.md","articles":[]},{"title":"利用类进行XXE攻击","level":"2.1.3.2","depth":3,"ref":"","articles":[{"title":"SimpleXMLElement","level":"2.1.3.2.1","depth":4,"path":"PHP/SimpleXMLElement.md","ref":"./PHP/SimpleXMLElement.md","articles":[]}]},{"title":"利用类进行反序列化","level":"2.1.3.3","depth":3,"ref":"","articles":[{"title":"Phar的文件包含与反序列化","level":"2.1.3.3.1","depth":4,"path":"PHP/Phar的文件包含与反序列化.md","ref":"./PHP/Phar的文件包含与反序列化.md","articles":[]}]},{"title":"利用类进行CRLF攻击","level":"2.1.3.4","depth":3,"ref":"","articles":[{"title":"Soap和CRLF攻击","level":"2.1.3.4.1","depth":4,"path":"PHP/Soap和CRLF攻击.md","ref":"./PHP/Soap和CRLF攻击.md","articles":[]}]},{"title":"通过反射调用类","level":"2.1.3.5","depth":3,"ref":"","articles":[{"title":"重构函数和反射","level":"2.1.3.5.1","depth":4,"path":"PHP/重构函数和反射.md","ref":"./PHP/重构函数和反射.md","articles":[]}]}]},"previous":{"title":"数组的数组和二维数组","level":"2.1.2.3","depth":3,"path":"PHP/数组的数组和二维数组.md","ref":"./PHP/数组的数组和二维数组.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP/_REQUEST数组.md","mtime":"2019-05-15T02:40:34.958Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-23T10:30:29.183Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"深入理解_REQUEST数组","level":"2.1.2.4","depth":3,"next":{"title":"内置函数、类的利用","level":"2.1.3","depth":2,"ref":"","articles":[{"title":"内置函数和类","level":"2.1.3.1","depth":3,"path":"PHP/内置函数和类.md","ref":"./PHP/内置函数和类.md","articles":[]},{"title":"利用类进行XXE攻击","level":"2.1.3.2","depth":3,"ref":"","articles":[{"title":"SimpleXMLElement","level":"2.1.3.2.1","depth":4,"path":"PHP/SimpleXMLElement.md","ref":"./PHP/SimpleXMLElement.md","articles":[]}]},{"title":"利用类进行反序列化","level":"2.1.3.3","depth":3,"ref":"","articles":[{"title":"Phar的文件包含与反序列化","level":"2.1.3.3.1","depth":4,"path":"PHP/Phar的文件包含与反序列化.md","ref":"./PHP/Phar的文件包含与反序列化.md","articles":[]}]},{"title":"利用类进行CRLF攻击","level":"2.1.3.4","depth":3,"ref":"","articles":[{"title":"Soap和CRLF攻击","level":"2.1.3.4.1","depth":4,"path":"PHP/Soap和CRLF攻击.md","ref":"./PHP/Soap和CRLF攻击.md","articles":[]}]},{"title":"通过反射调用类","level":"2.1.3.5","depth":3,"ref":"","articles":[{"title":"重构函数和反射","level":"2.1.3.5.1","depth":4,"path":"PHP/重构函数和反射.md","ref":"./PHP/重构函数和反射.md","articles":[]}]}]},"previous":{"title":"数组的数组和二维数组","level":"2.1.2.3","depth":3,"path":"PHP/数组的数组和二维数组.md","ref":"./PHP/数组的数组和二维数组.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP/_REQUEST数组.md","mtime":"2019-05-23T13:42:31.526Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-24T11:54:50.166Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2733,6 +2846,10 @@
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
     
         
         <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>

