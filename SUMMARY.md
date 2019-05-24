@@ -177,3 +177,10 @@
 	* MAC
 		* 提权
 			* [IOHIDFamily提权](./OS/IOHIDFamily提权.md)
+
+## 漏洞类型
+* XXE
+	* 前置知识
+		* [DTD](./VUL/DTD.md)
+		* [XML](./VUL/XML.md)
+	* [报错XXE](./VUL/报错XXE.md)

