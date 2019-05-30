@@ -8,6 +8,7 @@
     * 内核错误
     	* [PHP7的2个core dumped错误](./PHP/PHP7的2个core dumped错误.md)
     * 语法特性
+    	* [PHP中的变量](./PHP/PHP中的变量.md)
     	* [弱比较](./PHP/弱比较.md)
     	* [PHP7和PHP5的区别](./PHP/PHP7和PHP5的区别.md)
     	* [数组的数组和二维数组](./PHP/数组的数组和二维数组.md)
@@ -62,6 +63,18 @@
 		* YII
 			* [YII框架全版本文件包含漏洞挖掘和分析](./PHP/YII框架全版本文件包含漏洞挖掘和分析.md)
 * Python
+	* 脚本编写基础
+		* [小知识](./Python/小知识.md)
+			* [内置函数](./Python/内置函数.md)
+			* [异常处理](./Python/异常处理.md)
+			* [16进制和8进制的表示](./Python/16进制和8进制的表示.md)
+			* [切片](./Python/切片.md)
+			* [字符串格式化的三方式](./Python/字符串格式化的三种方式.md)
+			* [转义字符](./Python/转义字符.md)
+			* [Py2和Py3的区别](./Python/Py2和Py3的区别.md)
+		* [正则](./Python/正则.md)
+		* [文件操作](./Python/文件操作.md)
+		* [requests库](./Python/requests库.md)
 	* 危险函数
 		* [eval](./Python/eval.md)
 		* [input等](./Python/input.md)
@@ -184,3 +197,6 @@
 		* [DTD](./VUL/DTD.md)
 		* [XML](./VUL/XML.md)
 	* [报错XXE](./VUL/报错XXE.md)
+* 反序列化
+	* PHP
+		* [反序列化-PHP](./VUL/反序列化-PHP.md)

