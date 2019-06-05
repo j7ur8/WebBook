@@ -45,6 +45,7 @@
     	* [Session不同解析方式](./PHP/Session不同解析方式.md)
     	* [自定义Session处理函数](./PHP/自定义Session处理函数.md)
     * 文件上传与文件包含
+    	* [文件上传绕过](./PHP/文件上传绕过.md)
     	* [PHP伪协议](./PHP/伪协议文件包含.md)
     	* [包含日志](./PHP/包含日志.md)
 		* [包含environ](./PHP/包含environ.md)
@@ -59,6 +60,9 @@
 		* [mod_cgi](./PHP/mod_cgi.md)
 		* [漏网函数](./PHP/漏网函数.md)
 		* [LD_PRELOAD劫持系统函数](./PHP/LD_PRELOAD劫持系统函数.md)
+	* open_basedir绕过
+		* [利用ini_set和chdir绕过open_basedir](./PHP/利用ini_set和chdir绕过open_basedir.md)
+		* [利用symlink绕过open_basedir](./PHP/利用symlink绕过open_basedir.md)
 	* PHP框架
 		* YII
 			* [YII框架全版本文件包含漏洞挖掘和分析](./PHP/YII框架全版本文件包含漏洞挖掘和分析.md)
@@ -98,6 +102,9 @@
 		* urllib-crlf注入
 			* [CVE-2016-5699](./Python/CVE-2016-5699.md)
 			* [CVE-2019-9740](./Python/CVE-2019-9740.md)
+	* 框架
+		* Flask
+			* [Session伪造](./Python/Session伪造.md)
 * Java
     * [JNDI注入](./Java/JNDI注入.md)
     * [RMI反序列化](./Java/RMI反序列化.md)
@@ -181,16 +188,19 @@
 	* [任意代码执行](./中间件/任意代码执行.md)
 * 操作系统
 	* Windows
+		* [Windows基础](./OS/Windows基础.md)
 		* 软件漏洞
 			* [winrar目录穿越漏洞](./OS/winrar目录穿越漏洞.md)
 		* 提权
 	* Linux
+		* [Linux基础](./OS/Linux基础.md)
 		* 提权
 			* [脏牛提权](./OS/脏牛提权.md)
 	* MAC
 		* 提权
 			* [IOHIDFamily提权](./OS/IOHIDFamily提权.md)
-
+	* Docker
+		* [Docker基本操作](./OS/Docker基本操作.md)
 ## 漏洞类型
 * XXE
 	* 前置知识
