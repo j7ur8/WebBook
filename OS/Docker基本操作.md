@@ -5,3 +5,15 @@
 ```bash
 docker run -d centos /bin/bash -c "while true;do echo hello docker;sleep 1;done"
 ```
+
+### dockerfile的CMD命令
+
+```bash
+CMD service apache2 start & tail -F /var/log/apache2/access.log
+```
+
+### 替换源
+```dockerfile
+RUN sed -i s/archive.ubuntu.com/mirrors.aliyun.com/g /etc/apt/sources.list &&\
+	sed -i s/security.ubuntu.com/mirrors.aliyun.com/g /etc/apt/sources.list
+```

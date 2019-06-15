@@ -5,6 +5,8 @@
 ## 语言
 
 * PHP
+	* 安装PHP
+		* [源码编译安装php和apache](./PHP/源码编译安装php和apache.md)
     * 内核错误
     	* [PHP7的2个core dumped错误](./PHP/PHP7的2个core dumped错误.md)
     * 语法特性
@@ -37,6 +39,7 @@
     	* [extract](./PHP/extract.md)
     	* [create_function](./PHP/create_function.md)
     	* [parse_url](./PHP/parse_url.md)
+    	* [mime_content_type](./PHP/mime_content_type.md)
     	* [函数妙用](./PHP/函数妙用.md)
     * 正则
     	* [pcre回溯问题](./PHP/pcre回溯问题.md)
@@ -117,11 +120,13 @@
 * JavaScript
 	* NodeJS
 		* [原型注入](./JavaScript/原型注入.md)
+		* [session_file_store库的session伪造](./JavaScript/session_file_store库的session伪造.md)
 	* 相关库漏洞
 		* [AngularJS模板注入](./JavaScript/AngularJS模板注入.md)
 
 ## 数据库  
 * PDO
+	* [PDO真伪预处理分析](./SQL/PDO真伪预处理分析.md)
 * MySQL
 	* [MySQL渗透工具](./SQL/MYSQL渗透工具.md)
 	* MySQL提权
@@ -207,6 +212,7 @@
 		* [DTD](./VUL/DTD.md)
 		* [XML](./VUL/XML.md)
 	* [报错XXE](./VUL/报错XXE.md)
+	* [XXE基础payload](./VUL/XXE基础payload.md)
 * 反序列化
 	* PHP
 		* [反序列化-PHP](./VUL/反序列化-PHP.md)

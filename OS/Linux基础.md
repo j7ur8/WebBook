@@ -46,3 +46,26 @@ sudo apt install python-software-properties software-properties-common
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
 ```
+
+### 文件解压
+
+tar.gz
+- `tar -zxvf xx.tar.gz`
+
+tar.bz2
+- `tar -jxvf xx.tar.bz2`
+
+
+### 环境变量
+- https://www.cnblogs.com/joshua317/p/6899057.html
+
+### 设置LD_LIBRARY_PATH
+```bash
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+```
+
+### sed替换源
+```bash
+sed -i s/archive.ubuntu.com/mirrors.aliyun.com/g /etc/apt/sources.list &&\
+    sed -i s/security.ubuntu.com/mirrors.aliyun.com/g /etc/apt/sources.list
+```

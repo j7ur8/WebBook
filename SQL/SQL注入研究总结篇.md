@@ -399,6 +399,17 @@ prEpare a from @x;
 execute a;
 ```
 
+## 堆叠注入的历史
+以下为phith0n师傅在小密圈中的原话
+
+> 那么PDO就一定能多句执行吗？  
+> 在历史上的确是这样，2014年以前PHP底层将CLIENT_MULTI_STATEMENTS写死在源码里，有了这个flag，PDO Mysql客户端就是支持多句执行的，所以当时是无法在PHP层面禁用这个选项的。
+> 但这个PR https://github.com/php/php-src/pull/896/files 修改了这一点，在PHP层面为PDO Mysql增加了一个新的属性PDO::MYSQL_ATTR_MULTI_STATEMENTS，你可以明确指定true或false，来选择是否启动多句执行。
+
+> 默认情况下，这个选项的值是true，也就是默认支持多句执行。
+
+> 这个选项是PHP 5.5.21、 PHP 5.6.5后引入的，也就说是，只要PHP是这两个版本以后的，就可以手工禁用掉多句执行了。如图：![](/images/19-6-9_SQL_SQL注入总结_堆叠注入的历史1.png)
+
 强网杯的exp.py
 ```py
 import requests
