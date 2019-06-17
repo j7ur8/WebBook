@@ -8,7 +8,7 @@
 	* 安装PHP
 		* [源码编译安装php和apache](./PHP/源码编译安装php和apache.md)
     * 内核错误
-    	* [PHP7的2个core dumped错误](./PHP/PHP7的2个core dumped错误.md)
+    	* [PHP7的2个core dumped错误](./PHP/PHP7的2个core_dumped错误.md)
     * 语法特性
     	* [PHP中的变量](./PHP/PHP中的变量.md)
     	* [弱比较](./PHP/弱比较.md)
@@ -47,8 +47,7 @@
     	* [包含session文件](./PHP/包含session文件.md)
     	* [Session不同解析方式](./PHP/Session不同解析方式.md)
     	* [自定义Session处理函数](./PHP/自定义Session处理函数.md)
-    * 文件上传与文件包含
-    	* [文件上传绕过](./PHP/文件上传绕过.md)
+    * 文件包含
     	* [PHP伪协议](./PHP/伪协议文件包含.md)
     	* [包含日志](./PHP/包含日志.md)
 		* [包含environ](./PHP/包含environ.md)
@@ -166,6 +165,8 @@
 ## 中间件
 * Apache
 	* [换行解析漏洞](./中间件/换行解析漏洞.md)
+	* [apache多后缀解析漏洞](./中间件/apache多后缀解析漏洞.md)
+	* [Apache_SSI_远程命令执行漏洞](./中间件/Apache_SSI_远程命令执行漏洞.md)
 * Elasticsearch
 	* [CVE-2014-3120](./中间件/CVE-2014-3120.md)
 	* [CVE-2015-1427](./中间件/CVE-2015-1427.md)
@@ -174,6 +175,7 @@
 * Fastcgi
 	* [未授权访问及任意命令执行](./中间件/未授权访问及任意命令执行.md)
 * Nginx
+	* [Nginx解析漏洞](./中间件/Nginx解析漏洞.md)
 	* [Nginx文件名逻辑漏洞](./中间件/Nginx文件名逻辑漏洞.md)
 	* [Nginx越界读取缓存漏洞](./中间件/Nginx越界读取缓存漏洞.md)
 	* [Nginx配置错误](./中间件/Nginx配置错误.md)
@@ -206,6 +208,7 @@
 			* [IOHIDFamily提权](./OS/IOHIDFamily提权.md)
 	* Docker
 		* [Docker基本操作](./OS/Docker基本操作.md)
+
 ## 漏洞类型
 * XXE
 	* 前置知识
@@ -216,3 +219,29 @@
 * 反序列化
 	* PHP
 		* [反序列化-PHP](./VUL/反序列化-PHP.md)
+* 文件上传
+	* 语言
+		* PHP_CVE和相关函数
+			* [CVE-2015-2348_00截断](./VUL/CVE-2015-2348_00截断.md)
+			* [文件上传相关函数](./VUL/文件上传相关函数.md)
+			* [二次渲染绕过](./VUL/二次渲染绕过.md)
+			* [代码逻辑绕过](./VUL/代码逻辑绕过.md)
+			* [usr.ini绕过](./VUL/user.ini绕过)
+	* 中间件
+		* apache
+			* [.htaccess上传绕过.md](./VUL/htaccess上传绕过.md)
+			* [apache多后缀解析漏洞](./中间件/apache多后缀解析漏洞.md)
+			* [Apache_SSI_远程命令执行漏洞](./中间件/Apache_SSI_远程命令执行漏洞.md)
+			* [apache的0a绕过](./中间件/换行解析漏洞.md)
+		* IIS
+			* [IIS6.0文件解析漏洞](./中间件/IIS6.0文件解析漏洞.md)
+		* Nginx
+			* [Nginx解析漏洞](./中间件/Nginx解析漏洞.md)
+	* 操作系统
+		* windows
+			* [windwos文件命名规则](./VUL/windwos文件命名规则.md)
+	* CMS和编辑器漏洞
+	* [WAF绕过](./VUL/WAF绕过.md)
+
+## 常用代码
+* [JavsScript](./Code/JavaScript.md)

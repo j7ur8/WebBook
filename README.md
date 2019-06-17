@@ -1,7 +1,40 @@
-# Introduction
-对于web方面漏洞的学习和记录
-有一些还没有记载，尽自己能力和心情做到详细吧
+# 更新
 
+## 2019.6
+
+### 6.18
+1. 完善了部分中间件的解析漏洞文章(文件上传相关)，增加了VUL/文件上传大类并基本完善收集到的姿势。
+2. 增加了`PHP/源码编译安装php和apache`
+3. 调整了readme.md的格式
+
+### 6.12
+1. 完善了php/pcre回溯问题、php/包含session文件、php/包含临时文件
+2. 更新了Docker基本操作
+3. 增加了php/源码编译安装php和apache
+
+### 6.9
+1. 增加了'xxe基础payload'
+2. 添加了堆叠注入的历史以及如何关闭多语句执行。
+3. 添加了'mime_content_type.md'
+
+### 6.3
+1. 增加了mysql中like的用法的说明以及盲注的姿势，盲注的内容更加丰富了;
+2. 增加了PHP下的文件上传绕过文章。
+4. 增加了PHP的open_basedir绕过文章
+5. 增加OS下'windwos基础'、'Linux基础'和'Docker基本操作'
+6. php7下2个core dumped错误增加了利用版本范围。
+
+## 2019.5
+
+### 5.30
+更新了python脚本编写基础，反序列化漏洞基础，以及堆叠注入。
+
+
+
+# Introduction
+
+对于web方面漏洞的学习和记录  
+有一些还没有记载，尽自己能力和心态做到详细吧  
 
 目录大致如下：（更多看请看这里）(https://j7ur8.github.io/WebBook/)
 <pre>
@@ -95,29 +128,3 @@
    └─反序列化
 </pre>
 
-
-# 更新
-
-## 2019.5
-
-### 5.30
-更新了python脚本编写基础，反序列化漏洞基础，以及堆叠注入。
-
-## 2019.6
-
-### 6.3
-1. 增加了mysql中like的用法的说明以及盲注的姿势，盲注的内容更加丰富了;
-2. 增加了PHP下的文件上传绕过文章。
-4. 增加了PHP的open_basedir绕过文章
-5. 增加OS下'windwos基础'、'Linux基础'和'Docker基本操作'
-6. php7下2个core dumped错误增加了利用版本范围。
-
-### 6.9
-1. 增加了'xxe基础payload'
-2. 添加了堆叠注入的历史以及如何关闭多语句执行。
-3. 添加了'mime_content_type.md'
-
-### 6.12
-1. 完善了php/pcre回溯问题、php/包含session文件、php/包含临时文件
-2. 更新了Docker基本操作
-3. 增加了php/源码编译安装php和apache
