@@ -69,3 +69,8 @@ export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 sed -i s/archive.ubuntu.com/mirrors.aliyun.com/g /etc/apt/sources.list &&\
     sed -i s/security.ubuntu.com/mirrors.aliyun.com/g /etc/apt/sources.list
 ```
+
+### 配置ssh的root登录
+```bash
+sed -i 's/PermitRootLogin no/PermitRootLogin yes/' /etc/sshd/sshd_config
+```

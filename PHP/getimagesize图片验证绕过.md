@@ -1,5 +1,5 @@
 参考：
-	https://0x1.im/blog/php/php-function-getimagesize.html
+- https://0x1.im/blog/php/php-function-getimagesize.html
 
 (PHP 4, PHP 5, PHP 7)
 
