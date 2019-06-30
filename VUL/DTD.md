@@ -22,10 +22,15 @@ DTD是声明XML结构的语言。对元素、属性、实体有不同的声明�
 - 实体引用是对实体的引用
 - 实体可在内部或外部进行声明
 
-**内部实体**
+**参数实体**  
+```
+<!ENTITY % name "">
+```
+
+**内部实体**  
 `<!ENTITY entity-name "entity-value">`
 
-example.xml
+example.xml  
 ```xml
 <?xml version="1.0" encoding="utf-8"?> 
 <!DOCTYPE a [
@@ -36,7 +41,7 @@ example.xml
 <author>&writer;&copyright;</author>
 ```
 
-**外部实体**
+**外部实体**  
 ```xml
 <?xml version="1.0" encoding="utf-8"?> 
 <!DOCTYPE a [

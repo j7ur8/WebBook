@@ -74,3 +74,8 @@ sed -i s/archive.ubuntu.com/mirrors.aliyun.com/g /etc/apt/sources.list &&\
 ```bash
 sed -i 's/PermitRootLogin no/PermitRootLogin yes/' /etc/sshd/sshd_config
 ```
+
+### 查看安装的所有包
+```bash
+dpkg -l
+```
