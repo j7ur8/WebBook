@@ -1,3 +1,7 @@
+### 自己建的容器
+PHP:
+- j7ur8/lamp:7.0
+
 ### docker容器run后不退出的办法
 参考：
 - https://blog.csdn.net/guizaijianchic/article/details/78208088

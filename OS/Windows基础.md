@@ -31,3 +31,14 @@ php7012.sublime-build
     "encoding": "gbk"
 }
 ```
+
+### Git
+
+**git拉去远程分支到本地**
+```bash
+git init 
+git remote add origin git@github.com:xxx/xxx.git
+git fetch origin 分支
+git checkout -b 本地分支 origin/远程分支
+git pull origin 远程分支
+```
