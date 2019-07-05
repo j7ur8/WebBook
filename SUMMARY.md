@@ -5,7 +5,9 @@
 ## 语言
 
 * PHP
+	* [CGI_FastCGI和PHP-FPM关系](./PHP/CGI_FastCGI和PHP-FPM关系.md)
 	* 安装PHP
+		* [Windwos下编译PHP](./PHP/Windwos下编译PHP.md)
 		* [源码编译安装php和apache](./PHP/源码编译安装php和apache.md)
     * 内核错误
     	* [PHP7的2个core dumped错误](./PHP/PHP7的2个core_dumped错误.md)
@@ -159,6 +161,8 @@
 
 ## HTTP相关
 * HTTP
+	* HTTP头
+		* [Host的作用](./HTTP/Host的作用.md)
 	* 缓存投毒和缓存欺骗
 		* [缓存投毒和缓存欺骗](./HTTP/缓存投毒和缓存欺骗.md)
 		* [http/0.9进行缓存投毒](./HTTP/Http0.9缓存投毒.md)
@@ -182,6 +186,7 @@
 * Fastcgi
 	* [未授权访问及任意命令执行](./中间件/未授权访问及任意命令执行.md)
 * Nginx
+	* [Nginx的Tricks](./中间件/Nginx的Tricks.md)
 	* [Nginx解析漏洞](./中间件/Nginx解析漏洞.md)
 	* [Nginx文件名逻辑漏洞](./中间件/Nginx文件名逻辑漏洞.md)
 	* [Nginx越界读取缓存漏洞](./中间件/Nginx越界读取缓存漏洞.md)
@@ -208,8 +213,10 @@
 		* 提权
 	* Linux
 		* [Linux基础](./OS/Linux基础.md)
+		* [Linux反弹Shell](./OS/Linux反弹shell.md)
 		* 提权
 			* [脏牛提权](./OS/脏牛提权.md)
+			* [通配符提权](./OS/通配符提权.md)
 	* MAC
 		* 提权
 			* [IOHIDFamily提权](./OS/IOHIDFamily提权.md)

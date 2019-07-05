@@ -1,16 +1,31 @@
 # 更新
 
+## 2019.7
+
+### 7.5
+- PHP：增加了`Windwos下编译PHP.md`、完善了`parse_url.md`
+- SQL：增加了`MySQL基础.md`
+- OS：增加了`通配符提权.md`、`Linux反弹shell.md`
+
+### 7.4
+- OS：完善了Windows基础
+- PHP：增加了`CGI_FastCGI和PHP-FPM关系.md`、完善了`parse_str.md`、
+
+### 7.1
+- 增加了`HTTP/Host的作用.md`、`中间件/Nginx的Tricks.md` 
+- 完善了`PHP/filter_var.md`
+
 ## 2019.6
 
 ### 6.30
-增加了`PHP/匿名函数.md、PHP/回调函数.md`  
-还有一些小更新可能没有记载，以及一些近期学习的将会在7月份更新。
+1. 增加了`PHP/匿名函数.md、PHP/回调函数.md`  
+2. 还有一些小更新可能没有记载，以及一些近期学习的将会在7月份更新。
 
 ### 6.16
-完善了·SQL/PDO真伪预处理分析.md·。
+1. 完善了·SQL/PDO真伪预处理分析.md·。
 
 ### 6.25
-增加了Code/Python.md，Code/HTML.md。添加了一些常用的代码。
+1. 增加了Code/Python.md，Code/HTML.md。添加了一些常用的代码。
 
 ### 6.18
 1. 完善了部分中间件的解析漏洞文章(文件上传相关)，增加了VUL/文件上传大类并基本完善收集到的姿势。
