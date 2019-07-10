@@ -152,6 +152,7 @@ pool = ThreadPool(32)
 result = pool.map_async( runner, range(32) ).get(0xffff)
 ```
 ![](/images/19-6-13_PHP_包含session文件_demo1.png)
+  
 ### demo2
 把加密的代码换成
 ```php
