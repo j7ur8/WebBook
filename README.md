@@ -2,6 +2,14 @@
 
 ## 2019.7
 
+### 7.10
+- SQL：增加`Redis基于主从复制的RCE利用方式.md`
+- PHP：增加`命名空间.md`、删除了`自定义Session处理函数.md`
+### 7.9
+- OS：增加`VIM常用命令.md`
+- PHP：增加`url非法键值替换问题.md`
+- VUL：增加变量覆盖漏洞类型，`parse_str.md`、`extract.md`、`import_request_variables.md`和`$$变量覆盖.md`
+
 ### 7.5
 - PHP：增加了`Windwos下编译PHP.md`、完善了`parse_url.md`
 - SQL：增加了`MySQL基础.md`

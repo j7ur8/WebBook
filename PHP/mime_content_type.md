@@ -14,7 +14,7 @@ print(b'\x89PNG')
 ```
 采用以上方法来制作一个合法图片头的头片。  
 以下为几种图片类型的最短可过检测的字符串。   
-- png->`\x89PNG\r\n\x1a\n`，如果去在`\n`前面，那么mine_content_type()函数将检测为`application/octet-stream`
+- png->`\x89PNG\r\n\x1a\n`，如果取在`\n`前面，那么mine_content_type()函数将检测为`application/octet-stream`
 - jpg->`\xFF\xD8`
 - gif->`\x47\x49\x46\x38`
 - svg直接text写以下内容即可。

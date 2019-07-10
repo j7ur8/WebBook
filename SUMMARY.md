@@ -12,8 +12,10 @@
     * 内核错误
     	* [PHP7的2个core dumped错误](./PHP/PHP7的2个core_dumped错误.md)
     * 语法特性
+    	* [命名空间](./PHP/命名空间.md)
+    	* [url非法键值替换问题](./PHP/url非法键值替换问题.md)
     	* [匿名函数](./PHP/匿名函数.md)
-    	* [匿名函数](./PHP/回调函数.md)
+    	* [回调函数](./PHP/回调函数.md)
     	* [PHP中的变量](./PHP/PHP中的变量.md)
     	* [弱比较](./PHP/弱比较.md)
     	* [PHP7和PHP5的区别](./PHP/PHP7和PHP5的区别.md)
@@ -50,7 +52,6 @@
     * Session安全问题
     	* [包含session文件](./PHP/包含session文件.md)
     	* [Session不同解析方式](./PHP/Session不同解析方式.md)
-    	* [自定义Session处理函数](./PHP/自定义Session处理函数.md)
     * 文件包含
     	* [PHP伪协议](./PHP/伪协议文件包含.md)
     	* [包含日志](./PHP/包含日志.md)
@@ -156,6 +157,7 @@
 	* [NoSQL注入](./SQL/NoSQL注入.md)
 * Redis
 	* [未授权访问漏洞](./SQL/未授权访问漏洞.md)
+	* [Redis基于主从复制的RCE利用方式](./SQL/Redis基于主从复制的RCE利用方式.md)
 * SQLite
 	* [SQLite注入](./SQL/SQLite注入.md)
 
@@ -205,23 +207,25 @@
 * Tomcat
 	* [信息泄露](./中间件/信息泄露.md)
 	* [任意代码执行](./中间件/任意代码执行.md)
-* 操作系统
-	* Windows
-		* [Windows基础](./OS/Windows基础.md)
-		* 软件漏洞
-			* [winrar目录穿越漏洞](./OS/winrar目录穿越漏洞.md)
-		* 提权
-	* Linux
-		* [Linux基础](./OS/Linux基础.md)
-		* [Linux反弹Shell](./OS/Linux反弹shell.md)
-		* 提权
-			* [脏牛提权](./OS/脏牛提权.md)
-			* [通配符提权](./OS/通配符提权.md)
-	* MAC
-		* 提权
-			* [IOHIDFamily提权](./OS/IOHIDFamily提权.md)
-	* Docker
-		* [Docker基本操作](./OS/Docker基本操作.md)
+
+## 操作系统
+* Windows
+	* [Windows基础](./OS/Windows基础.md)
+	* 软件漏洞
+		* [winrar目录穿越漏洞](./OS/winrar目录穿越漏洞.md)
+	* 提权
+* Linux
+	* [VIM常用命令](./OS/VIM常用命令.md)
+	* [Linux基础](./OS/Linux基础.md)
+	* [Linux反弹Shell](./OS/Linux反弹shell.md)
+	* 提权
+		* [脏牛提权](./OS/脏牛提权.md)
+		* [通配符提权](./OS/通配符提权.md)
+* MAC
+	* 提权
+		* [IOHIDFamily提权](./OS/IOHIDFamily提权.md)
+* Docker
+	* [Docker基本操作](./OS/Docker基本操作.md)
 
 ## 漏洞类型
 * XXE
@@ -256,6 +260,13 @@
 			* [windwos文件命名规则](./VUL/windwos文件命名规则.md)
 	* CMS和编辑器漏洞
 	* [WAF绕过](./VUL/WAF绕过.md)
+* 变量覆盖
+	* 函数
+		* [parse_str](./PHP/parse_str.md)
+		* [extract](./PHP/extract.md)
+		* [import_request_variables](./PHP/import_request_variables.md)
+	* 语法
+		* [$$变量覆盖](./VUL/$$变量覆盖.md)
 
 ## 常用代码
 * [JavsScript](./Code/JavaScript.md)

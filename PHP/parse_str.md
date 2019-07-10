@@ -9,6 +9,16 @@ parse_str ( string $encoded_string [, array &$result ] ) : void
 
 ### 解析
 parse_str的作用就是解析字符串并且注册成变量，但是在注册变量之前，他不会验证当前变量是否存在，所以会覆盖掉当前作用域中原有的变量。
+![](/images/19-7-9_PHP_parse_str_1.png)
+
+```php
+<?php
+$j7ur8='best';
+parse_str('j7ur8=didi');
+echo $j7ur8; 
+# didi php<7.2
+# PHP Deprecated:  parse_str(): Calling parse_str() without the result argument is deprecated       PHP7.2
+```
 
 
 ### CTF题目

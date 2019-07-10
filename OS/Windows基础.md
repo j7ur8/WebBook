@@ -4,8 +4,16 @@
 linux中可以使用`cat filename`的方式在console中输出文件内容，windows下可以使用`type`命令
 
 ### 清屏
-`cls`
+```bash
+cls
+```
 
+### 计算文件md5值
+```bash
+certutil -hashfile filename MD5
+certutil -hashfile filename SHA1
+certutil -hashfile filename SHA256
+```
 
 ## 配置环境
 
