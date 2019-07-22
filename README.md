@@ -2,6 +2,11 @@
 
 ## 2019.7
 
+### 7.22
+
+- 前段时间事儿有点多，更新了啥也不太记得了，国赛来了，把PHP的再复习和完善补全下截图之类的~。
+
+
 ### 7.10
 - SQL：增加`Redis基于主从复制的RCE利用方式.md`
 - PHP：增加`命名空间.md`、删除了`自定义Session处理函数.md`
@@ -9,6 +14,7 @@
 - OS：增加`VIM常用命令.md`
 - PHP：增加`url非法键值替换问题.md`
 - VUL：增加变量覆盖漏洞类型，`parse_str.md`、`extract.md`、`import_request_variables.md`和`$$变量覆盖.md`
+- Python：完善了`bytes和str的区别.md`
 
 ### 7.5
 - PHP：增加了`Windwos下编译PHP.md`、完善了`parse_url.md`
@@ -61,103 +67,3 @@
 
 ### 5.30
 更新了python脚本编写基础，反序列化漏洞基础，以及堆叠注入。
-
-
-
-# Introduction
-
-对于web方面漏洞的学习和记录  
-有一些还没有记载，尽自己能力和心态做到详细吧  
-
-目录大致如下：（更多看请看这里）(https://j7ur8.github.io/WebBook/)
-<pre>
-├─语言
-│  ├─PHP
-│  │  ├─内核错误
-│  │  ├─语法特性
-│  │  ├─内置函数、类的利用
-│  │  │  ├─内置函数和类
-│  │  │  ├─利用类进行XXE攻击
-│  │  │  │  └─SimpleXMLElement
-│  │  │  ├─利用类进行反序列化
-│  │  │  │  └─Phar
-│  │  │  ├─利用类进行CRLF攻击
-│  │  │  │  └─Soapclient
-│  │  │  └─通过反射调用类
-│  │  │     └─重构函数和反射
-│  │  ├─函数使用不当
-│  │  ├─正则
-│  │  ├─Session安全问题
-│  │  ├─文件上传与文件包含
-│  │  ├─Bypass disable function
-│  │  └─PHP框架
-│  │     └─YII
-│  ├─Python
-│  │  ├─危险函数
-│  │  ├─格式化字符串漏洞
-│  │  ├─SSTI
-│  │  │  ├─Tornado
-│  │  │  └─Flask
-│  │  ├─沙箱逃逸
-│  │  ├─反序列化
-│  │  └─库漏洞
-│  │     ├─PIL命令执行
-│  │     ├─http.server重定向
-│  │     └─urllib-CRL注入
-│  ├─Java
-│  │  ├─JNDI注入
-│  │  ├─RMI反序列化
-│  │  └─Spring
-│  ├─Go
-│  │  ├─特性
-│  │  └─Go语言任意代码执行漏洞 CVE-2018-6574
-│  └─JavaScript
-│     ├─Nodejs
-│     │  └─原型注入
-│     └─相关库漏洞
-│        └─angularjs模板注入
-├─数据库
-│  ├─PDO
-│  ├─MySQL
-│  │  ├─MYSQL渗透工具
-│  │  ├─MySQL提权
-│  │  ├─SQL注入
-│  │  ├─PhpMyadmin各版本漏洞
-│  │  ├─MywebSQL漏洞
-│  │  └─mysql任意文件读取漏洞
-│  ├─MSSQL
-│  │  ├─提权
-│  │  └─MSSQL注入
-│  ├─NoSQL
-│  │  └─NoSQL注入
-│  ├─Redis
-│  │  └─未授权访问漏洞
-│  └─SQLite
-│     └─SQLite注入
-├─HTTP相关
-│  ├─HTTP
-│  │  ├─缓存投毒和缓存欺骗
-│  │  ├─RPO
-│  │  └─XSS
-│  └─JWT
-├─中间件
-│  ├─Apache
-│  ├─Elasticsearch
-│  ├─Fastcgi
-│  ├─Nginx
-│  ├─IIS
-│  ├─weblogic
-│  └─tomcat
-├─操作系统
-│  ├─Windows
-│  │  ├─软件漏洞
-│  │  └─提权
-│  ├─Linux
-│  │  └─提权
-│  └─MAC
-│     └─提权
-└─漏洞类型
-   ├─XXE
-   └─反序列化
-</pre>
-
