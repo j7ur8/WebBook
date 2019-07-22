@@ -705,7 +705,33 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.6.15" data-path="函数妙用.html">
+        <li class="chapter " data-level="2.1.6.15" data-path="eval.html">
+            
+                <a href="eval.html">
+            
+                    
+                    eval
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6.16" data-path="assert.html">
+            
+                <a href="assert.html">
+            
+                    
+                    assert
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6.17" data-path="函数妙用.html">
             
                 <a href="函数妙用.html">
             
@@ -814,33 +840,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.9.1" data-path="伪协议文件包含.html">
-            
-                <a href="伪协议文件包含.html">
-            
-                    
-                    PHP伪协议
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.9.2" data-path="包含日志.html">
-            
-                <a href="包含日志.html">
-            
-                    
-                    包含日志
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.9.3" data-path="包含environ.html">
+        <li class="chapter " data-level="2.1.9.1" data-path="包含environ.html">
             
                 <a href="包含environ.html">
             
@@ -853,7 +853,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.9.4" data-path="包含临时文件.html">
+        <li class="chapter " data-level="2.1.9.2" data-path="包含临时文件.html">
             
                 <a href="包含临时文件.html">
             
@@ -866,7 +866,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.9.5" data-path="包含session文件.html">
+        <li class="chapter " data-level="2.1.9.3" data-path="包含session文件.html">
             
                 <a href="包含session文件.html">
             
@@ -4043,7 +4043,8 @@ $greet(<span class="hljs-string">&apos;World&apos;</span>);
 $greet(<span class="hljs-string">&apos;PHP&apos;</span>);
 <span class="hljs-meta">?&gt;</span>
 </code></pre>
-<p>&#x4F7F;&#x7528;USE&#xFF1A;</p>
+<p><img src="../images/19-7-22_PHP_&#x56DE;&#x8C03;&#x51FD;&#x6570;_&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x5BF9;&#x533F;&#x540D;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;_1.png" alt=""></p>
+<p><strong>&#x4F7F;&#x7528;USE&#xFF1A;</strong></p>
 <ul>
 <li>&#x95ED;&#x5305;&#x53EF;&#x4EE5;&#x4ECE;&#x7236;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#x7EE7;&#x627F;&#x53D8;&#x91CF;&#x3002; &#x4EFB;&#x4F55;&#x6B64;&#x7C7B;&#x53D8;&#x91CF;&#x90FD;&#x5E94;&#x8BE5;&#x7528; use &#x8BED;&#x8A00;&#x7ED3;&#x6784;&#x4F20;&#x9012;&#x8FDB;&#x53BB;&#x3002; <code>PHP7.1</code>&#x8D77;&#xFF0C;&#x4E0D;&#x80FD;&#x4F20;&#x5165;&#x6B64;&#x7C7B;&#x53D8;&#x91CF;&#xFF1A;<code>superglobals</code>&#x3001;<code>$this</code>&#x6216;&#x8005;&#x548C;&#x53C2;&#x6570;&#x91CD;&#x540D;&#x3002;</li>
 </ul>
@@ -4053,22 +4054,21 @@ $message = <span class="hljs-string">&apos;hello&apos;</span>;
 $example = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
     var_dump($message);
 };
-<span class="hljs-keyword">echo</span> $example();
+<span class="hljs-comment">#echo $example();  // Notice: Undefined variable: message </span>
 
 $example = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> <span class="hljs-title">use</span> <span class="hljs-params">($message)</span> </span>{
     var_dump($message);
 };
-<span class="hljs-keyword">echo</span> $example();  <span class="hljs-comment">// &#x7EE7;&#x627F; $message</span>
+<span class="hljs-keyword">echo</span> $example();  <span class="hljs-comment">// string(5) &quot;hello&quot;</span>
 
 
 $message = <span class="hljs-string">&apos;world&apos;</span>; 
-<span class="hljs-keyword">echo</span> $example();   <span class="hljs-comment">//hello&#xFF0C;The changed value in the parent scope  is reflected inside the function call &#x3002;</span>
-
+<span class="hljs-keyword">echo</span> $example();   <span class="hljs-comment">//string(5) &quot;hello&quot;</span>
 
 $example = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($arg)</span> <span class="hljs-title">use</span> <span class="hljs-params">($message)</span> </span>{
     var_dump($arg . <span class="hljs-string">&apos; &apos;</span> . $message);
 };
-$example(<span class="hljs-string">&quot;hello&quot;</span>);   <span class="hljs-comment">// Closures can also accept regular arguments</span>
+$example(<span class="hljs-string">&quot;hello&quot;</span>);   <span class="hljs-comment">// string(11) &quot;hello world&quot;</span>
 <span class="hljs-meta">?&gt;</span>
 </code></pre>
 
@@ -4114,7 +4114,7 @@ $example(<span class="hljs-string">&quot;hello&quot;</span>);   <span class="hlj
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"匿名函数","level":"2.1.4.3","depth":3,"next":{"title":"回调函数","level":"2.1.4.4","depth":3,"path":"PHP/回调函数.md","ref":"./PHP/回调函数.md","articles":[]},"previous":{"title":"url非法键值替换问题","level":"2.1.4.2","depth":3,"path":"PHP/url非法键值替换问题.md","ref":"./PHP/url非法键值替换问题.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP/匿名函数.md","mtime":"2019-06-30T13:37:05.683Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-22T01:06:09.237Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"匿名函数","level":"2.1.4.3","depth":3,"next":{"title":"回调函数","level":"2.1.4.4","depth":3,"path":"PHP/回调函数.md","ref":"./PHP/回调函数.md","articles":[]},"previous":{"title":"url非法键值替换问题","level":"2.1.4.2","depth":3,"path":"PHP/url非法键值替换问题.md","ref":"./PHP/url非法键值替换问题.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP/匿名函数.md","mtime":"2019-07-22T01:50:33.307Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-22T09:32:21.294Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

