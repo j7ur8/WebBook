@@ -5,12 +5,17 @@
 ### 7.22
 
 - 前段时间事儿有点多，更新了啥也不太记得了，国赛来了，把PHP的再复习和完善补全下截图之类的~。
+- PHP：
+  - 完善了`PHP7的2各core_dumped错误`、`匿名函数`、`回调函数`、`PHP中的变量`、`php7和php5的区别`
+  - 增加了`eval.md`、`assert.md`
 
 
 ### 7.10
 - SQL：增加`Redis基于主从复制的RCE利用方式.md`
-- PHP：增加`命名空间.md`、删除了`自定义Session处理函数.md`
+- PHP：增加`命名空间.md`、删除了`自定义Session处理函数.md`  
+
 ### 7.9
+
 - OS：增加`VIM常用命令.md`
 - PHP：增加`url非法键值替换问题.md`
 - VUL：增加变量覆盖漏洞类型，`parse_str.md`、`extract.md`、`import_request_variables.md`和`$$变量覆盖.md`

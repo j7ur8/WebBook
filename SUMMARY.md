@@ -46,6 +46,8 @@
     	* [create_function](./PHP/create_function.md)
     	* [parse_url](./PHP/parse_url.md)
     	* [mime_content_type](./PHP/mime_content_type.md)
+    	* [eval](./PHP/eval.md)
+    	* [assert](./PHP/assert.md)
     	* [函数妙用](./PHP/函数妙用.md)
     * 正则
     	* [pcre回溯问题](./PHP/pcre回溯问题.md)
@@ -53,8 +55,8 @@
     	* [包含session文件](./PHP/包含session文件.md)
     	* [Session不同解析方式](./PHP/Session不同解析方式.md)
     * 文件包含
-    	* [PHP伪协议](./PHP/伪协议文件包含.md)
-    	* [包含日志](./PHP/包含日志.md)
+			* [PHP伪协议](./PHP/伪协议文件包含.md)
+			* [包含日志](./PHP/包含日志.md)
 		* [包含environ](./PHP/包含environ.md)
 		* [包含临时文件](./PHP/包含临时文件.md)
 		* [包含session文件](./PHP/包含session文件.md)

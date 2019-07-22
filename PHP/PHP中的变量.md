@@ -25,5 +25,11 @@ echo $foo->{$start . $end} . "\n";
 $arr = 'arr';
 echo $foo->{$arr[1]} . "\n";
 
+/*
+I am bar.
+I am bar.
+I am bar.
+I am r.
+*/
 ?>
 ```
