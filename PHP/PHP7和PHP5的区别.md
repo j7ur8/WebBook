@@ -3,6 +3,13 @@
 
 - 转载自http://xiaoze.club/
 
+- 觉得可以参考PHP7.x的废弃和更新的文章。如：
+
+  - https://www.php.net/manual/zh/migration70.deprecated.php
+  - https://php.net/manual/zh/migration70.new-features.php
+
+  把70改成71、72、73、56之类的就可以看到其他版本的废弃功能或者特性了。
+
 ### 函数方面
 #### preg_replace()不再支持/e修饰符
 

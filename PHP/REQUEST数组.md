@@ -23,7 +23,7 @@ print_r($_REQUEST['a']);
 ?>
 ```
 
-burpsuite.http
+burpsuite-repeater
 ```http
 POST /?a=get HTTP/1.1
 Host: 127.0.0.1
@@ -38,7 +38,7 @@ Array
     [a] => post
 )
 ```
-```
+```http
 POST /?a=get HTTP/1.1
 Host: 127.0.0.1
 Content-Length: 0
@@ -50,3 +50,4 @@ Array
     [a] => get
 )
 ```
+

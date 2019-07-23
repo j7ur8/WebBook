@@ -1,10 +1,16 @@
-参考：
+# CVE-2016-3074_命令执行漏洞
+
+#### 参考
+
 - https://github.com/dyntopia/exploits/tree/master/CVE-2016-3074
 - https://github.com/libgd/libgd/commit/2bb97f407c1145c850416a3bfbcc8cf124e68a19
 
 （GD Graphics Library <= 2.1.1 (aka libgd or libgd2)）
 
+#### payload
+
 exp:
+
 ```python
 #!/usr/bin/env python2
 #
