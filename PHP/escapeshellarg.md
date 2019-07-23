@@ -1,6 +1,7 @@
-## escapeshellarg和escapeshellcmd
+# escapeshellarg和escapeshellcmd
 
 **参考文章：**
+
 - https://github.com/hongriSec/PHP-Audit-Labs/blob/master/Part1/Day5/files/README.md
 - https://secure.php.net/manual/zh/function.escapeshellarg.php
 - https://secure.php.net/manual/zh/function.escapeshellcmd.php
@@ -13,11 +14,12 @@ escapeshellarg ( string $arg ) : string
 escapeshellcmd ( string $command ) : string
 ```
 
-使用缺陷：
+## 利用
 
 mail()函数底层实现了`escapeshellcmd`函数，对用户输入的邮箱进行检测。
 但是如果escapeshellcmd和escapeshellarg一起使用，就会造成特殊字符逃逸。
-脚本如下：
+**测试代码：**
+
 ```php
 <?php
 $param="127.0.0.1' -v -d a=1";

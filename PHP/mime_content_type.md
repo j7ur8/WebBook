@@ -1,5 +1,6 @@
-### 绕过mime_content_type()函数
-参考：
+# 绕过mime_content_type()函数
+#### 参考
+
 - https://www.php.net/manual/zh/function.mime-content-type.php
 - https://bugs.php.net/bug.php?id=75280
 - https://xz.aliyun.com/t/4029

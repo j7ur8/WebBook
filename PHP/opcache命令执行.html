@@ -316,25 +316,12 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.4.8" data-path="数组的数组和二维数组.html">
+        <li class="chapter " data-level="2.1.4.8" data-path="REQUEST数组.html">
             
-                <a href="数组的数组和二维数组.html">
-            
-                    
-                    数组的数组和二维数组
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.4.9" data-path="_REQUEST数组.html">
-            
-                <a href="_REQUEST数组.html">
+                <a href="REQUEST数组.html">
             
                     
-                    深入理解_REQUEST数组
+                    REQUEST数组
             
                 </a>
             
@@ -838,7 +825,34 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.9.1" data-path="包含environ.html">
+        <li class="chapter " data-level="2.1.9.1" data-path="伪协议文件包含.html">
+            
+                <a href="伪协议文件包含.html">
+            
+                    
+                    PHP伪协议
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.9.1.1" data-path="包含日志.html">
+            
+                <a href="包含日志.html">
+            
+                    
+                    包含日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9.1.2" data-path="包含environ.html">
             
                 <a href="包含environ.html">
             
@@ -851,7 +865,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.9.2" data-path="包含临时文件.html">
+        <li class="chapter " data-level="2.1.9.1.3" data-path="包含临时文件.html">
             
                 <a href="包含临时文件.html">
             
@@ -864,7 +878,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.9.3" data-path="包含session文件.html">
+        <li class="chapter " data-level="2.1.9.1.4" data-path="包含session文件.html">
             
                 <a href="包含session文件.html">
             
@@ -874,6 +888,11 @@
                 </a>
             
 
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -4007,18 +4026,19 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>&#x53C2;&#x8003;&#xFF1A;</p>
+                                <h1 id="opcache&#x547D;&#x4EE4;&#x6267;&#x884C;">opcache&#x547D;&#x4EE4;&#x6267;&#x884C;</h1>
+<h4 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h4>
 <ul>
 <li><a href="http://www.vuln.cn/6763" target="_blank">http://www.vuln.cn/6763</a></li>
 <li><a href="https://github.com/GoSecure/php7-opcache-override" target="_blank">https://github.com/GoSecure/php7-opcache-override</a></li>
 </ul>
-<p>&#x5229;&#x7528;&#x6761;&#x4EF6;&#xFF1A;</p>
+<h4 id="&#x5229;&#x7528;&#x6761;&#x4EF6;">&#x5229;&#x7528;&#x6761;&#x4EF6;</h4>
 <ul>
 <li>&#x6587;&#x4EF6;&#x4E0A;&#x4F20;&#x6F0F;&#x6D1E;&#xFF0C;&#x4E0A;&#x4F20;&#x70B9;&#x9700;&#x8981;&#x53EF;&#x63A7;&#x6216;&#x8005;&#x4E3A;opcache.file_cache&#x7684;&#x76EE;&#x5F55;&#x3002;</li>
 <li>opcache.file_timestamps=0&#xFF08;&#x9ED8;&#x8BA4;&#x4E3A;1&#xFF09;&#x6216;&#x8005;&#x88AB;&#x7F13;&#x5B58;&#x6587;&#x4EF6;&#x65F6;&#x95F4;&#x6233;&#x5DF2;&#x77E5;&#x3002;</li>
 <li>opache.file_cache_only=1&#xFF08;&#x9ED8;&#x8BA4;&#x4E3A;0&#xFF09;&#x6216;&#x8005;&#x6587;&#x4EF6;&#x65E0;&#x5185;&#x5B58;&#x7F13;&#x5B58;&#x3002;&#x56E0;&#x4E3A;&#x5185;&#x5B58;&#x7F13;&#x5B58;&#x4F18;&#x5148;&#x7EA7;&#x522B;&#x9AD8;&#x4E8E;&#x6587;&#x4EF6;&#x7F13;&#x5B58;</li>
 </ul>
-<h3 id="&#x5B89;&#x88C5;">&#x5B89;&#x88C5;</h3>
+<h2 id="&#x5B89;&#x88C5;">&#x5B89;&#x88C5;</h2>
 <pre><code class="lang-bash">apt-get install php7.0-opcache
 sed -i <span class="hljs-string">&apos;s~;opcache.file_cache=~opcache.file_cache=/tmp/opcache~&apos;</span> /etc/php/7.0/apache2/php.ini
 sed -i <span class="hljs-string">&apos;s~;opcache.validate_timestamps=1~opcache.validate_timestamps=0~&apos;</span> /etc/php/7.0/apache2/php.ini
@@ -4076,7 +4096,7 @@ service apache2 restart
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"opcache命令执行","level":"2.1.10.1.1","depth":4,"next":{"title":"gd库漏洞","level":"2.1.10.1.2","depth":4,"path":"PHP/gd库漏洞.md","ref":"./PHP/gd库漏洞.md","articles":[]},"previous":{"title":"攻击后端组件","level":"2.1.10.1","depth":3,"ref":"","articles":[{"title":"opcache命令执行","level":"2.1.10.1.1","depth":4,"path":"PHP/opcache命令执行.md","ref":"./PHP/opcache命令执行.md","articles":[]},{"title":"gd库漏洞","level":"2.1.10.1.2","depth":4,"path":"PHP/gd库漏洞.md","ref":"./PHP/gd库漏洞.md","articles":[]},{"title":"魔图漏洞","level":"2.1.10.1.3","depth":4,"path":"PHP/魔图漏洞.md","ref":"./PHP/魔图漏洞.md","articles":[]},{"title":"破壳漏洞","level":"2.1.10.1.4","depth":4,"path":"PHP/破壳漏洞.md","ref":"./PHP/破壳漏洞.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP/opcache命令执行.md","mtime":"2019-06-24T07:21:14.855Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-22T09:32:21.294Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"opcache命令执行","level":"2.1.10.1.1","depth":4,"next":{"title":"gd库漏洞","level":"2.1.10.1.2","depth":4,"path":"PHP/gd库漏洞.md","ref":"./PHP/gd库漏洞.md","articles":[]},"previous":{"title":"攻击后端组件","level":"2.1.10.1","depth":3,"ref":"","articles":[{"title":"opcache命令执行","level":"2.1.10.1.1","depth":4,"path":"PHP/opcache命令执行.md","ref":"./PHP/opcache命令执行.md","articles":[]},{"title":"gd库漏洞","level":"2.1.10.1.2","depth":4,"path":"PHP/gd库漏洞.md","ref":"./PHP/gd库漏洞.md","articles":[]},{"title":"魔图漏洞","level":"2.1.10.1.3","depth":4,"path":"PHP/魔图漏洞.md","ref":"./PHP/魔图漏洞.md","articles":[]},{"title":"破壳漏洞","level":"2.1.10.1.4","depth":4,"path":"PHP/破壳漏洞.md","ref":"./PHP/破壳漏洞.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP/opcache命令执行.md","mtime":"2019-07-23T08:13:06.838Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-23T08:55:46.947Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

