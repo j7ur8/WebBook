@@ -1,4 +1,11 @@
-### 一个不完善的安装php7.2.10版本的apache+php环境。
+# 源码编译安装php和apache
+
+具体的一些编译安装命令，可以参考下面的Dockerfile命令。但是这个Dockerfile 是有问题的，而且创造一个docker的lamp环境我觉得最好的方法是在容器内部安装完毕了，使用commit提交即可。
+
+我自己也制作了一个apache+php7219的环境（无mysql），命令：
+`docker pull j7ur8/apache_php7219:latest`
+
+## 一个不完善的安装php7.2.10版本的apache+php环境。
 ```docker
 FROM ubuntu:18.04
 
