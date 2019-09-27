@@ -1,8 +1,12 @@
-参考：
+# user.ini绕过文件上传
+
+## 参考
+
 - https://wooyun.js.org/drops/user.ini%E6%96%87%E4%BB%B6%E6%9E%84%E6%88%90%E7%9A%84PHP%E5%90%8E%E9%97%A8.html
 - https://php.net/manual/zh/configuration.file.per-user.php
 
-利用范围：  
+## 利用范围  
+
 - 以fastcgi运行的php
 
 ## 简析
