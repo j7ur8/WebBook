@@ -1,17 +1,19 @@
 # 包含Session文件
 
-#### 参考文章
+## 包含Session文件
+
+### 参考文章
 
 - https://www.kingkk.com/2018/10/hitcon2018-One-Line-PHP-Challenge/#%E5%89%8D%E8%A8%80
 - https://php.net/manual/zh/session.upload-progress.php
 
-#### getshell利用条件
+### 利用条件
 
 - 文件可上传
 - 文件名可控
 - 文件可包含
 
-#### payload
+### 测试
 
 复现的repeater包(最好把报文增长一点，感觉burpsuite爆破没有python脚本爆破来的快)：  
 ```http
@@ -71,7 +73,7 @@ Content-Type: application/octet-stream
 
 ## 案例一
 
-#### 测试环境和代码
+### 测试
 
 Dockerfile：
 
@@ -163,10 +165,11 @@ else:
 pool = ThreadPool(32)
 result = pool.map_async( runner, range(32) ).get(0xffff)
 ```
-![](/images/19-6-13_PHP_包含session文件_demo1.png)
+![](../images/19-6-13_PHP_包含session文件_demo1.png)
 
 ## 案例二
-#### 测试代码
+
+### 测试
 
 ```php
 <?php

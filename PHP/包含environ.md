@@ -1,10 +1,10 @@
 # 包含environ
 
-#### 参考
+### 参考
 
 - https://chybeta.github.io/2017/10/08/php%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/
 
-#### 条件
+### 条件
 
 - php以cgi方式运行，这样environ才会保持UA头。
 - environ文件存储位置已知，且environ文件可读。

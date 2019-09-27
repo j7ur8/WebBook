@@ -1,13 +1,18 @@
-## pcre回溯问题
+# PCRE回溯
 
-**参考文章：**
+## PCRE回溯问题
+
+### 参考文章
+
 - http://www.laruence.com/2010/06/08/1579.html
 - https://www.leavesongs.com/PENETRATION/use-pcre-backtrack-limit-to-bypass-restrict.html
 
-**条件：**
+### 条件
+
 - 非贪婪模式
 
-### 测试代码
+### 测试
+
 demo
 ```php
 <?php
@@ -24,9 +29,9 @@ exp
 ```php
 var_dump(preg_match('/union.+?select/is','union /*'.str_repeat('a', 10000000).'*/select'));
 ```
-![](/images/19-7-10_PHP_pcre回溯问题_2.png)
-![](/images/19-6-12_PHP_pcre回溯问题.png)
+![](../images/19-7-10_PHP_pcre回溯问题_2.png)
+![](../images/19-6-12_PHP_pcre回溯问题.png)
 
 php限制了回溯的上限，其上限由php.ini的pcre.backtrack_limit定义。可以通过`var_dump(ini_get('pcre.backtrack_limit'))`查看当前环境的上限值。一旦正则匹配的回溯次数超过改值就会返回`bool(false)`。
- 
+
 如果用preg_match对字符串进行匹配，没有使用===全等号来判断返回值。则可能出现绕过。

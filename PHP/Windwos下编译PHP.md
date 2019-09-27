@@ -1,2 +1,0 @@
-- https://wiki.php.net/internals/windows/stepbystepbuild_sdk_2
-- https://wiki.php.net/internals/windows/stepbystepbuild

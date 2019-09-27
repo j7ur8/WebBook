@@ -1,10 +1,12 @@
 # assert
 
-**参考：**
+## assert
+
+### 参考
 
 - https://www.anquanke.com/post/id/173201#h2-1
 
-**函数构造：**
+### 函数构造
 
 ```php
 PHP5：
@@ -14,9 +16,7 @@ PHP7：
 assert ( mixed $assertion [, Throwable $exception ] ) : bool
 ```
 
-
-
-**更新日志：**
+#### 更新日志
 
 - PHP >= 5.4.8，description 可作为第四个参数提供给 ASSERT_CALLBACK 模式里的回调函数
 - 在 PHP 5 中，参数 assertion 必须是可执行的字符串，或者运行结果为布尔值的表达式
@@ -24,8 +24,6 @@ assert ( mixed $assertion [, Throwable $exception ] ) : bool
 - 在 PHP 7 中，参数 exception 可以是个 [Throwable](https://www.php.net/manual/en/class.throwable.php) 对象，用于捕获表达式运行错误或断言结果为失败。(当然 [assert.exception](https://www.php.net/manual/zh/info.configuration.php#ini.assert.exception) 需开启)
 - PHP >= 7.0.0，支持 `zend.assertions`、`assert.exception` 相关配置及其特性
 - PHP >= 7.2 版本开始，参数 assertion 不再支持字符串
-
-
 
 PHP7增加了断言的Expectations，提供了灵活的调试策略。另外提供了两组php.ini的配置。
 
@@ -36,9 +34,11 @@ PHP7增加了断言的Expectations，提供了灵活的调试策略。另外提�
 
 
 
-## 自定义断言异常处理函数
+### 自定义断言异常处理函数
 
-**测试代码**
+#### 测试
+
+测试代码
 
 ```php
 <?php
@@ -65,10 +65,6 @@ assert($asse);
 ?>
 ```
 
-考虑到PHP7.2弃用将一个字符串参数当作assert()的参数。
-
-![](/images/19-7-22_PHP_assert_自定义断言异常处理函数_1.png)
-
 上述代码运行结果如下：
 
 ```txt
@@ -78,9 +74,15 @@ assert($asse);
         Code ''<br /><hr />
 ```
 
-## 可变函数后门
 
-**测试代码**
+
+PHP7.2弃用将一个字符串参数当作assert()的参数。
+
+![](../images/19-7-22_PHP_assert_自定义断言异常处理函数_1.png)
+
+### 可变函数后门
+
+#### 测试
 
 ```php
 <?php

@@ -1,19 +1,20 @@
 # filter_var
 
-**函数结构：**
+## filter_var
+
+### 函数结构
 
 ```
 filter_var ( mixed $variable [, int $filter = FILTER_DEFAULT [, mixed $options ]] ) : mixed
 ```
-## FILTER_VALIDATE_URL
-**参考：**
+### FILTER_VALIDATE_URL
+
+#### 参考
 
 - https://secure.php.net/manual/zh/function.filter-var.php
 - https://www.anquanke.com/post/id/101058
 
-### 利用
-
-#### javascript
+#### 测试javascript协议
 
 ```php
 filter_var('javascript://comment%250Aalert(1)', FILTER_VALIDATE_URL);
@@ -23,7 +24,7 @@ filter_var('javascript://comment%250Aalert(1)', FILTER_VALIDATE_URL);
 
 因为`//`在JavaScript中表示单行注释，`%250a`解码后为换行符，所以`alert(1)`和`//`不在一行，js代码成功执行。
 
-**测试代码**
+##### 测试代码
 
 ```php
 <?php
@@ -34,13 +35,15 @@ var_dump($url);
 echo "<a href='$url'>Next slide </a>";
 ```
 
-![1563864262526](/images/19-7-23_PHP_filter-var_filter-validate-url_1.png)
+![](../images/19-7-23_PHP_filter-var_filter-validate-url_1.png)
 
-#### curl
+#### 利用filter_var和curl的差异
 
-**利用条件**
+##### 利用条件
 
 - curl<=7.47.0（win下7.55.1不可用）
+
+##### 测试代码
 
 在如下脚本中：
 
@@ -75,11 +78,15 @@ echo "<a href='$url'>Next slide </a>";
 
 
 ### FILTER_VALIDATE_EMAIL
-参考：
+
+##### 参考
+
 - https://www.leavesongs.com/PENETRATION/some-tricks-of-attacking-lnmp-web-application.html#0x03-filter_validate_email
 - https://stackoverflow.com/questions/19220158/php-filter-validate-email-does-not-work-correctly
 
-绕过方法为：`"Joe'Blow"@example.com`，逃逸了单引号。
+##### 测试
+
+测试代码如下，绕过方法为：`"Joe'Blow"@example.com`，逃逸单引号。
 ```php
 <?php
 $email = '"Joe\'Blow"@example.com';

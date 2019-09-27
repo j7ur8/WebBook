@@ -1,9 +1,16 @@
-参考：
+# PHP中的变量
+
+## 参考
+
 - https://php.net/manual/en/language.variables.variable.php
 - https://stackoverflow.com/questions/16408037/php-this-var-what-does-that-mean/16408056
 
+## 可变变量
 
-## $this->{$var}
+### 可变属性名
+
+#### 测试代码
+
 ```php
 <?php
 class foo {
