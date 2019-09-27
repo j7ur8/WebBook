@@ -1,11 +1,13 @@
 # 利用ini_set和chidr绕过open_basedir
 
-#### 参考
+## 利用ini_set和chidr绕过open_basedir
+
+### 参考
 
 - twitter
 - https://xz.aliyun.com/t/4720
 
-#### payload
+### 测试
 
 ```python
 <?php

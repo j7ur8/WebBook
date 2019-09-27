@@ -1,10 +1,12 @@
 # 利用symlink绕过open_basedir
 
-#### 参考
+## 利用symlink绕过open_basedir
+
+### 参考
 
 - twitter
 
-#### payload
+### 测试
 
 ```php
 mkdir('/var/www/html/a/b/c/d/e/f/g/',0777,TRUE);

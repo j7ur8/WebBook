@@ -1,16 +1,19 @@
 # parse_url
+
 - https://skysec.top/2017/12/15/parse-url%E5%87%BD%E6%95%B0%E5%B0%8F%E8%AE%B0/
 - https://skysec.top/2018/03/15/Some%20trick%20in%20ssrf%20and%20unserialize()/#trick2-libcurl-and-parse-url
 - https://www.php.net/ChangeLog-5.php
 
+## parse_url
 
-## 错误的解析hostname
+### 错误的解析hostname
+
 #### 参考
 
 - https://bugs.php.net/bug.php?id=73192
   
 
-#### **利用范围**
+#### 利用范围
 
 - PHP5.x < php5.6.28
 - PHP7.0 < php7.0.13
@@ -27,7 +30,8 @@ echo file_get_contents("http://example.com:80#@google.com");       # example.com
 ?>
 ```
 
-## 不解析有端口但没有协议网址
+### 不解析有端口但没有协议网址
+
 #### 参考
 
 - https://bugs.php.net/bug.php?id=68917
@@ -50,6 +54,7 @@ print_r(parse_url('//example.org/hi?a=b#c=d'));   //Array([host] => example.org 
 ```
 
 ### 无法解析空用户名和密码
+
 #### 参考
 
 - https://bugs.php.net/bug.php?id=68129

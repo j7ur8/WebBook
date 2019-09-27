@@ -1,43 +1,53 @@
+# rand
+
 ## rand
 
-**参考文章：**
+### 参考文章
+
 - https://xz.aliyun.com/t/3656#toc-3
 - https://secure.php.net/manual/zh/function.rand.php
 
-**函数结构：**
+### 函数结构
+
 ```
 rand ( void ) : int ;  rand ( int $min , int $max ) : int
+
 ```
 
-**使用缺陷：**
-拿到种子或者随机数可以进行爆破
+### 解析
 
-**工具：**
-- http://www.openwall.com/php_mt_seed/
+拿到种子或者随机数可以实用工具进行爆破
 
-### 工具使用
-参考：
+### 工具
+#### 参考
+
 - https://www.openwall.com/php_mt_seed/README
 
+#### 测试
+
 一般情况，我们使用`mt_srand(534142874 ); echo mt_rand(), "\n";`生成的伪随机数，可以简单的使用
+
 ```bash
 php_mt_seed 1328851649
 ```
 得到结果：
-![](/images/19-7-9_PHP_rand_tool-for-use_1.png)
+![](../images/19-7-9_PHP_rand_tool-for-use_1.png)
 可以发现得到了很多结果，参见README手册我们可以得知
-![](/images/19-7-9_PHP_rand_tool-for-use_2.png)
+![](../images/19-7-9_PHP_rand_tool-for-use_2.png)
 
 改善命令
 ```bash
 time php_mt_seed 1328851649 1328851649 0 2147483647  1423851145
 ```
-![](/images/19-7-9_PHP_rand_tool-for-use_3.png)
+![](../images/19-7-9_PHP_rand_tool-for-use_3.png)
 虽然速度没有太多提升，但是派出了多余的值。
 
 在上面同时介绍了高级用法，当出现了4个以上的参数时，`php_mt_seed`将把参数分成4个一组。每组按照处理4个的方法进行处理（见图片）。
 
-**例子：**  
+
+
+## CTF
+
 ```php
 <?php
 //生成优惠码
@@ -69,7 +79,7 @@ function youhuima(){
 ```
 
 此代码根据生成的(0,61)之间伪随机数，截取`$str_rand`字符凭借生成优惠码。我们拥有优惠码，字典`$str_rand`。所以我们可以获取每次生成的伪随机数。  
-  
+
 exp.py
 ```python
 str1='abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -95,4 +105,4 @@ print(res)
 ```bash
 php_mt_seed 54 54 0 61 56 56 0 61 9 9 0 61 45 45 0 61 52 52 0 61 21 21 0 61 24 24 0 61 27 27 0 61 58 58 0 61 34 34 0 61 13 13 0 61 38 38 0 61 54 54 0 61 55 55 0 61 6 6 0 61 
 ```
-![](/images/19-7-9_PHP_rand_tool-for-use_4.png)
+![](../images/19-7-9_PHP_rand_tool-for-use_4.png)

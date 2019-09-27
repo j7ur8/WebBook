@@ -1,12 +1,15 @@
 # Soap和CRLF攻击
-**参考文章：**
+
+## 参考文章
 
 - https://www.anquanke.com/post/id/153065#h2-5
 - https://xz.aliyun.com/t/2148#toc-0
 - https://segmentfault.com/a/1190000003791120
 - http://blog.securelayer7.net/owasp-top-10-penetration-testing-soap-application-mitigation/
 
-**函数构造：**
+## 简介
+
+### 函数构造
 
 ```php
 public SoapClient::SoapClient ( mixed $wsdl [, array $options ] )
@@ -18,16 +21,18 @@ public SoapClient::SoapClient ( mixed $wsdl [, array $options ] )
 
 ## CRLF攻击
 
-**利用条件：**
+利用条件
 
 - 需要进行反序列化
 - 调用一个方法，且该方法不存在。以此激活__call()
 
-**利用范围：**
+### 利用范围
 
 - (PHP 5, PHP 7)
 
-**利用脚本：**
+### 测试代买
+
+exp脚本如下
 
 ```php
 <?php
@@ -45,4 +50,4 @@ $aa=unserialize($aaa);
 $aa->test();
 ```
 
-![](/images/19-7-13_PHP_Soap和CRLF攻击_CRLF攻击_1.png)
+![](../images/19-7-13_PHP_Soap和CRLF攻击_CRLF攻击_1.png)

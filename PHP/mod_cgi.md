@@ -1,15 +1,17 @@
 # CGI绕过
-#### 利用条件
+## CGI绕过
+
+### 参考
+
+- http://0cx.cc/bypass_disabled_via_mod_cgi.jspx
+
+### 利用条件
 
 - 开启了cgi
 - 目录可写
 - .htaccess文件可用
 
-#### 参考
-
-- http://0cx.cc/bypass_disabled_via_mod_cgi.jspx
-
-#### payload
+### 测试
 
 ```php
 <?php

@@ -1,27 +1,29 @@
 # parse_str
 
-**参考文章：**
+## parse_str
+
+### 参考文章
 
 - https://secure.php.net/manual/zh/function.parse-str.php
 - https://github.com/hongriSec/PHP-Audit-Labs/blob/master/Part1/Day7/files/README.md
 
-**函数构造**
+### 函数构造
 
 
 ```php
 parse_str ( string $encoded_string [, array &$result ] ) : void
 ```
 
-**版本修改**
+#### 版本变化
 
 | 版本  | 说明                                                         |
 | :---- | :----------------------------------------------------------- |
 | 7.2.0 | 不带第二个参数的情况下使用 **parse_str()** 会产生 **E_DEPRECATED** 警告。 |
 
-## 解析
+### 测试
 
 parse_str的作用就是解析字符串并且注册成变量，但是在注册变量之前，他不会验证当前变量是否存在，所以会覆盖掉当前作用域中原有的变量。
-![](/images/19-7-9_PHP_parse_str_1.png)
+![](../images/19-7-9_PHP_parse_str_1.png)
 
 ```php
 <?php

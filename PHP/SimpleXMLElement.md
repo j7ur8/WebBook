@@ -1,29 +1,31 @@
 # SimpleXMLElement
 
-**参考：**
+## 参考
 
 - https://github.com/vulhub/vulhub/tree/master/php/php_xxe
-
- -   https://www.php.net/manual/en/class.simplexmlelement.php
- -  https://www.kingkk.com/2018/07/%E7%AE%80%E6%9E%90XXE/
-
+- https://www.php.net/manual/en/class.simplexmlelement.php
+- https://www.kingkk.com/2018/07/%E7%AE%80%E6%9E%90XXE/
 - https://stackoverflow.com/questions/51103431/parsepi-pi-php-never-end-when-trying-to-run-a-new-unit-test
 
-除了`SimpleXMLElement`类可以进行XXE攻击，现在知道的有如下类和函数
-
-`SimpleXMLElement`、`DOMDocument`、`simplexml_load_string`
-
-**利用范围：**
+## 利用范围
 
 - (libxml<2.9.0, PHP 5, PHP 7)
 
 libxml2.9.0以后，默认不解析外部实体，导致XXE漏洞逐渐消亡。为了演示PHP环境下的XXE漏洞，本例会将libxml2.8.0版本编译进PHP中。PHP版本并不影响XXE利用。
 
+## 前言
+
+除了`SimpleXMLElement`类可以进行XXE攻击，现在知道的有如下类和函数
+
+`SimpleXMLElement`、`DOMDocument`、`simplexml_load_string`
+
 ## 前置知识
+
 - [XML](/VUL/XML.md)
 - [DTD](/VUL/DTD.md)
 
-## 攻击
+## 测试
+
 post发包并添加http头：
 
 - `Content-Type: text/xml`
@@ -48,3 +50,4 @@ payload：
 在获取dom.php文件时，最开始会报错
 `DOMDocument::loadXML(): ParsePI: PI php never end ... in file:///var/www/html/dom.php, line: 7 in `
 这是因为xml把`<?php`识别为标签的开始，但是并没有出现标签的结束`?>`，加上就好了。
+

