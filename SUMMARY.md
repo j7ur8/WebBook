@@ -5,62 +5,93 @@
 ## 语言
 
 * PHP
-	* 语法特性
-		* [PHP7和PHP5的区别](./PHP/PHP7和PHP5的区别.md)
+	* 语法
 		* [PHP中的变量](./PHP/PHP中的变量.md)
-		* [PHP中的函数](./PHP/PHP中的函数.md)
-		* [REQUEST数组](./PHP/REQUEST数组.md)
-		* [url非法键值替换问题](./PHP/url非法键值替换问题.md)
-		* [弱比较](./PHP/弱比较.md)
-		* [命名空间](./PHP/命名空间.md)
-		* [匿名函数](./PHP/匿名函数.md)
-		* [回调函数](./PHP/回调函数.md)
+		* [REQUEST数组数值获取顺序](./PHP/REQUEST数组.md)
+		* [GET数组键值特殊字符替换](./PHP/url非法键值替换问题.md)
+		* [运算符与可变函数](./PHP/运算符.md)
+		* [弱比较浅析](./PHP/弱比较.md)
+		* [命名空间浅析](./PHP/命名空间.md)
+		* [匿名函数浅析](./PHP/匿名函数.md)
+		* [回调函数浅析](./PHP/回调函数.md)
+		
 	* 函数
-		* [内置函数和类](./PHP/内置函数和类.md)
-		* [函数妙用](./PHP/函数妙用.md)
-		* [getimagesize](./PHP/getimagesize图片验证绕过.md)
-		* [in_array](./PHP/in_array.md)
-		* [filter_var](./PHP/filter_var.md)
-		* [strpos](./PHP/strpos.md)
-		* [escapeshellarg](./PHP/escapeshellarg.md)
-		* [parse_str](./PHP/parse_str.md)
-		* [preg_replace](./PHP/preg_replace.md)
-		* [unserialize](./PHP/unserialize绕过.md)
-		* [htmlentities](./PHP/htmlentities.md)
-		* [rand](./PHP/rand.md)
-		* [extract](./PHP/extract.md)
-		* [create_function](./PHP/create_function.md)
-		* [parse_url](./PHP/parse_url.md)
-		* [mime_content_type](./PHP/mime_content_type.md)
-		* [eval](./PHP/eval.md)
-		* [assert](./PHP/assert.md)
+		* [PHP中函数的Tricks](./PHP/PHP中的函数.md)
+		* [利用函数进行数据的收集](./php/利用函数进行数据的收集.md)
+		* [循环嵌套函数Getshell](./PHP/函数妙用.md)
+		* 函数滥用
+		   * [getimagesize](./PHP/getimagesize图片验证绕过.md)
+		   * [in_array](./PHP/in_array.md)
+		   * [filter_var](./PHP/filter_var.md)
+		   * [strpos](./PHP/strpos.md)
+		   * [escapeshellarg](./PHP/escapeshellarg.md)
+		   * [parse_str](./PHP/parse_str.md)
+		   * [preg_replace](./PHP/preg_replace.md)
+		   * [unserialize](./PHP/unserialize绕过.md)
+		   * [htmlentities](./PHP/htmlentities.md)
+		   * [rand](./PHP/rand.md)
+		   * [extract](./PHP/extract.md)
+		   * [create_function](./PHP/create_function.md)
+		   * [parse_url](./PHP/parse_url.md)
+		   * [mime_content_type](./PHP/mime_content_type.md)
+		   * [eval](./PHP/eval.md)
+		   * [assert](./PHP/assert.md)
+		
 	* 类
-		- 利用类进行XXE攻击
-			- [SimpleXMLElement](./PHP/SimpleXMLElement.md)
-		- 利用类进行反序列化
-			- [Phar的文件包含与反序列化](./PHP/Phar的文件包含与反序列化.md)
-		- 利用类进行CRLF攻击
-			- [Soap和CRLF攻击](./PHP/Soap和CRLF攻击.md)
-		- 通过反射调用类
-			- [重构函数和反射](./PHP/重构函数和反射.md)
+		* [查找存在指定魔术方法的类](./PHP/查找存在指定魔术方法的类.md)
+		* 利用类进行XXE攻击
+		  - [SimpleXMLElement](./PHP/SimpleXMLElement.md)
+		* 利用类进行反序列化
+		  - [Phar的文件包含与反序列化](./PHP/Phar的文件包含与反序列化.md)
+		* 利用类进行CRLF攻击
+		  - [Soap和CRLF攻击](./PHP/Soap和CRLF攻击.md)
+		* 通过反射调用类
+		  - [重构函数和反射](./PHP/重构函数和反射.md)
+		
+	* [版本](./PHP/PHP的版本.md)
+		* PHP7.0
+		  * [函数](./PHP/PHP70函数相关变更.md)
+		  * [语法](./PHP/PHP70语法相关变更.md)
+		  * [杂项](./PHP/PHP70杂项.md)
+		* PHP7.1
+		  * [函数](./PHP/PHP71函数相关变更.md)
+		  * [语法](./PHP/PHP71语法相关变更.md)
+		  * [杂项](./PHP/PHP71杂项.md)
+		* PHP7.2
+		  * [函数](./PHP/PHP72函数相关变更.md)
+		  * [语法](./PHP/PHP72语法相关变更.md)
+		  * [杂项](./PHP/PHP72杂项.md)
+		* PHP7.3（没啥有用的
+		* PHP7.4（还未使用...？
+		
 	* 正则
+		
 		- [pcre回溯问题](./PHP/pcre回溯问题.md)
+		
 	* SESSION
 		- [包含SESSION文件](./PHP/包含session文件.md)
 		- [SESSION的不同解析方式](./PHP/Session不同解析方式.md)
+		
 	* 文件上传
-		- [00截断](./VUL/CVE-2015-2348_00截断.md)
-    	- [文件上传相关函数](./VUL/文件上传相关函数.md)
-		- [二次渲染绕过](./VUL/二次渲染绕过.md)
-		- [代码逻辑绕过](./VUL/代码逻辑绕过.md)
-		- [上传.usr.ini](./VUL/usr.ini绕过.md)
-		- [上传.htaccess](./VUL/htaccess上传绕过.md)
+	    * [上传临时文件](./PHP/PHP7的2个core_dumped错误.md)
+		* [00截断](./VUL/CVE-2015-2348_00截断.md)
+		* [文件上传相关函数](./VUL/文件上传相关函数.md)
+		* [二次渲染绕过](./VUL/二次渲染绕过.md)
+		* [代码逻辑绕过](./VUL/代码逻辑绕过.md)
+		* [上传.usr.ini](./VUL/usr.ini绕过.md)
+		* [上传.htaccess](./VUL/htaccess上传绕过.md)
+		
 	* 文件包含
 		- [PHP伪协议](./PHP/伪协议文件包含.md)
 		- [包含日志](./PHP/包含日志.md)
 		- [包含environ](./PHP/包含environ.md)
 		- [包含临时文件](./PHP/PHP7的2个core_dumped错误.md)
 		- [包含SESSION文件](./PHP/包含session文件.md)
+		
+	* 绕过open_basedir
+	   - [利用ini_set和chdir绕过open_basedir](./PHP/利用ini_set和chdir绕过open_basedir.md)
+	   - [利用symlink绕过open_basedir](./PHP/利用symlink绕过open_basedir.md)
+	
 	* 绕过Disable_function
 		* 攻击后端组件
 			* [opcache命令执行](./PHP/opcache命令执行.md)
@@ -70,17 +101,14 @@
 		* [mod_cgi](./PHP/mod_cgi.md)
 		* [漏网函数](./PHP/漏网函数.md)
 		* [LD_PRELOAD劫持系统函数](./PHP/LD_PRELOAD劫持系统函数.md)
+		
 	* 框架漏洞
 		 * ThinkPHP
+		
 	* 杂项
+		- [源码编译安装php和apache](./PHP/源码编译安装php和apache.md)
 		- [CGI_FastCGI和PHP-FPM关系](./PHP/CGI_FastCGI和PHP-FPM关系.md)
-		- 绕过open_basedir
-			- [利用ini_set和chdir绕过open_basedir](./PHP/利用ini_set和chdir绕过open_basedir.md)
-			- [利用symlink绕过open_basedir](./PHP/利用symlink绕过open_basedir.md)
-		- Segmentation fault
-			- [PHP7的2个core dumped错误](./PHP/PHP7的2个core_dumped错误.md)
-		- 安装PHP
-			- [源码编译安装php和apache](./PHP/源码编译安装php和apache.md)
+	
 * Python
 	* 脚本编写基础
 		* [小知识](./Python/小知识.md)
@@ -220,9 +248,16 @@
 		* [winrar目录穿越漏洞](./OS/winrar目录穿越漏洞.md)
 	* 提权
 * Linux
-	* [VIM常用命令](./OS/VIM常用命令.md)
-	* [Linux基础](./OS/Linux基础.md)
-	* [Linux反弹Shell](./OS/Linux反弹shell.md)
+	* Linux基础
+	  * [CTF的Trick](./OS/CTF的Trick.md)
+	  * [基础概念](./OS/基础概念.md)
+	  * [基本命令](./OS/基本命令.md)
+	  * [错误处理](./OS/错误处理.md)
+	  * [环境配置](./OS/环境配置.md)
+	  * [Linux反弹Shell](./OS/Linux反弹shell.md)
+	* Linux详解
+	* Linux下的软件
+	  * [VIM常用命令](./OS/VIM常用命令.md)
 	* 提权
 		* [脏牛提权](./OS/脏牛提权.md)
 		* [通配符提权](./OS/通配符提权.md)
