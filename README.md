@@ -11,6 +11,7 @@ https://github.com/j7ur8/WebBook
 ### 6.1
 
 - 重新排版
+- 更新了create_function函数
 
 ## 2019.12
 
