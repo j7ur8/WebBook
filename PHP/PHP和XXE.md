@@ -1,3 +1,5 @@
+# XXE
+
 受到影响的类和函数
 `SimpleXMLElement`、`DOMDocument`、`simplexml_load_string`
 (libxml<2.9.0, PHP 5, PHP 7)

@@ -1,302 +1,66 @@
-# Summary
+# 目录
 
-* [Introduction](README.md)
+* [更新日志](README.md)
 
-## 语言
-* PHP
-	* 语法
-		* [PHP中的变量](./PHP/PHP中的变量.md)
-		* [REQUEST数组数值获取顺序](./PHP/REQUEST数组.md)
-		* [GET数组键值特殊字符替换](./PHP/url非法键值替换问题.md)
-		* [运算符与可变函数](./PHP/运算符.md)
-		* [弱比较浅析](./PHP/弱比较.md)
-		* [命名空间浅析](./PHP/命名空间.md)
-		* [匿名函数浅析](./PHP/匿名函数.md)
-		* [回调函数浅析](./PHP/回调函数.md)
-	* 函数
-		* [PHP中函数的Tricks](./PHP/PHP中的函数.md)
-		* [利用函数进行数据的收集](./PHP/利用函数进行数据收集.md)
-		* [循环嵌套函数Getshell](./PHP/函数妙用.md)
-		* 函数滥用
-		    * [getimagesize](./PHP/getimagesize图片验证绕过.md)
-		    * [in_array](./PHP/in_array.md)
-		    * [filter_var](./PHP/filter_var.md)
-		    * [strpos](./PHP/strpos.md)
-		    * [escapeshellarg](./PHP/escapeshellarg.md)
-		    * [parse_str](./PHP/parse_str.md)
-		    * [preg_replace](./PHP/preg_replace.md)
-		    * [unserialize](./PHP/unserialize绕过.md)
-		    * [htmlentities](./PHP/htmlentities.md)
-		    * [rand](./PHP/rand.md)
-		    * [extract](./PHP/extract.md)
-		    * [create_function](./PHP/create_function.md)
-		    * [parse_url](./PHP/parse_url.md)
-		    * [mime_content_type](./PHP/mime_content_type.md)
-		    * [eval](./PHP/eval.md)
-		    * [assert](./PHP/assert.md)
-	* 类
-		* [查找存在指定魔术方法的类](./PHP/查找存在指定魔术方法的类.md)
-		* 利用类进行XXE攻击
-		  - [SimpleXMLElement](./PHP/SimpleXMLElement.md)
-		* 利用类进行反序列化
-		  - [Phar的文件包含与反序列化](./PHP/Phar的文件包含与反序列化.md)
-		* 利用类进行CRLF攻击
-		  - [Soap和CRLF攻击](./PHP/Soap和CRLF攻击.md)
-		* 通过反射调用类
-		  - [重构函数和反射](./PHP/重构函数和反射.md)
-	* [版本](./PHP/PHP的版本.md)
-		* PHP7.0
-		  * [函数](./PHP/PHP70函数相关变更.md)
-		  * [语法](./PHP/PHP70语法相关变更.md)
-		  * [杂项](./PHP/PHP70杂项.md)
-		* PHP7.1
-		  * [函数](./PHP/PHP71函数相关变更.md)
-		  * [语法](./PHP/PHP71语法相关变更.md)
-		  * [杂项](./PHP/PHP71杂项.md)
-		* PHP7.2
-		  * [函数](./PHP/PHP72函数相关变更.md)
-		  * [语法](./PHP/PHP72语法相关变更.md)
-		  * [杂项](./PHP/PHP72杂项.md)
-		* PHP7.3（没啥有用的
-		* PHP7.4（还未使用...？
-	* 正则
-		- [pcre回溯问题](./PHP/pcre回溯问题.md)
-	* SESSION
-		- [包含SESSION文件](./PHP/包含session文件.md)
-		- [SESSION的不同解析方式](./PHP/Session不同解析方式.md)
-	* 文件上传
-	    * [上传临时文件](./PHP/PHP7的2个core_dumped错误.md)
-		* [00截断](./VUL/CVE-2015-2348_00截断.md)
-		* [文件上传相关函数](./VUL/文件上传相关函数.md)
-		* [二次渲染绕过](./VUL/二次渲染绕过.md)
-		* [代码逻辑绕过](./VUL/代码逻辑绕过.md)
-		* [上传.usr.ini](./VUL/usr.ini绕过.md)
-		* [上传.htaccess](./VUL/htaccess上传绕过.md)
-	* 文件包含
-		- [PHP伪协议](./PHP/伪协议文件包含.md)
-		- [包含日志](./PHP/包含日志.md)
-		- [包含environ](./PHP/包含environ.md)
-		- [包含临时文件](./PHP/PHP7的2个core_dumped错误.md)
-		- [包含SESSION文件](./PHP/包含session文件.md)
-	* 绕过open_basedir
-	    - [利用ini_set和chdir绕过open_basedir](./PHP/利用ini_set和chdir绕过open_basedir.md)
-	    - [利用symlink绕过open_basedir](./PHP/利用symlink绕过open_basedir.md)
-	* 绕过Disable_function
-		* 攻击后端组件
-			* [opcache命令执行](./PHP/opcache命令执行.md)
-			* [gd库漏洞](./PHP/gd库漏洞.md)
-			* [魔图漏洞](./PHP/魔图漏洞.md)
-			* [破壳漏洞](./PHP/破壳漏洞.md)
-		* [mod_cgi](./PHP/mod_cgi.md)
-		* [漏网函数](./PHP/漏网函数.md)
-		* [LD_PRELOAD劫持系统函数](./PHP/LD_PRELOAD劫持系统函数.md)
-	* 框架漏洞
-		 * ThinkPHP
-	* 杂项
-		- [源码编译安装php和apache](./PHP/源码编译安装php和apache.md)
-		- [CGI_FastCGI和PHP-FPM关系](./PHP/CGI_FastCGI和PHP-FPM关系.md)
-		- [编码](./PHP/编码.md)
-* Python
-	* 脚本编写基础
-		* [小知识](./Python/小知识.md)
-			* [内置函数](./Python/内置函数.md)
-			* [异常处理](./Python/异常处理.md)
-			* [16进制和8进制的表示](./Python/16进制和8进制的表示.md)
-			* [切片](./Python/切片.md)
-			* [字符串格式化的三方式](./Python/字符串格式化的三种方式.md)
-			* [转义字符](./Python/转义字符.md)
-			* [Py2和Py3的区别](./Python/Py2和Py3的区别.md)
-		* [正则](./Python/正则.md)
-		* [文件操作](./Python/文件操作.md)
-		* [requests库](./Python/requests库.md)
-	* 危险函数
-		* [eval](./Python/eval.md)
-		* [input等](./Python/input.md)
-	* 格式化字符串漏洞
-		* [f修饰符与任意代码执行](./Python/f修饰符与任意代码执行.md)
-		* [获取泄露Django配置信息](./Python/获取泄露Django配置信息.md)
-		* [Jinja-2.8.1模板沙盒绕过](./Python/Jinja-2.8.1模板沙盒绕过.md)
-	* SSTI
-		* [Tornado](./Python/Tornado.md)
-		* [Flask](./Python/Flask.md)
-	* [沙箱逃逸](./Python/沙箱逃逸.md)
-	* 反序列化
-		* [Numpy反序列化命令执行浅析](./Python/Numpy反序列化命令执行.md)
-		* [pickle反序列化](./Python/pickle反序列化.md)
-		* [PyYAML反序列化](./Python/PyYAML反序列化.md)
-	* 库漏洞
-		* PIL命令执行
-			* [CVE-2017-8291](./Python/CVE-2017-8291.md)
-			* [CVE-2018-16509](./Python/CVE-2018-16509.md)
-		* [http.server重定向](./Python/http.server重定向.md)
-		* urllib-crlf注入
-			* [CVE-2016-5699](./Python/CVE-2016-5699.md)
-			* [CVE-2019-9740](./Python/CVE-2019-9740.md)
-	* 框架
-		* Flask
-			* [Session伪造](./Python/Session伪造.md)
-	* 杂项
-	  * [编码](./Python/编码.md)
-* Java
-    * [JNDI注入](./Java/JNDI注入.md)
-    * [RMI反序列化](./Java/RMI反序列化.md)
-    * Spring
-    	* [Spring Boot Actuators](./Java/Spring Boot Actuators.md)
-* Go
-    * 特性
-    	* [slice切片问题](./Go/slice切片问题.md)
-    * Go语言任意代码执行漏洞
-* JavaScript
-	* NodeJS
-		* [原型注入](./JavaScript/原型注入.md)
-		* [session_file_store库的session伪造](./JavaScript/session_file_store库的session伪造.md)
-	* 相关库漏洞
-		* [AngularJS模板注入](./JavaScript/AngularJS模板注入.md)
-* 杂项
-    * [编码](./OS/编码.md)
+0x01 PHP
+* 特性
+	* [PHP是动态语言](./PHP/PHP是一门动态语言.md)
+	* [PHP编码](./PHP/编码.md)
+	* [参数传递](./PHP/参数传递.md)
+	* [REQUEST数组数值获取顺序](./PHP/REQUEST数组.md)
+	* [GET数组键值特殊字符替换](./PHP/url非法键值替换问题.md)
+	* [弱比较浅析](./PHP/弱比较.md)
+	* [命名空间浅析](./PHP/命名空间.md)
+	* [匿名函数浅析](./PHP/匿名函数.md)
+	* [回调函数浅析](./PHP/回调函数.md)
+	* [重构函数和反射](./PHP/重构函数和反射.md)
+	
+	* [利用函数进行数据的收集](./PHP/利用函数进行数据收集.md)
+	* [pcre回溯问题](./PHP/pcre回溯问题.md)
+	* [SESSION的不同解析方式](./PHP/Session不同解析方式.md)
+	
+* 技巧
 
-## 数据库  
-* PDO
-	* [PDO真伪预处理分析](./SQL/PDO真伪预处理分析.md)
-* MySQL
-	* [MySQL渗透工具](./SQL/MYSQL渗透工具.md)
-	* MySQL提权
-		* [UDF提权](./SQL/UDF提权.md)
-		* [MOF提权](./SQL/MOF提权.md)
-		* [启动项提权](./SQL/启动项提权.md)
-		* [MySQL-CVE提权](./SQL/MySQL-CVE提权.md)
-		* [MySQL数据库反弹端口连接提权](./SQL/MySQL数据库反弹端口连接提权.md)
-	* MySQL注入
-		* [SQL注入研究](./SQL/SQL注入研究.md)
-		* [SQL注入研究总结](./SQL/SQL注入研究总结篇.md)
-	* PHPMyAdmin
-	* [MyWebSQL](./SQL/MyWebSQL漏洞.md)
-	* [MySQL服务端伪造](./SQL/MYSQL服务端伪造.md)
-	* 脚本
-		* [盲注脚本](./SQL/盲注脚本.md)
-* MSSQL
-	* 提权
-	* [MSSQL注入](./SQL/MSSQL注入.md)
-* NoSQL
-	* [NoSQL注入](./SQL/NoSQL注入.md)
-* Redis
-	* [未授权访问漏洞](./SQL/未授权访问漏洞.md)
-	* [Redis基于主从复制的RCE利用方式](./SQL/Redis基于主从复制的RCE利用方式.md)
-* SQLite
-	* [SQLite注入](./SQL/SQLite注入.md)
+   * [问题函数](./PHP/问题函数.md)
+   * [绕过open_basedir](./PHP/绕过open_basedir.md)
+   * [绕过disable_function](./PHP/绕过disable_function.md)
+   * [循环嵌套函数Getshell](./PHP/函数妙用.md)
 
-## HTTP相关
-* HTTP
-	* HTTP头
-		* [Host的作用](./HTTP/Host的作用.md)
-	* 缓存投毒和缓存欺骗
-		* [缓存投毒和缓存欺骗](./HTTP/缓存投毒和缓存欺骗.md)
-		* [http/0.9进行缓存投毒](./HTTP/Http0.9缓存投毒.md)
-	* RPO
-		* [RPO学习](./HTTP/RPO学习.md)
-	* XSS
-		* [XSS学习](./HTTP/XSS学习.md)
-* JWT
-	* [JWT伪造](./HTTP/JWT伪造.md)
+* [XXE](./PHP/PHP和XXE.md)
 
-## 中间件
-* Apache
-	* [换行解析漏洞](./中间件/换行解析漏洞.md)
-	* [apache多后缀解析漏洞](./中间件/apache多后缀解析漏洞.md)
-	* [Apache_SSI远程命令执行漏洞](./中间件/Apache_SSI_远程命令执行漏洞.md)
-* Elasticsearch
-	* [CVE-2014-3120](./中间件/CVE-2014-3120.md)
-	* [CVE-2015-1427](./中间件/CVE-2015-1427.md)
-	* [CVE-2015-3337](./中间件/CVE-2015-3337.md)
-	* [CVE-2015-5531](./中间件/CVE-2015-5531.md)
-* Fastcgi
-	* [未授权访问及任意命令执行](./中间件/未授权访问及任意命令执行.md)
-* Nginx
-	* [Nginx的Tricks](./中间件/Nginx的Tricks.md)
-	* [Nginx解析漏洞](./中间件/Nginx解析漏洞.md)
-	* [Nginx文件名逻辑漏洞](./中间件/Nginx文件名逻辑漏洞.md)
-	* [Nginx越界读取缓存漏洞](./中间件/Nginx越界读取缓存漏洞.md)
-	* [Nginx配置错误](./中间件/Nginx配置错误.md)
-* IIS
-	* [IIS短文件名](./中间件/IIS短文件名.md)
-	* [IIS命令执行漏洞](./中间件/IIS命令执行漏洞.md)
-	* [IIS6.0文件解析漏洞](./中间件/IIS6.0文件解析漏洞.md)
-* weblogic
-	* [XMLDecoder反序列化漏洞](./中间件/XMLDecoder反序列化漏洞.md)
-	* [Components反序列化命令执行漏洞](./中间件/Components反序列化命令执行漏洞.md)
-	* [Weblogic任意文件上传漏洞](./中间件/Weblogic任意文件上传漏洞.md)
-	* [weblogic-ssrf](./中间件/weblogic-ssrf.md)
-	* [Weblogic常规渗透测试环境](./中间件/Weblogic常规渗透测试环境.md)
-* Tomcat
-	* [信息泄露](./中间件/信息泄露.md)
-	* [任意代码执行](./中间件/任意代码执行.md)
-
-## 操作系统
-* Windows
-	* [Windows基础](./OS/Windows基础.md)
-	* 软件漏洞
-		* [winrar目录穿越漏洞](./OS/winrar目录穿越漏洞.md)
-	* 提权
-* Linux
-	* Linux基础
-	  * [CTF的Trick](./OS/CTF的Trick.md)
-	  * [基础概念](./OS/基础概念.md)
-	  * [基本命令](./OS/基本命令.md)
-	  * [错误处理](./OS/错误处理.md)
-	  * [环境配置](./OS/环境配置.md)
-	  * [Linux反弹Shell](./OS/Linux反弹shell.md)
-	* Linux详解
-	* Linux下的软件
-	  * [VIM常用命令](./OS/VIM常用命令.md)
-	  * [Docker](./OS/Docker基本操作.md)
-	* 提权
-		* [脏牛提权](./OS/脏牛提权.md)
-		* [通配符提权](./OS/通配符提权.md)
-* MAC
-	* 提权
-		* [IOHIDFamily提权](./OS/IOHIDFamily提权.md)
-
-## 漏洞类型
-* XXE
-	* 前置知识
-		* [DTD](./VUL/DTD.md)
-		* [XML](./VUL/XML.md)
-	* [报错XXE](./VUL/报错XXE.md)
-	* [XXE基础payload](./VUL/XXE基础payload.md)
 * 反序列化
-	* PHP
-		* [反序列化-PHP](./VUL/反序列化-PHP.md)
-* 文件上传
-	* PHP
-		- [00截断](./VUL/CVE-2015-2348_00截断.md)
-		- [文件上传相关函数](./VUL/文件上传相关函数.md)
-		- [二次渲染绕过](./VUL/二次渲染绕过.md)
-		- [代码逻辑绕过](./VUL/代码逻辑绕过.md)
-		- [usr.ini绕过](./VUL/user.ini绕过)
-	* 中间件
-		* apache
-			* [.htaccess上传绕过.md](./VUL/htaccess上传绕过.md)
-			* [apache多后缀解析漏洞](./中间件/apache多后缀解析漏洞.md)
-			* [Apache_SSI的远程命令执行漏洞](./中间件/Apache_SSI_远程命令执行漏洞.md)
-			* [apache的0a绕过](./中间件/换行解析漏洞.md)
-		* IIS
-			* [IIS6.0文件解析漏洞](./中间件/IIS6.0文件解析漏洞.md)
-		* Nginx
-			* [Nginx解析漏洞](./中间件/Nginx解析漏洞.md)
-	* 操作系统
-		* windows
-			* [windwos文件命名规则](./VUL/windwos文件命名规则.md)
-	* CMS和编辑器漏洞
-	* [WAF绕过](./VUL/WAF绕过.md)
-* 变量覆盖
-	* 函数
-		* [parse_str](./PHP/parse_str.md)
-		* [extract](./PHP/extract.md)
-		* [import_request_variables](./PHP/import_request_variables.md)
-	* 语法
-		* [$$变量覆盖](./VUL/$$变量覆盖.md)
 
-## 常用代码
-* [JavsScript](./Code/JavaScript.md)
-* [HTML](./Code/HTML.md)
-* [Python](./Code/Python.md)
+  * [CTF中的反序列化](./PHP/ctf_unserialize.md)
+  * [查找存在指定魔术方法的类](./PHP/查找存在指定魔术方法的类.md)
+  * [SimpleXMLElement](./PHP/SimpleXMLElement.md)
+  * [Phar的文件包含与反序列化](./PHP/Phar的文件包含与反序列化.md)
+  * [Soap和CRLF攻击](./PHP/Soap和CRLF攻击.md)
+  * [SESSION的不同解析方式](./PHP/Session不同解析方式.md)
+
+* 文件上传
+    * [上传临时文件](./PHP/PHP7的2个core_dumped错误.md)
+	* [00截断](./VUL/CVE-2015-2348_00截断.md)
+	* [文件上传相关函数](./VUL/文件上传相关函数.md)
+	* [二次渲染绕过](./VUL/二次渲染绕过.md)
+	* [代码逻辑绕过](./VUL/代码逻辑绕过.md)
+	* [上传.usr.ini](./VUL/usr.ini绕过.md)
+	* [上传.htaccess](./VUL/htaccess上传绕过.md)
+	
+* 文件包含
+	- [PHP伪协议](./PHP/伪协议文件包含.md)
+	- [包含日志](./PHP/包含日志.md)
+	- [包含environ](./PHP/包含environ.md)
+	- [包含临时文件](./PHP/PHP7的2个core_dumped错误.md)
+	- [包含SESSION文件](./PHP/包含session文件.md)
+	
+* 版本迭代
+
+   * [PHP7.0](./PHP/PHP7.0.md)
+   * [PHP7.1](./PHP/PHP7.1.md)
+   * [PHP7.2](./PHP/PHP7.2.md)
+
+* 杂项
+
+   * [M1_VSCODE调试php源码](./PHP/M1_VSCODE调试php源码.md)
+   * [CGI_FastCGI和PHP-FPM关系](./PHP/CGI_FastCGI和PHP-FPM关系.md)
+   * [PHP的编译与执行](./PHP/PHP的编译与执行.md)

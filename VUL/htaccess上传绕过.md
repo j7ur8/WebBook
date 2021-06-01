@@ -1,4 +1,4 @@
-# `.htaccess`上传绕过
+# .htaccess上传绕过
 
 ## 测试
 

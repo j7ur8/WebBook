@@ -13,16 +13,16 @@
 
 libxml2.9.0以后，默认不解析外部实体，导致XXE漏洞逐渐消亡。为了演示PHP环境下的XXE漏洞，本例会将libxml2.8.0版本编译进PHP中。PHP版本并不影响XXE利用。
 
-## 前言
+## 介绍
 
 除了`SimpleXMLElement`类可以进行XXE攻击，现在知道的有如下类和函数
 
 `SimpleXMLElement`、`DOMDocument`、`simplexml_load_string`
 
-## 前置知识
+**前置知识**
 
-- [XML](/VUL/XML.md)
-- [DTD](/VUL/DTD.md)
+- [XML](../VUL/XML.md)
+- [DTD](../VUL/DTD.md)
 
 ## 测试
 

@@ -15,7 +15,8 @@
 
 ### 受影响的函数列表
 
-![](../images/19-1-19_2018总结-PHP篇_利用类进行反序列化Phar1.png)
+### ![](../images/19-1-19_2018总结-PHP篇_利用类进行反序列化Phar1.png)
+
 对于函数影响范围的深入追求参看[zsx](https://blog.zsxsoft.com/post/38)师傅的文章，简单如下：
 
 - exif (exif_thumbnail、exif_imagetype)
@@ -52,9 +53,7 @@ $p = mysqli_query($m, 'LOAD DATA LOCAL INFILE \'phar://test.phar/test\' INTO TAB
 
 ### 利用
 
-#### 测试
-
-##### 生成恶意phar代码
+**一、生成恶意phar代码**
 
 ```php
 <?php
@@ -75,7 +74,7 @@ $p = mysqli_query($m, 'LOAD DATA LOCAL INFILE \'phar://test.phar/test\' INTO TAB
 
 其中`xxx<?php xxx; __HALT_COMPILER();?>`是phar文件的stub，可用理解为一个身份id。其中stub的内容必须以`__HALT_COMPILER();?>`结尾，否则phar扩展将无法识别这个文件为phar文件。具体参考[seebug](https://paper.seebug.org/680/)的文章。
 
-##### phar反序列化已构造的恶意php文件
+**二、phar反序列化已构造的恶意php文件**
 
 ```php
 <?php 
@@ -95,7 +94,7 @@ $p = mysqli_query($m, 'LOAD DATA LOCAL INFILE \'phar://test.phar/test\' INTO TAB
 
 ![](../images/19-7-13_Phar的文件包含与反序列化_反序列化_1.png)
 
-##### Bypass
+**Bypass**
 
 如果waf过滤了phar://，则可以使用：
 
@@ -104,7 +103,7 @@ compress.bzip2://phar://
 compress.zlib://
 ```
 
-##### 伪造为其他类型的文件
+**伪造为其他类型的文件**
 
 phar文件可通过添加幻术伪造为其他类型的文件
 
@@ -172,7 +171,7 @@ echo '执行时间：  '.($endTime - $startTime). ' 秒';
 
 - https://chybeta.github.io/2017/10/08/php%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/
 
-### 测试代码
+### 利用
 
 index.php
 
@@ -194,5 +193,3 @@ index.php?file=phar://test.zip/shell.txt   //相对路径
 ```
 
 ![](../images/19-7-23_PHP_Phar的文件包含与反序列化_文件包含_1.png)
-
-### 

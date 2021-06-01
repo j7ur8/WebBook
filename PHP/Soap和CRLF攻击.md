@@ -21,7 +21,7 @@ public SoapClient::SoapClient ( mixed $wsdl [, array $options ] )
 
 ## CRLF攻击
 
-利用条件
+### 利用条件
 
 - 需要进行反序列化
 - 调用一个方法，且该方法不存在。以此激活__call()
@@ -30,9 +30,7 @@ public SoapClient::SoapClient ( mixed $wsdl [, array $options ] )
 
 - (PHP 5, PHP 7)
 
-### 测试代买
-
-exp脚本如下
+### Exp
 
 ```php
 <?php

@@ -1,17 +1,13 @@
 # PCRE回溯
 
-## PCRE回溯问题
-
-### 参考文章
+参考文章
 
 - http://www.laruence.com/2010/06/08/1579.html
 - https://www.leavesongs.com/PENETRATION/use-pcre-backtrack-limit-to-bypass-restrict.html
 
-### 条件
+条件
 
 - 非贪婪模式
-
-### 测试
 
 demo
 ```php

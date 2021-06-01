@@ -13,7 +13,7 @@
 - 文件名可控
 - 文件可包含
 
-### 测试
+### 利用
 
 复现的repeater包(最好把报文增长一点，感觉burpsuite爆破没有python脚本爆破来的快)：  
 ```http
@@ -73,9 +73,7 @@ Content-Type: application/octet-stream
 
 ## 案例一
 
-### 测试
-
-Dockerfile：
+### 环境
 
 ```bash
 FROM ubuntu:18.04
@@ -105,9 +103,7 @@ base64加密的代码为：
 
 ```
 
-#### payload
-
-exp脚本为：
+### Exp
 
 ```python
 import sys
@@ -169,16 +165,14 @@ result = pool.map_async( runner, range(32) ).get(0xffff)
 
 ## 案例二
 
-### 测试
+### 环境
 
 ```php
 <?php
 include($_GET['file'])
 ```
 
-#### payload
-
-则exp脚本为:
+### Exp
 
 ```python
 import requests
