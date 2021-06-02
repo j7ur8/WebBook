@@ -20,7 +20,8 @@
    * [绕过open_basedir](./PHP/绕过open_basedir.md)
    * [绕过disable_function](./PHP/绕过disable_function.md)
    * [循环嵌套函数Getshell](./PHP/循环嵌套函数GetShell.md)
-* 0x03 [XXE](./PHP/PHP和XXE.md)
+* 0x03 XXE
+   * [PHP中的XXE](./PHP/PHP和XXE.md)
 * 0x04 反序列化
   * [CTF中的反序列化](./PHP/ctf_unserialize.md)
   * [查找存在指定魔术方法的类](./PHP/查找存在指定魔术方法的类.md)
