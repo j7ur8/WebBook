@@ -1,0 +1,1068 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>代码逻辑绕过 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="usr.ini绕过.html" />
+    
+    
+    <link rel="prev" href="二次渲染绕过.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    PHP
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" >
+            
+                <span>
+            
+                    
+                    0x01特性
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../PHP/PHP是一门动态语言.html">
+            
+                <a href="../PHP/PHP是一门动态语言.html">
+            
+                    
+                    PHP是动态语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2" data-path="../PHP/编码.html">
+            
+                <a href="../PHP/编码.html">
+            
+                    
+                    PHP编码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3" data-path="../PHP/参数传递.html">
+            
+                <a href="../PHP/参数传递.html">
+            
+                    
+                    参数传递
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4" data-path="../PHP/REQUEST数组.html">
+            
+                <a href="../PHP/REQUEST数组.html">
+            
+                    
+                    REQUEST数组数值获取顺序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.5" data-path="../PHP/url非法键值替换问题.html">
+            
+                <a href="../PHP/url非法键值替换问题.html">
+            
+                    
+                    GET数组键值特殊字符替换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.6" data-path="../PHP/弱比较.html">
+            
+                <a href="../PHP/弱比较.html">
+            
+                    
+                    弱比较浅析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.7" data-path="../PHP/命名空间.html">
+            
+                <a href="../PHP/命名空间.html">
+            
+                    
+                    命名空间浅析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.8" data-path="../PHP/匿名函数.html">
+            
+                <a href="../PHP/匿名函数.html">
+            
+                    
+                    匿名函数浅析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.9" data-path="../PHP/回调函数.html">
+            
+                <a href="../PHP/回调函数.html">
+            
+                    
+                    回调函数浅析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.10" data-path="../PHP/重构函数和反射.html">
+            
+                <a href="../PHP/重构函数和反射.html">
+            
+                    
+                    重构函数和反射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.11" data-path="../PHP/利用函数进行数据收集.html">
+            
+                <a href="../PHP/利用函数进行数据收集.html">
+            
+                    
+                    利用函数进行数据的收集
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.12" data-path="../PHP/pcre回溯问题.html">
+            
+                <a href="../PHP/pcre回溯问题.html">
+            
+                    
+                    pcre回溯问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.13" data-path="../PHP/Session不同解析方式.html">
+            
+                <a href="../PHP/Session不同解析方式.html">
+            
+                    
+                    SESSION的不同解析方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" >
+            
+                <span>
+            
+                    
+                    0x02 技巧
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1" data-path="../PHP/问题函数.html">
+            
+                <a href="../PHP/问题函数.html">
+            
+                    
+                    问题函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.2" data-path="../PHP/绕过open_basedir.html">
+            
+                <a href="../PHP/绕过open_basedir.html">
+            
+                    
+                    绕过open_basedir
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.3" data-path="../PHP/绕过disable_function.html">
+            
+                <a href="../PHP/绕过disable_function.html">
+            
+                    
+                    绕过disable_function
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.4" data-path="../PHP/循环嵌套函数GetShell.html">
+            
+                <a href="../PHP/循环嵌套函数GetShell.html">
+            
+                    
+                    循环嵌套函数Getshell
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" >
+            
+                <span>
+            
+                    
+                    0x03 XXE
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.3.1" data-path="../PHP/PHP和XXE.html">
+            
+                <a href="../PHP/PHP和XXE.html">
+            
+                    
+                    PHP中的XXE
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" >
+            
+                <span>
+            
+                    
+                    0x04 反序列化
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.4.1" data-path="../PHP/unserialize_bypass.html">
+            
+                <a href="../PHP/unserialize_bypass.html">
+            
+                    
+                    反序列化中的绕过
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.2" data-path="../PHP/ctf_unserialize.html">
+            
+                <a href="../PHP/ctf_unserialize.html">
+            
+                    
+                    CTF中的反序列化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.3" data-path="../PHP/查找存在指定魔术方法的类.html">
+            
+                <a href="../PHP/查找存在指定魔术方法的类.html">
+            
+                    
+                    查找存在指定魔术方法的类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.4" data-path="../PHP/SimpleXMLElement.html">
+            
+                <a href="../PHP/SimpleXMLElement.html">
+            
+                    
+                    SimpleXMLElement
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.5" data-path="../PHP/Phar的文件包含与反序列化.html">
+            
+                <a href="../PHP/Phar的文件包含与反序列化.html">
+            
+                    
+                    Phar的文件包含与反序列化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.6" data-path="../PHP/Soap和CRLF攻击.html">
+            
+                <a href="../PHP/Soap和CRLF攻击.html">
+            
+                    
+                    Soap和CRLF攻击
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.7" data-path="../PHP/Session不同解析方式.html">
+            
+                <a href="../PHP/Session不同解析方式.html">
+            
+                    
+                    SESSION的不同解析方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" >
+            
+                <span>
+            
+                    
+                    0x05 文件上传
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.5.1" data-path="../PHP/PHP7的2个core_dumped错误.html">
+            
+                <a href="../PHP/PHP7的2个core_dumped错误.html">
+            
+                    
+                    上传临时文件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.5.1.1" data-path="CVE-2015-2348_00截断.html">
+            
+                <a href="CVE-2015-2348_00截断.html">
+            
+                    
+                    00截断
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.1.2" data-path="文件上传相关函数.html">
+            
+                <a href="文件上传相关函数.html">
+            
+                    
+                    文件上传相关函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.1.3" data-path="二次渲染绕过.html">
+            
+                <a href="二次渲染绕过.html">
+            
+                    
+                    二次渲染绕过
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.5.1.4" data-path="代码逻辑绕过.html">
+            
+                <a href="代码逻辑绕过.html">
+            
+                    
+                    代码逻辑绕过
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.1.5" data-path="usr.ini绕过.html">
+            
+                <a href="usr.ini绕过.html">
+            
+                    
+                    上传.usr.ini
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.1.6" data-path="htaccess上传绕过.html">
+            
+                <a href="htaccess上传绕过.html">
+            
+                    
+                    上传.htaccess
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" >
+            
+                <span>
+            
+                    
+                    0x06 文件包含
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.6.1" data-path="../PHP/伪协议文件包含.html">
+            
+                <a href="../PHP/伪协议文件包含.html">
+            
+                    
+                    PHP伪协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6.2" data-path="../PHP/包含日志.html">
+            
+                <a href="../PHP/包含日志.html">
+            
+                    
+                    包含日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6.3" data-path="../PHP/包含environ.html">
+            
+                <a href="../PHP/包含environ.html">
+            
+                    
+                    包含environ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6.4" data-path="../PHP/PHP7的2个core_dumped错误.html">
+            
+                <a href="../PHP/PHP7的2个core_dumped错误.html">
+            
+                    
+                    包含临时文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6.5" data-path="../PHP/包含session文件.html">
+            
+                <a href="../PHP/包含session文件.html">
+            
+                    
+                    包含SESSION文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" >
+            
+                <span>
+            
+                    
+                    0x07 版本迭代
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.7.1" data-path="../PHP/PHP7.0.html">
+            
+                <a href="../PHP/PHP7.0.html">
+            
+                    
+                    PHP7.0
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7.2" data-path="../PHP/PHP7.1.html">
+            
+                <a href="../PHP/PHP7.1.html">
+            
+                    
+                    PHP7.1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7.3" data-path="../PHP/PHP7.2.html">
+            
+                <a href="../PHP/PHP7.2.html">
+            
+                    
+                    PHP7.2
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" >
+            
+                <span>
+            
+                    
+                    0x08 杂项
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.8.1" data-path="../PHP/M1_VSCODE调试php源码.html">
+            
+                <a href="../PHP/M1_VSCODE调试php源码.html">
+            
+                    
+                    M1_VSCODE调试php源码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8.2" data-path="../PHP/CGI_FastCGI和PHP-FPM关系.html">
+            
+                <a href="../PHP/CGI_FastCGI和PHP-FPM关系.html">
+            
+                    
+                    CGI_FastCGI和PHP-FPM关系
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8.3" data-path="../PHP/PHP的编译与执行.html">
+            
+                <a href="../PHP/PHP的编译与执行.html">
+            
+                    
+                    PHP的编译与执行
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    JAVA
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" >
+            
+                <span>
+            
+                    
+                    0x01 基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../Java/Java反射基础.html">
+            
+                <a href="../Java/Java反射基础.html">
+            
+                    
+                    Java反射基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../Java/JSP标签.html">
+            
+                <a href="../Java/JSP标签.html">
+            
+                    
+                    JSP标签
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" >
+            
+                <span>
+            
+                    
+                    0x02 技巧
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1" data-path="../Java/Java反射技巧.html">
+            
+                <a href="../Java/Java反射技巧.html">
+            
+                    
+                    Java反射技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >代码逻辑绕过</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x57FA;&#x7840;&#x7684;&#x7ED5;&#x8FC7;">&#x57FA;&#x7840;&#x7684;&#x7ED5;&#x8FC7;</h1>
+<h2 id="&#x901A;&#x8FC7;fuzz&#x548C;&#x624B;&#x5DE5;&#x6D4B;&#x8BD5;&#xFF01;">&#x901A;&#x8FC7;fuzz&#x548C;&#x624B;&#x5DE5;&#x6D4B;&#x8BD5;&#xFF01;!</h2>
+<h2 id="&#x7ED5;&#x8FC7;js&#x68C0;&#x67E5;&#x5BA2;&#x6237;&#x7AEF;">&#x7ED5;&#x8FC7;js&#x68C0;&#x67E5;(&#x5BA2;&#x6237;&#x7AEF;)</h2>
+<h2 id="&#x7ED5;&#x8FC7;content-type">&#x7ED5;&#x8FC7;Content-type</h2>
+<h2 id="&#x7ED5;&#x8FC7;&#x9ED1;&#x540D;&#x5355;">&#x7ED5;&#x8FC7;&#x9ED1;&#x540D;&#x5355;</h2>
+<h2 id="&#x5927;&#x5C0F;&#x5199;&#x7ED5;&#x8FC7;&#xFF0C;&#x53CC;&#x5199;&#x7ED5;&#x8FC7;">&#x5927;&#x5C0F;&#x5199;&#x7ED5;&#x8FC7;&#xFF0C;&#x53CC;&#x5199;&#x7ED5;&#x8FC7;</h2>
+<h2 id="&#x6761;&#x4EF6;&#x7ADE;&#x4E89;">&#x6761;&#x4EF6;&#x7ADE;&#x4E89;</h2>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="二次渲染绕过.html" class="navigation navigation-prev " aria-label="Previous page: 二次渲染绕过">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="usr.ini绕过.html" class="navigation navigation-next " aria-label="Next page: 上传.usr.ini">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"代码逻辑绕过","level":"1.2.5.1.4","depth":4,"next":{"title":"上传.usr.ini","level":"1.2.5.1.5","depth":4,"path":"VUL/usr.ini绕过.md","ref":"./VUL/usr.ini绕过.md","articles":[]},"previous":{"title":"二次渲染绕过","level":"1.2.5.1.3","depth":4,"path":"VUL/二次渲染绕过.md","ref":"./VUL/二次渲染绕过.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"VUL/代码逻辑绕过.md","mtime":"2021-05-22T17:22:02.391Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-30T09:24:17.609Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
