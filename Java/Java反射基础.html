@@ -1,0 +1,1453 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Java反射基础 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="JSP标签.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    PHP
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" >
+            
+                <span>
+            
+                    
+                    0x01特性
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../PHP/PHP是一门动态语言.html">
+            
+                <a href="../PHP/PHP是一门动态语言.html">
+            
+                    
+                    PHP是动态语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2" data-path="../PHP/编码.html">
+            
+                <a href="../PHP/编码.html">
+            
+                    
+                    PHP编码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3" data-path="../PHP/参数传递.html">
+            
+                <a href="../PHP/参数传递.html">
+            
+                    
+                    参数传递
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4" data-path="../PHP/REQUEST数组.html">
+            
+                <a href="../PHP/REQUEST数组.html">
+            
+                    
+                    REQUEST数组数值获取顺序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.5" data-path="../PHP/url非法键值替换问题.html">
+            
+                <a href="../PHP/url非法键值替换问题.html">
+            
+                    
+                    GET数组键值特殊字符替换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.6" data-path="../PHP/弱比较.html">
+            
+                <a href="../PHP/弱比较.html">
+            
+                    
+                    弱比较浅析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.7" data-path="../PHP/命名空间.html">
+            
+                <a href="../PHP/命名空间.html">
+            
+                    
+                    命名空间浅析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.8" data-path="../PHP/匿名函数.html">
+            
+                <a href="../PHP/匿名函数.html">
+            
+                    
+                    匿名函数浅析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.9" data-path="../PHP/回调函数.html">
+            
+                <a href="../PHP/回调函数.html">
+            
+                    
+                    回调函数浅析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.10" data-path="../PHP/重构函数和反射.html">
+            
+                <a href="../PHP/重构函数和反射.html">
+            
+                    
+                    重构函数和反射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.11" data-path="../PHP/利用函数进行数据收集.html">
+            
+                <a href="../PHP/利用函数进行数据收集.html">
+            
+                    
+                    利用函数进行数据的收集
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.12" data-path="../PHP/pcre回溯问题.html">
+            
+                <a href="../PHP/pcre回溯问题.html">
+            
+                    
+                    pcre回溯问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.13" data-path="../PHP/Session不同解析方式.html">
+            
+                <a href="../PHP/Session不同解析方式.html">
+            
+                    
+                    SESSION的不同解析方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" >
+            
+                <span>
+            
+                    
+                    0x02 技巧
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1" data-path="../PHP/问题函数.html">
+            
+                <a href="../PHP/问题函数.html">
+            
+                    
+                    问题函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.2" data-path="../PHP/绕过open_basedir.html">
+            
+                <a href="../PHP/绕过open_basedir.html">
+            
+                    
+                    绕过open_basedir
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.3" data-path="../PHP/绕过disable_function.html">
+            
+                <a href="../PHP/绕过disable_function.html">
+            
+                    
+                    绕过disable_function
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.4" data-path="../PHP/循环嵌套函数GetShell.html">
+            
+                <a href="../PHP/循环嵌套函数GetShell.html">
+            
+                    
+                    循环嵌套函数Getshell
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" >
+            
+                <span>
+            
+                    
+                    0x03 XXE
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.3.1" data-path="../PHP/PHP和XXE.html">
+            
+                <a href="../PHP/PHP和XXE.html">
+            
+                    
+                    PHP中的XXE
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" >
+            
+                <span>
+            
+                    
+                    0x04 反序列化
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.4.1" data-path="../PHP/unserialize_bypass.html">
+            
+                <a href="../PHP/unserialize_bypass.html">
+            
+                    
+                    反序列化中的绕过
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.2" data-path="../PHP/ctf_unserialize.html">
+            
+                <a href="../PHP/ctf_unserialize.html">
+            
+                    
+                    CTF中的反序列化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.3" data-path="../PHP/查找存在指定魔术方法的类.html">
+            
+                <a href="../PHP/查找存在指定魔术方法的类.html">
+            
+                    
+                    查找存在指定魔术方法的类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.4" data-path="../PHP/SimpleXMLElement.html">
+            
+                <a href="../PHP/SimpleXMLElement.html">
+            
+                    
+                    SimpleXMLElement
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.5" data-path="../PHP/Phar的文件包含与反序列化.html">
+            
+                <a href="../PHP/Phar的文件包含与反序列化.html">
+            
+                    
+                    Phar的文件包含与反序列化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.6" data-path="../PHP/Soap和CRLF攻击.html">
+            
+                <a href="../PHP/Soap和CRLF攻击.html">
+            
+                    
+                    Soap和CRLF攻击
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.7" data-path="../PHP/Session不同解析方式.html">
+            
+                <a href="../PHP/Session不同解析方式.html">
+            
+                    
+                    SESSION的不同解析方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" >
+            
+                <span>
+            
+                    
+                    0x05 文件上传
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.5.1" data-path="../PHP/PHP7的2个core_dumped错误.html">
+            
+                <a href="../PHP/PHP7的2个core_dumped错误.html">
+            
+                    
+                    上传临时文件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.5.1.1" data-path="../VUL/CVE-2015-2348_00截断.html">
+            
+                <a href="../VUL/CVE-2015-2348_00截断.html">
+            
+                    
+                    00截断
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.1.2" data-path="../VUL/文件上传相关函数.html">
+            
+                <a href="../VUL/文件上传相关函数.html">
+            
+                    
+                    文件上传相关函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.1.3" data-path="../VUL/二次渲染绕过.html">
+            
+                <a href="../VUL/二次渲染绕过.html">
+            
+                    
+                    二次渲染绕过
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.1.4" data-path="../VUL/代码逻辑绕过.html">
+            
+                <a href="../VUL/代码逻辑绕过.html">
+            
+                    
+                    代码逻辑绕过
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.1.5" data-path="../VUL/usr.ini绕过.html">
+            
+                <a href="../VUL/usr.ini绕过.html">
+            
+                    
+                    上传.usr.ini
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.1.6" data-path="../VUL/htaccess上传绕过.html">
+            
+                <a href="../VUL/htaccess上传绕过.html">
+            
+                    
+                    上传.htaccess
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" >
+            
+                <span>
+            
+                    
+                    0x06 文件包含
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.6.1" data-path="../PHP/伪协议文件包含.html">
+            
+                <a href="../PHP/伪协议文件包含.html">
+            
+                    
+                    PHP伪协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6.2" data-path="../PHP/包含日志.html">
+            
+                <a href="../PHP/包含日志.html">
+            
+                    
+                    包含日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6.3" data-path="../PHP/包含environ.html">
+            
+                <a href="../PHP/包含environ.html">
+            
+                    
+                    包含environ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6.4" data-path="../PHP/PHP7的2个core_dumped错误.html">
+            
+                <a href="../PHP/PHP7的2个core_dumped错误.html">
+            
+                    
+                    包含临时文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6.5" data-path="../PHP/包含session文件.html">
+            
+                <a href="../PHP/包含session文件.html">
+            
+                    
+                    包含SESSION文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" >
+            
+                <span>
+            
+                    
+                    0x07 版本迭代
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.7.1" data-path="../PHP/PHP7.0.html">
+            
+                <a href="../PHP/PHP7.0.html">
+            
+                    
+                    PHP7.0
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7.2" data-path="../PHP/PHP7.1.html">
+            
+                <a href="../PHP/PHP7.1.html">
+            
+                    
+                    PHP7.1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7.3" data-path="../PHP/PHP7.2.html">
+            
+                <a href="../PHP/PHP7.2.html">
+            
+                    
+                    PHP7.2
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" >
+            
+                <span>
+            
+                    
+                    0x08 杂项
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.8.1" data-path="../PHP/M1_VSCODE调试php源码.html">
+            
+                <a href="../PHP/M1_VSCODE调试php源码.html">
+            
+                    
+                    M1_VSCODE调试php源码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8.2" data-path="../PHP/CGI_FastCGI和PHP-FPM关系.html">
+            
+                <a href="../PHP/CGI_FastCGI和PHP-FPM关系.html">
+            
+                    
+                    CGI_FastCGI和PHP-FPM关系
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8.3" data-path="../PHP/PHP的编译与执行.html">
+            
+                <a href="../PHP/PHP的编译与执行.html">
+            
+                    
+                    PHP的编译与执行
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    JAVA
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" >
+            
+                <span>
+            
+                    
+                    0x01 基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.3.1.1" data-path="Java反射基础.html">
+            
+                <a href="Java反射基础.html">
+            
+                    
+                    Java反射基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="JSP标签.html">
+            
+                <a href="JSP标签.html">
+            
+                    
+                    JSP标签
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" >
+            
+                <span>
+            
+                    
+                    0x02 技巧
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1" data-path="Java反射技巧.html">
+            
+                <a href="Java反射技巧.html">
+            
+                    
+                    Java反射技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Java反射基础</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="0x01-&#x524D;&#x8A00;">0X01 &#x524D;&#x8A00;</h1>
+<p>&#x53CD;&#x5C04;&#x8FC7;&#x7A0B;&#x662F;&#x6307;&#x83B7;&#x53D6;&#x7279;&#x5B9A;&#x7C7B;&#xFF0C;&#x521B;&#x5EFA;&#x7C7B;&#x5BF9;&#x8C61;&#x3001;&#x5E76;&#x8C03;&#x7528;&#x6267;&#x884C;&#x5BF9;&#x5E94;&#x65B9;&#x6CD5;&#x548C;&#x5C5E;&#x6027;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x8FC7;&#x7A0B;&#xFF0C;&#x6D89;&#x53CA;&#x5230;&#x83B7;&#x53D6;&#x7C7B;&#x7684;class&#x5BF9;&#x8C61;&#x3001;&#x83B7;&#x53D6;&#x7C7B;&#x5BF9;&#x8C61;&#x3001;&#x83B7;&#x53D6;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x3001;&#x83B7;&#x53D6;&#x7C7B;&#x7684;&#x5C5E;&#x6027;&#x3001;&#x83B7;&#x53D6;&#x7C7B;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x3001;&#x6267;&#x884C;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x7B49;&#x51E0;&#x4E2A;&#x64CD;&#x4F5C;&#x3002;</p>
+<h1 id="0x02-java&#x53CD;&#x5C04;&#x57FA;&#x7840;">0X02 JAVA&#x53CD;&#x5C04;&#x57FA;&#x7840;</h1>
+<p>Java&#x53CD;&#x5C04;&#x673A;&#x5236;&#x6D89;&#x53CA;&#x5230;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x7C7B;&#xFF1A;</p>
+<ul>
+<li>java.lang.Class&#xFF1A;&#x7C7B;&#x5BF9;&#x8C61;</li>
+<li>java.lang.reflect.Constructor&#xFF1A;&#x7C7B;&#x7684;&#x6784;&#x9020;&#x5668;&#x5BF9;&#x8C61;</li>
+<li>java.lang.reflect.Field&#xFF1A;&#x7C7B;&#x7684;&#x5C5E;&#x6027;&#x5BF9;&#x8C61;</li>
+<li>java.lang.reflect.Method&#xFF1A;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x5BF9;&#x8C61;</li>
+</ul>
+<p>&#x5173;&#x4E8E;&#x4E0A;&#x8FF0;&#x56DB;&#x4E2A;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x53C2;&#x8003;&#xFF1A;<a href="https://www.jianshu.com/p/9be58ee20dee" target="_blank">https://www.jianshu.com/p/9be58ee20dee</a></p>
+<h3 id="&#x83B7;&#x53D6;&#x7C7B;&#x7684;class&#x5BF9;&#x8C61;">&#x83B7;&#x53D6;&#x7C7B;&#x7684;class&#x5BF9;&#x8C61;</h3>
+<p>&#x83B7;&#x53D6;&#x7C7B;&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x83B7;&#x53D6;&#x6BCF;&#x4E2A;&#x7C7B;&#x5BF9;&#x5E94;&#x7684;<code>java.lang.Class</code>&#x5BF9;&#x8C61;&#x4E5F;&#x5C31;&#x662F;class&#x5BF9;&#x8C61;&#x3002;&#x6709;&#x4EE5;&#x4E0B;&#x56DB;&#x79CD;&#x529E;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li>&#x5229;&#x7528;<code>&#x7C7B;&#x540D;.class</code> &#xFF08;&#x9700;&#x8981;import&#xFF0C;&#x6216;&#x8005;&#x5728;&#x540C;&#x6587;&#x4EF6;&#x4E2D;&#x5B9A;&#x4E49;&#x4E86;&#x8BE5;&#x7C7B;&#xFF09;</li>
+<li>&#x5229;&#x7528;<code>&#x5BF9;&#x8C61;.getClass()</code>&#xFF08;&#x9700;&#x8981;&#x5B9E;&#x4F8B;&#x5316;&#x5BF9;&#x8C61;&#xFF09;</li>
+<li>&#x5229;&#x7528;<code>Class.forName(&quot;&#x5B8C;&#x6574;&#x7C7B;&#x540D;&quot;)</code> &#xFF08;&#x5E38;&#x7528;&#xFF09;</li>
+<li>&#x5229;&#x7528;<code>loadClass(&quot;&#x5B8C;&#x6574;&#x7C7B;&#x540D;&quot;)</code>&#xFF08;&#x5E38;&#x7528;&#xFF09;</li>
+</ul>
+<p>&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#x5982;&#x4E0B;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GetClass</span></span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span><span class="hljs-keyword">throws</span> Exception</span>{
+        GetClass newclass = <span class="hljs-keyword">new</span> GetClass();
+        Class obj1 = GetClass.class;
+        Class obj2 = newclass.getClass();
+        Class obj3 = Class.forName(<span class="hljs-string">&quot;GetClass&quot;</span>);
+        Class obj4 = ClassLoader.getSystemClassLoader().loadClass(<span class="hljs-string">&quot;GetClass&quot;</span>);
+        <span class="hljs-keyword">if</span>(obj1==obj2 &amp;&amp; obj2==obj3 &amp;&amp; obj3==obj4){
+            System.out.println(<span class="hljs-string">&quot;123&quot;</span>);
+        }
+    }
+}
+</code></pre>
+<p>&#x5173;&#x4E8E;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF0C;&#x5EF6;&#x4F38;&#x8BF4;&#x4E0B;JVM&#x7684;&#x51E0;&#x79CD;&#x9ED8;&#x8BA4;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;</p>
+<p><strong>&#x5F15;&#x5BFC;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF08;BootstrapClassLoader&#xFF09;</strong></p>
+<p>&#x5F15;&#x5BFC;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;(BootstrapClassLoader)&#xFF0C;&#x5E95;&#x5C42;&#x539F;&#x751F;&#x4EE3;&#x7801;&#x662F;C++&#x8BED;&#x8A00;&#x7F16;&#x5199;&#xFF0C;&#x5C5E;&#x4E8E;jvm&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x4E0D;&#x7EE7;&#x627F;java.lang.ClassLoader&#x7C7B;&#xFF0C;&#x4E5F;&#x6CA1;&#x6709;&#x7236;&#x52A0;&#x8F7D;&#x5668;&#xFF0C;&#x4E3B;&#x8981;&#x8D1F;&#x8D23;&#x52A0;&#x8F7D;&#x6838;&#x5FC3;java&#x5E93;(&#x5373;JVM&#x672C;&#x8EAB;)&#xFF0C;&#x5B58;&#x50A8;&#x5728;/jre/lib/rt.jar&#x76EE;&#x5F55;&#x5F53;&#x4E2D;&#xFF0C;&#x53EA;&#x52A0;&#x8F7D;&#x5305;&#x540D;&#x4E3A;java&#x3001;javax&#x3001;sun&#x7B49;&#x5F00;&#x5934;&#x7684;&#x7C7B;&#x3002;</p>
+<p>&#x5982;Object&#x7C7B;&#x662F;&#x662F;&#x6240;&#x6709;&#x5BF9;&#x8C61;&#x7684;&#x7236;&#x7C7B;&#xFF0C;&#x5F52;&#x5C5E;&#x4E8E;&#x5F15;&#x5BFC;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF0C;&#x4E0D;&#x5B58;&#x5728;&#x7236;&#x52A0;&#x8F7D;&#x5668;&#x3002;</p>
+<pre><code class="lang-java">
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span><span class="hljs-keyword">throws</span> Exception</span>{
+        System.out.println(<span class="hljs-string">&quot;Object&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF1A;&quot;</span>+ Object.class.getClassLoader());
+    }
+}
+</code></pre>
+<p><strong>&#x6269;&#x5C55;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF08;ExtensionsClassLoader&#xFF09;</strong></p>
+<p>&#x6269;&#x5C55;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;(ExtensionsClassLoader)&#xFF0C;&#x7531;sun.misc.Launcher$ExtClassLoader&#x7C7B;&#x5B9E;&#x73B0;&#xFF0C;&#x7528;&#x6765;&#x5728;/jre/lib/ext&#x6216;&#x8005;java.ext.dirs&#x4E2D;&#x6307;&#x660E;&#x7684;&#x76EE;&#x5F55;&#x52A0;&#x8F7D;java&#x7684;&#x6269;&#x5C55;&#x5E93;&#x3002;Java&#x865A;&#x62DF;&#x673A;&#x4F1A;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x6269;&#x5C55;&#x5E93;&#x76EE;&#x5F55;&#xFF0C;&#x6B64;&#x52A0;&#x8F7D;&#x5668;&#x5728;&#x76EE;&#x5F55;&#x91CC;&#x9762;&#x67E5;&#x627E;&#x5E76;&#x52A0;&#x8F7D;java&#x7C7B;&#x3002;</p>
+<p>&#x5982;ZipPath&#x7C7B;&#x52A0;&#x8F7D;&#x5668;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">import</span> com.sun.nio.zipfs.ZipPath;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span><span class="hljs-keyword">throws</span> Exception</span>{
+        System.out.println(<span class="hljs-string">&quot;ZipPath&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF1A;&quot;</span>+ ZipPath.class.getClassLoader());
+    }
+}
+<span class="hljs-comment">//ZipPath&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF1A;sun.misc.Launcher$ExtClassLoader@70dea4e</span>
+</code></pre>
+<p><strong>App&#x7C7B;&#x52A0;&#x8F7D;&#x5668;/&#x7CFB;&#x7EDF;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF08;AppClassLoader&#xFF09;</strong></p>
+<p>App&#x7C7B;&#x52A0;&#x8F7D;&#x5668;/&#x7CFB;&#x7EDF;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF08;AppClassLoader&#xFF09;&#xFF0C;&#x7531;sun.misc.Launcher$AppClassLoader&#x5B9E;&#x73B0;&#xFF0C;&#x4E00;&#x822C;&#x901A;&#x8FC7;&#x901A;&#x8FC7;(java.class.path&#x6216;&#x8005;Classpath&#x73AF;&#x5883;&#x53D8;&#x91CF;)&#x6765;&#x52A0;&#x8F7D;Java&#x7C7B;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x5E38;&#x8BF4;&#x7684;classpath&#x8DEF;&#x5F84;&#x3002;&#x901A;&#x5E38;&#x6211;&#x4EEC;&#x662F;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x52A0;&#x8F7D;&#x7C7B;&#x6765;&#x52A0;&#x8F7D;Java&#x5E94;&#x7528;&#x7C7B;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;ClassLoader.getSystemClassLoader()&#x6765;&#x83B7;&#x53D6;&#x5B83;&#x3002;</p>
+<pre><code class="lang-java">
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span><span class="hljs-keyword">throws</span> Exception</span>{
+        System.out.println(<span class="hljs-string">&quot;Test&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF1A;&quot;</span>+ Test.class.getClassLoader());
+    }
+}
+<span class="hljs-comment">//Test&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF1A;sun.misc.Launcher$AppClassLoader@73d16e93</span>
+</code></pre>
+<p><strong>&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF08;UserDefineClassLoader&#xFF09;</strong></p>
+<p>&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;(UserDefineClassLoader)&#xFF0C;&#x9664;&#x4E86;&#x4E0A;&#x8FF0;java&#x81EA;&#x5E26;&#x63D0;&#x4F9B;&#x7684;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7EE7;&#x627F;java.lang.ClassLoader&#x7C7B;&#x7684;&#x65B9;&#x5F0F;&#x5B9E;&#x73B0;&#x81EA;&#x5DF1;&#x7684;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x3002;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;&#x6211;&#x4EEC;&#x7B49;&#x4E0B;&#x5355;&#x72EC;&#x8BB2;&#x89E3;&#x3002;</p>
+<h3 id="&#x83B7;&#x53D6;&#x7C7B;&#x7684;&#x5BF9;&#x8C61;">&#x83B7;&#x53D6;&#x7C7B;&#x7684;&#x5BF9;&#x8C61;</h3>
+<p>&#x4E00;&#x822C;&#x4F7F;&#x7528;Class&#x5BF9;&#x8C61;&#x7684;newInstance()&#x65B9;&#x6CD5;&#x521B;&#x5EFA;&#x7C7B;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x4E14;&#x4F7F;&#x7528;newInstance()&#x521B;&#x5EFA;&#x7C7B;&#x7684;&#x5BF9;&#x8C61;&#x4F1A;&#x89E6;&#x53D1;&#x7C7B;&#x7684;&#x65E0;&#x53C2;&#x6784;&#x9020;&#x51FD;&#x6570;&#x3002;</p>
+<pre><code class="lang-java">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ccc</span></span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ccc</span><span class="hljs-params">()</span></span>{
+        System.out.println(<span class="hljs-string">&quot;&#x65E0;&#x53C2;&#x6784;&#x9020;&#x51FD;&#x6570;&#x6267;&#x884C;&quot;</span>);
+    }
+
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GetClass</span></span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span><span class="hljs-keyword">throws</span> Exception</span>{
+        Class c = Class.forName(<span class="hljs-string">&quot;ccc&quot;</span>);
+        Object obj_c = c.newInstance();
+    }
+}
+</code></pre>
+<p>&#x4F46;&#x662F;&#x5982;&#x679C;&#x7C7B;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x662F;&#x79C1;&#x6709;&#x7684;&#x3001;&#x6216;&#x65E0;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x6267;&#x884C;&#x4EE3;&#x7801;&#x5C06;&#x4F1A;&#x62A5;&#x9519;&#x6216;&#x4E0D;&#x89E6;&#x53D1;&#x6784;&#x9020;&#x51FD;&#x6570;</p>
+<pre><code class="lang-java">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ccc</span></span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">ccc</span><span class="hljs-params">()</span></span>{
+        System.out.println(<span class="hljs-string">&quot;&#x65E0;&#x53C2;&#x6784;&#x9020;&#x51FD;&#x6570;&#x6267;&#x884C;&quot;</span>);
+    }
+
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GetClass</span></span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span><span class="hljs-keyword">throws</span> Exception</span>{
+        Class c = Class.forName(<span class="hljs-string">&quot;ccc&quot;</span>);
+        Object obj_c = c.newInstance(); <span class="hljs-comment">//&#x62A5;&#x9519;</span>
+    }
+}
+</code></pre>
+<h3 id="&#x83B7;&#x53D6;&#x7C7B;&#x7684;&#x5C5E;&#x6027;">&#x83B7;&#x53D6;&#x7C7B;&#x7684;&#x5C5E;&#x6027;</h3>
+<p>&#x4E3B;&#x8981;&#x6709;&#x4EE5;&#x4E0B;&#x56DB;&#x79CD;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>&#x51FD;&#x6570;&#x540D;</th>
+<th>&#x529F;&#x80FD;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Field[] getFields()</td>
+<td>&#x83B7;&#x53D6;&#x6240;&#x6709;public&#x4FEE;&#x9970;&#x7684;&#x5C5E;&#x6027;</td>
+</tr>
+<tr>
+<td>Field[] getField(String name)</td>
+<td>&#x83B7;&#x53D6;&#x6307;&#x5B9A;&#x540D;&#x79F0;&#x7684;public&#x4FEE;&#x9970;&#x7684;&#x5C5E;&#x6027;</td>
+</tr>
+<tr>
+<td>Field[] getDeclaredFields()</td>
+<td>&#x83B7;&#x53D6;&#x6240;&#x6709;&#x5C5E;&#x6027;&#xFF0C;&#x4E0D;&#x8003;&#x8651;&#x4FEE;&#x9970;&#x7B26;</td>
+</tr>
+<tr>
+<td>Field[] getDeclareField(String name)</td>
+<td>&#x83B7;&#x53D6;&#x6307;&#x5B9A;&#x540D;&#x79F0;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x4E0D;&#x8003;&#x8651;&#x4FEE;&#x9970;&#x7B26;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">import</span> java.lang.reflect.Field;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FieldTest</span></span>{
+    <span class="hljs-keyword">public</span> String name;
+    <span class="hljs-keyword">public</span> String profession;
+    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">int</span> age;
+    <span class="hljs-keyword">private</span> String number;
+    <span class="hljs-keyword">char</span> sex;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span>{
+        <span class="hljs-keyword">try</span>{
+
+            Class c1 = Class.forName(<span class="hljs-string">&quot;FieldTest&quot;</span>); <span class="hljs-comment">// &#x521B;&#x5EFA;Class&#x5BF9;&#x8C61;</span>
+
+            Field[] fieldArray1 = c1.getDeclaredFields(); <span class="hljs-comment">//&#x83B7;&#x53D6;&#x5168;&#x90E8;&#x6210;&#x5458;&#x53D8;&#x91CF;</span>
+            Field[] fieldArray2 = c1.getFields();<span class="hljs-comment">// &#x83B7;&#x53D6;&#x5168;&#x90E8;public&#x6210;&#x5458;&#x53D8;&#x91CF;</span>
+
+            <span class="hljs-keyword">for</span> (Field field : fieldArray1){
+               System.out.println(field.getName());
+            }
+
+            System.out.println(<span class="hljs-string">&quot;-------&#x5206;&#x5272;&#x7EBF;---------&quot;</span>);
+
+            <span class="hljs-keyword">for</span> (Field field : fieldArray2){
+               System.out.println(field.getName());
+           }
+            System.out.println(<span class="hljs-string">&quot;-------&#x5206;&#x5272;&#x7EBF;---------&quot;</span>);
+
+           Field fieldArray3 = c1.getField(<span class="hljs-string">&quot;name&quot;</span>); <span class="hljs-comment">// &#x83B7;&#x53D6;&#x6307;&#x5B9A;&#x540D;&#x79F0;&#x7684;public&#x4FEE;&#x9970;&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;</span>
+           System.out.println(fieldArray3.getName());
+
+           System.out.println(<span class="hljs-string">&quot;-------&#x5206;&#x5272;&#x7EBF;---------&quot;</span>);
+           Field fieldArray4 = c1.getDeclaredField(<span class="hljs-string">&quot;number&quot;</span>); <span class="hljs-comment">// &#x83B7;&#x53D6;&#x6307;&#x5B9A;&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;</span>
+           System.out.println(fieldArray4.getName());
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+<h3 id="&#x83B7;&#x53D6;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;">&#x83B7;&#x53D6;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;</h3>
+<p>&#x4E3B;&#x8981;&#x6709;&#x5982;&#x4E0B;&#x56DB;&#x4E2A;&#x51FD;&#x6570;&#x5B9E;&#x73B0;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x51FD;&#x6570;&#x540D;</th>
+<th>&#x529F;&#x80FD;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Method getMethod(String name,parameterTypes)</td>
+<td>&#x8FD4;&#x56DE;&#x6307;&#x5B9A;name&#x7684;public&#x65B9;&#x6CD5;</td>
+</tr>
+<tr>
+<td style="text-align:left">Method getDeclaredMethod(String name, parameterTypes)</td>
+<td>&#x8FD4;&#x56DE;&#x6307;&#x5B9A;name&#x7684;&#x65B9;&#x6CD5;</td>
+</tr>
+<tr>
+<td style="text-align:left">Method[] getMethods()</td>
+<td>&#x83B7;&#x53D6;&#x6240;&#x6709;&#x7684;&#xFF08;&#x7236;&#x7C7B;&#x3001;&#x81EA;&#x8EAB;&#x3001;&#x63A5;&#x53E3;&#xFF09;public&#x65B9;&#x6CD5;</td>
+</tr>
+<tr>
+<td style="text-align:left">Method[] getDeclaredMethods()</td>
+<td>&#x83B7;&#x53D6;&#x8BE5;&#x7C7B;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x65B9;&#x6CD5;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#x5982;&#x4E0B;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">import</span> java.lang.reflect.Method;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MethodTest</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">study</span><span class="hljs-params">(String s)</span> </span>{
+        System.out.println(<span class="hljs-string">&quot;&#x5B66;&#x4E60;&#x4E2D;...&quot;</span> + s);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+        System.out.println(<span class="hljs-string">&quot;&#x8DD1;&#x6B65;&#x4E2D;...&quot;</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">eat</span><span class="hljs-params">()</span> </span>{
+        System.out.println(<span class="hljs-string">&quot;&#x5403;&#x996D;&#x4E2D;...&quot;</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> String <span class="hljs-title">sleep</span><span class="hljs-params">(<span class="hljs-keyword">int</span> age)</span> </span>{
+        System.out.println(<span class="hljs-string">&quot;&#x7761;&#x7720;&#x4E2D;...&quot;</span> + age);
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;sleep&quot;</span>;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">try</span> {
+            Class c = Class.forName(<span class="hljs-string">&quot;com.reflect.MethodTest&quot;</span>); <span class="hljs-comment">// &#x521B;&#x5EFA;Class&#x5BF9;&#x8C61;</span>
+            Method[] methods1 = c.getDeclaredMethods(); <span class="hljs-comment">// &#x83B7;&#x53D6;&#x6240;&#x6709;&#x8BE5;&#x7C7B;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x65B9;&#x6CD5;</span>
+            Method[] methods2 = c.getMethods(); <span class="hljs-comment">// &#x83B7;&#x53D6;&#x6240;&#x6709;&#x7684;public&#x65B9;&#x6CD5;&#xFF0C;&#x5305;&#x62EC;&#x7C7B;&#x81EA;&#x8EAB;&#x58F0;&#x660E;&#x7684;public&#x65B9;&#x6CD5;&#xFF0C;&#x7236;&#x7C7B;&#x4E2D;&#x7684;public&#x65B9;&#x6CD5;&#x3001;&#x5B9E;&#x73B0;&#x7684;&#x63A5;&#x53E3;&#x65B9;&#x6CD5;</span>
+
+            <span class="hljs-keyword">for</span> (Method m:methods1) {
+                System.out.println(m.);
+            }
+
+            System.out.println(<span class="hljs-string">&quot;-------&#x5206;&#x5272;&#x7EBF;---------&quot;</span>);
+
+            <span class="hljs-keyword">for</span> (Method m:methods2) {
+                System.out.println(m);
+            }
+
+            System.out.println(<span class="hljs-string">&quot;-------&#x5206;&#x5272;&#x7EBF;---------&quot;</span>);
+
+            Method methods3 = c.getMethod(<span class="hljs-string">&quot;study&quot;</span>, String.class); <span class="hljs-comment">// &#x83B7;&#x53D6;study&#x65B9;&#x6CD5;</span>
+            System.out.println(methods3);
+            System.out.println(<span class="hljs-string">&quot;-------&#x5206;&#x5272;&#x7EBF;---------&quot;</span>);
+
+            Method method4 = c.getDeclaredMethod(<span class="hljs-string">&quot;sleep&quot;</span>, <span class="hljs-keyword">int</span>.class); <span class="hljs-comment">// &#x83B7;&#x53D6;sleep&#x65B9;&#x6CD5;</span>
+            System.out.println(method4);
+
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+<h3 id="&#x83B7;&#x53D6;&#x7C7B;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;">&#x83B7;&#x53D6;&#x7C7B;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;</h3>
+<p>&#x4E3B;&#x8981;&#x6709;&#x5982;&#x4E0B;&#x56DB;&#x4E2A;&#x51FD;&#x6570;&#x5B9E;&#x73B0;</p>
+<table>
+<thead>
+<tr>
+<th>&#x51FD;&#x6570;&#x540D;</th>
+<th>&#x529F;&#x80FD;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Constructor&lt;?&gt;[] getConstructors()</td>
+<td>&#x53EA;&#x8FD4;&#x56DE;public&#x6784;&#x9020;&#x51FD;&#x6570;</td>
+</tr>
+<tr>
+<td>Constructor&lt;?&gt;[] getDeclaredConstructors()</td>
+<td>&#x8FD4;&#x56DE;&#x6240;&#x6709;&#x6784;&#x9020;&#x51FD;&#x6570;</td>
+</tr>
+<tr>
+<td>Constructor&lt;&gt; getConstructor(parameterTypes)</td>
+<td>&#x5339;&#x914D;&#x548C;&#x53C2;&#x6570;&#x914D;&#x578B;&#x76F8;&#x7B26;&#x7684;public&#x6784;&#x9020;&#x51FD;&#x6570;</td>
+</tr>
+<tr>
+<td>Constructor&lt;&gt; getDeclaredConstructor(parameterTypes)</td>
+<td>&#x5339;&#x914D;&#x548C;&#x53C2;&#x6570;&#x914D;&#x578B;&#x76F8;&#x7B26;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#x5982;&#x4E0B;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">import</span> java.lang.reflect.Constructor;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConstructorTest</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ConstructorTest</span><span class="hljs-params">()</span> </span>{
+        System.out.println(<span class="hljs-string">&quot;&#x65E0;&#x53C2;&#x6784;&#x9020;&#x51FD;&#x6570;&quot;</span>);
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ConstructorTest</span><span class="hljs-params">(String name)</span> </span>{
+        System.out.println(<span class="hljs-string">&quot;&#x6709;&#x53C2;&#x6784;&#x9020;&#x51FD;&#x6570;&quot;</span> + name);
+    }
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">ConstructorTest</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> n)</span> </span>{
+        System.out.println(<span class="hljs-string">&quot;&#x79C1;&#x6709;&#x6784;&#x9020;&#x51FD;&#x6570;&quot;</span>);
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">try</span> {
+            Class c1 = Class.forName(<span class="hljs-string">&quot;com.reflect.ConstructorTest&quot;</span>);
+          Constructor[] constructors1  = c1.getDeclaredConstructors();
+          Constructor[] constructors2 = c1.getConstructors();
+          <span class="hljs-keyword">for</span> (Constructor c : constructors1) {
+                System.out.println(c);
+            }
+            System.out.println(<span class="hljs-string">&quot;-------&#x5206;&#x5272;&#x7EBF;---------&quot;</span>);
+            <span class="hljs-keyword">for</span> (Constructor c : constructors2) {
+                System.out.println(c);
+            }
+            System.out.println(<span class="hljs-string">&quot;-------&#x5206;&#x5272;&#x7EBF;---------&quot;</span>);
+            Constructor constructors3 = c1.getConstructor(String.class);
+            System.out.println(constructors3);
+            System.out.println(<span class="hljs-string">&quot;-------&#x5206;&#x5272;&#x7EBF;---------&quot;</span>);
+            Constructor constructors4 = c1.getDeclaredConstructor(<span class="hljs-keyword">boolean</span>.class);
+            System.out.println(constructors4);
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+<h3 id="&#x6267;&#x884C;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;">&#x6267;&#x884C;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;</h3>
+<p>&#x6267;&#x884C;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x4E3B;&#x8981;&#x7528;Method&#x7C7B;&#x4E2D;&#x7684;invoke&#x65B9;&#x6CD5;&#xFF0C;&#x4E0E;getMethod&#x65B9;&#x6CD5;&#x914D;&#x5408;&#x8C03;&#x7528;&#x3002;</p>
+<p>invoke&#x65B9;&#x6CD5;&#x5982;&#x4E0B;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">invoke</span><span class="hljs-params">(Object obj, Object... args)</span>
+</span></code></pre>
+<p>&#x5982;&#x679C;<strong>&#x8C03;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x666E;&#x901A;&#x65B9;&#x6CD5;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x5C31;&#x662F;&#x7C7B;&#x5BF9;&#x8C61;&#xFF1B;&#x5982;&#x679C;&#x662F;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x5C31;&#x662F;&#x7C7B;</strong>&#x3002;</p>
+<p>&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">import</span> java.lang.reflect.Method;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ReflectTest</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reflectMethod</span><span class="hljs-params">()</span> </span>{
+        System.out.println(<span class="hljs-string">&quot;&#x53CD;&#x5C04;&#x6D4B;&#x8BD5;&#x6210;&#x529F;!!!&quot;</span>);
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">try</span> {
+            Class c = Class.forName(<span class="hljs-string">&quot;ReflectTest&quot;</span>); <span class="hljs-comment">// &#x521B;&#x5EFA;Class&#x5BF9;&#x8C61;</span>
+            Object m = c.newInstance(); <span class="hljs-comment">// &#x521B;&#x5EFA;&#x7C7B;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;</span>
+            Method method = c.getMethod(<span class="hljs-string">&quot;reflectMethod&quot;</span>); <span class="hljs-comment">// &#x83B7;&#x53D6;reflectMethod&#x65B9;&#x6CD5;</span>
+            method.invoke(m); <span class="hljs-comment">// &#x8C03;&#x7528;&#x7C7B;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#x65B9;&#x6CD5;</span>
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+<h2 id="0x02-&#x5229;&#x7528;&#x53CD;&#x5C04;&#x6267;&#x884C;&#x547D;&#x4EE4;">0x02 &#x5229;&#x7528;&#x53CD;&#x5C04;&#x6267;&#x884C;&#x547D;&#x4EE4;</h2>
+<p>&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">import</span> java.lang.reflect.Method;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RuntimeTest</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        Class c1 = Class.forName(<span class="hljs-string">&quot;java.lang.Runtime&quot;</span>);
+        Object m = c1.newInstance();
+        Method method = c1.getMethod(<span class="hljs-string">&quot;exec&quot;</span>, String.class);
+        method.invoke(m,<span class="hljs-string">&quot;/System/Applications/Calculator.app/Contents/MacOS/Calculator&quot;</span>);
+    }
+}
+</code></pre>
+<p>&#x53D1;&#x73B0;&#x62A5;&#x9519;&#xFF0C;&#x662F;&#x56E0;&#x4E3A;Runtime&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x662F;private&#x4FEE;&#x9970;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x901A;&#x8FC7;getRuntime&#x65B9;&#x6CD5;&#x5F97;&#x5230;Runtime&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">import</span> java.lang.reflect.Method;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RuntimeTest</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        Class c1 = Class.forName(<span class="hljs-string">&quot;java.lang.Runtime&quot;</span>);
+        c1.getMethod(<span class="hljs-string">&quot;exec&quot;</span>, String.class).invoke(c1.getMethod(<span class="hljs-string">&quot;getRuntime&quot;</span>).invoke(c1),<span class="hljs-string">&quot;/System/Applications/Calculator.app/Contents/MacOS/Calculator&quot;</span>);
+    }
+}
+</code></pre>
+<p>&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;payload&#x62C6;&#x5206;&#x4E00;&#x4E0B;&#x5C31;&#x662F;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">import</span> java.lang.reflect.Method;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RuntimeTest</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        Class c1 = Class.forName(<span class="hljs-string">&quot;java.lang.Runtime&quot;</span>);
+
+        Method getRuntimeMethod = c1.getMethod(<span class="hljs-string">&quot;getRuntime&quot;</span>);
+        Object runtime = getRuntimeMethod.invoke(c1);
+
+        Method execMethod = c1.getMethod(<span class="hljs-string">&quot;exec&quot;</span>, String.class);
+        execMethod.invoke(runtime,<span class="hljs-string">&quot;/System/Applications/Calculator.app/Contents/MacOS/Calculator&quot;</span>);
+        <span class="hljs-comment">//c1.getMethod(&quot;exec&quot;, String.class).invoke(c1.getMethod(&quot;getRuntime&quot;).invoke(c1),&quot;/System/Applications/Calculator.app/Contents/MacOS/Calculator&quot;);</span>
+    }
+}
+</code></pre>
+<p>&#x7B2C;4&#x884C;&#xFF0C;&#x83B7;&#x53D6;Runtime&#x7C7B;&#x7684;class&#x5BF9;&#x8C61;</p>
+<p>&#x7B2C;6&#x884C;&#xFF0C;&#x83B7;&#x53D6;getRuntime&#x65B9;&#x6CD5;</p>
+<p>&#x7B2C;7&#x884C;&#xFF0C;&#x83B7;&#x53D6;Runtime&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#x5316;&#x5BF9;&#x8C61;&#xFF08;&#x56E0;&#x4E3A;Runtime&#x7C7B;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4FEE;&#x9970;&#x7B26;&#x4E3A;private&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;getRuntime&#x65B9;&#x6CD5;&#x83B7;&#x53D6;Runtime&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#x5316;&#x5BF9;&#x8C61;&#xFF09;</p>
+<p>&#x7B2C;9&#x884C;&#xFF0C;&#x83B7;&#x53D6;exec&#x65B9;&#x6CD5;&#xFF0C;String.class&#x6307;exec&#x65B9;&#x6CD5;&#x7684;&#x53C2;&#x6570;&#x7C7B;&#x578B;</p>
+<p>&#x7B2C;10&#x884C;&#xFF0C;&#x6267;&#x884C;exec&#x65B9;&#x6CD5;&#x3002;exec&#x65B9;&#x6CD5;&#x4E3A;&#x666E;&#x901A;&#x65B9;&#x6CD5;&#xFF0C;&#x6240;&#x4EE5;invoke&#x51FD;&#x6570;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x4E3A;Runtime&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#x5316;&#x5BF9;&#x8C61;&#x3002;</p>
+<h2 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h2>
+<ul>
+<li><a href="https://www.zhihu.com/question/24304289" target="_blank">https://www.zhihu.com/question/24304289</a></li>
+<li><a href="https://www.jianshu.com/p/9be58ee20dee" target="_blank">https://www.jianshu.com/p/9be58ee20dee</a></li>
+<li><a href="https://www.jianshu.com/p/356e1d7a9d11" target="_blank">https://www.jianshu.com/p/356e1d7a9d11</a></li>
+<li><a href="https://xz.aliyun.com/t/9002" target="_blank">https://xz.aliyun.com/t/9002</a></li>
+<li><a href="https://xz.aliyun.com/t/9117" target="_blank">https://xz.aliyun.com/t/9117</a></li>
+<li><a href="https://xz.aliyun.com/t/7029" target="_blank">https://xz.aliyun.com/t/7029</a></li>
+<li><a href="https://xz.aliyun.com/t/2342" target="_blank">https://xz.aliyun.com/t/2342</a></li>
+<li><a href="https://govuln.com" target="_blank">JAVA&#x5B89;&#x5168;&#x6F2B;&#x8C08;</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="JSP标签.html" class="navigation navigation-next navigation-unique" aria-label="Next page: JSP标签">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Java反射基础","level":"1.3.1.1","depth":3,"next":{"title":"JSP标签","level":"1.3.1.2","depth":3,"path":"Java/JSP标签.md","ref":"./Java/JSP标签.md","articles":[]},"previous":{"title":"0x01 基础","level":"1.3.1","depth":2,"ref":"","articles":[{"title":"Java反射基础","level":"1.3.1.1","depth":3,"path":"Java/Java反射基础.md","ref":"./Java/Java反射基础.md","articles":[]},{"title":"JSP标签","level":"1.3.1.2","depth":3,"path":"Java/JSP标签.md","ref":"./Java/JSP标签.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Java/Java反射基础.md","mtime":"2021-06-29T08:50:21.983Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-30T09:24:17.609Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
