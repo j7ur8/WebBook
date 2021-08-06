@@ -6,10 +6,16 @@ https://github.com/j7ur8/WebBook
 
 ## 2021.8
 
+### 8.5
+
+- 增加了Java/`CC1链分析与学习`
+- 增加了Docekr/`制作GitBook环境`
+- 增加了Bash/`命令大全`
+
 ### 8.4
 
 - 前面更新了很多= =不记得了
-- 增加了了JAVA/`URLDNS反序列化分析`
+- 增加了JAVA/`URLDNS反序列化分析`
 
 ## 2021.6
 
