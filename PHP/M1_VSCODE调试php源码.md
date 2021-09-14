@@ -130,3 +130,16 @@ PHP_UAF
 ​		断点捕获成功
 
 ![](../images/21-5-26_M1_VSCODE调试php源码_3.png)
+
+# 安装gd扩展
+
+```bash
+cd /Users/j7ur8/Desktop/PHP_UAF/php-7.4.19/ext/gd
+arch -x86_64 /Users/j7ur8/Desktop/PHP_UAF/php74/bin/phpize
+
+arch -x86_64 ./configure --with-php-config=/Users/j7ur8/Desktop/PHP_UAF/php74/bin/php-config CC="gcc -arch x86_64"  CC="gcc -arch x86_64"
+arch -x86_64 make
+arch -x86_64 make install
+
+```
+

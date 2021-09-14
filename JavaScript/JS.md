@@ -1,0 +1,1 @@
+https://blog.p6.is/AST-Injection/#Exploit-1

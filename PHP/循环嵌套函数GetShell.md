@@ -6,6 +6,7 @@
 
 - https://www.kingkk.com/2018/11/Code-Breaking-Puzzles-%E9%A2%98%E8%A7%A3-%E5%AD%A6%E4%B9%A0%E7%AF%87/#get-defined-vars
 - https://xz.aliyun.com/t/6316
+- https://www.cnblogs.com/BOHB-yunying/p/11616311.html
 
 ### Exp
 

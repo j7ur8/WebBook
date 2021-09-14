@@ -1,5 +1,7 @@
 # 绕过open_basedir
 
+https://xz.aliyun.com/t/10070
+
 ## 利用ini_set和chidr
 
 ### 参考

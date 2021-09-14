@@ -6,7 +6,7 @@
 - https://blog.spoock.com/2016/10/16/php-serialize-problem/
 
 ## 分析
-PHP中的Session的实现是没有的问题，在php.ini中session.serialize_handler可以设置序列化/解序列化的处理器名字，默认处理引擎是PHP，另外还有2个。
+PHP中的Session的实现是没有的问题，但在php.ini中session.serialize_handler可以设置序列化/解序列化的处理器名字，默认处理引擎是PHP，另外还有2个。
 - `php_binary`：键名的长度对应的ASCII字符+键名+经过serialize()函数序列化处理的值
 - `php`：键名+竖线+经过serialize()函数序列处理的值
 - `php_serialize(PHP>5.5.4)`：经过serialize()函数序列化处理的值

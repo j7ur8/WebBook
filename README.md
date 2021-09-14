@@ -4,7 +4,27 @@ https://github.com/j7ur8/WebBook
 
 # 更新日志
 
+## 2021.9
+
+### 9.3
+
+- 调整了**文件结构**
+
+- 更新了PHP/`二次渲染绕过`
+- 更新了PHP/`M1_VSCODE调试PHP源码`
+- 增加了Proxy/`路径解析问题`
+- 增加了PHP/`lamp特性`
+- 增加了Python/`SSTI`
+
 ## 2021.8
+
+### 8.24
+
+- 增加了PHP/`lamp特性`
+
+- 增加了Docker/`Docker下Ubuntu20.04安装lamp环境`
+
+  
 
 ### 8.5
 
